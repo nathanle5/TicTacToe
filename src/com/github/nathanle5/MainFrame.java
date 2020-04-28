@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
 
 /**
  * @author Nathan Le
@@ -68,6 +69,10 @@ public class MainFrame extends JFrame {
 	private final JButton spot20Button = new JButton();
 	private final JButton spot21Button = new JButton();
 	private final JButton spot22Button = new JButton();
+	private final JPanel buttonPane = new JPanel();
+	private final JButton startGameButton = new JButton("Start Game");
+	private final JButton endGameButton = new JButton("End Game");
+	private final JButton newGameButton = new JButton("New Match");
 
 	private final JButton[][] spotButtons = new JButton[3][3];
 
@@ -107,9 +112,9 @@ public class MainFrame extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		setJMenuBar(menuBar);
 		menuBar.add(mnFileMenu);
@@ -258,6 +263,7 @@ public class MainFrame extends JFrame {
 		
 		// Spots Panel:
 		GridBagConstraints gbc_spotsPane = new GridBagConstraints();
+		gbc_spotsPane.insets = new Insets(0, 0, 5, 0);
 		gbc_spotsPane.fill = GridBagConstraints.BOTH;
 		gbc_spotsPane.gridx = 0;
 		gbc_spotsPane.gridy = 0;
@@ -432,6 +438,63 @@ public class MainFrame extends JFrame {
 				spotButtons[row][col].setText(Character.toString(LETTER_E));
 			}
 		}
+		
+		// Button Panel:
+		GridBagConstraints gbc_buttonPane = new GridBagConstraints();
+		gbc_buttonPane.insets = new Insets(0, 0, 5, 0);
+		gbc_buttonPane.fill = GridBagConstraints.BOTH;
+		gbc_buttonPane.gridx = 0;
+		gbc_buttonPane.gridy = 1;
+		buttonPane.setBorder(null);
+		buttonPane.setFont(UI_TEXT_FONT);
+		contentPane.add(buttonPane, gbc_buttonPane);
+		GridBagLayout gbl_buttonPane = new GridBagLayout();
+		gbl_buttonPane.columnWidths = new int[]{0, 125, 125, 125, 0, 0};
+		gbl_buttonPane.rowHeights = new int[]{25, 0};
+		gbl_buttonPane.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_buttonPane.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		buttonPane.setLayout(gbl_buttonPane);
+		
+		// Button Panel -> Start Button:
+		GridBagConstraints gbc_startGameButton = new GridBagConstraints();
+		gbc_startGameButton.fill = GridBagConstraints.BOTH;
+		gbc_startGameButton.insets = new Insets(0, 0, 0, 5);
+		gbc_startGameButton.gridx = 1;
+		gbc_startGameButton.gridy = 0;
+		startGameButton.setFont(UI_TEXT_FONT);
+		startGameButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		buttonPane.add(startGameButton, gbc_startGameButton);
+		
+		// Button Panel -> End Button:
+		GridBagConstraints gbc_endGameButton = new GridBagConstraints();
+		gbc_endGameButton.fill = GridBagConstraints.BOTH;
+		gbc_endGameButton.insets = new Insets(0, 0, 0, 5);
+		gbc_endGameButton.gridx = 2;
+		gbc_endGameButton.gridy = 0;
+		endGameButton.setFont(UI_TEXT_FONT);
+		endGameButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		endGameButton.setEnabled(false);
+		buttonPane.add(endGameButton, gbc_endGameButton);
+		
+		// Button Panel -> New Button:
+		GridBagConstraints gbc_newGameButton = new GridBagConstraints();
+		gbc_newGameButton.fill = GridBagConstraints.BOTH;
+		gbc_newGameButton.insets = new Insets(0, 0, 0, 5);
+		gbc_newGameButton.gridx = 3;
+		gbc_newGameButton.gridy = 0;
+		newGameButton.setFont(UI_TEXT_FONT);
+		newGameButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		newGameButton.setEnabled(false);
+		buttonPane.add(newGameButton, gbc_newGameButton);
 	}
 
 }
