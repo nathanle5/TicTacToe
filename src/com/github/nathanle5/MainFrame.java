@@ -464,6 +464,7 @@ public class MainFrame extends JFrame {
 		startGameButton.setFont(UI_TEXT_FONT);
 		startGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO implement start
 			}
 		});
 		buttonPane.add(startGameButton, gbc_startGameButton);
@@ -477,6 +478,7 @@ public class MainFrame extends JFrame {
 		endGameButton.setFont(UI_TEXT_FONT);
 		endGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO implement end
 			}
 		});
 		endGameButton.setEnabled(false);
@@ -491,6 +493,7 @@ public class MainFrame extends JFrame {
 		newGameButton.setFont(UI_TEXT_FONT);
 		newGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO implement new
 			}
 		});
 		newGameButton.setEnabled(false);
