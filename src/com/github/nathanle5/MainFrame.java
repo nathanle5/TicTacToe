@@ -1,5 +1,6 @@
 package com.github.nathanle5;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -12,6 +13,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,7 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 /**
  * @author Nathan Le
@@ -74,7 +77,19 @@ public class MainFrame extends JFrame {
 	private final JButton endGameButton = new JButton("End Game");
 	private final JButton newGameButton = new JButton("New Match");
 
-	private final JButton[][] spotButtons = new JButton[3][3];
+	private final JPanel statsPane = new JPanel();
+	private final JPanel winsPane = new JPanel();
+	private final JLabel winCountLabel = new JLabel("0");
+	private final JPanel lossesPane = new JPanel();
+	private final JLabel lossCountLabel = new JLabel("0");
+	private final JPanel matchesPane = new JPanel();
+	private final JLabel matchCountLabel = new JLabel("0");
+	private final JPanel winPercentPane = new JPanel();
+	private final JLabel winPercentLabel = new JLabel("0");
+	private final JPanel lossPercentPane = new JPanel();
+	private final JLabel lossPercentLabel = new JLabel("0");
+
+	private final JButton[][] spotButtons = new JButton[3][3];	
 
 	/**
 	 * Launch the application.
@@ -106,15 +121,15 @@ public class MainFrame extends JFrame {
 		setResizable(false);
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 425, 625);
+		setBounds(100, 100, 425, 595);
 		setFont(UI_TEXT_FONT);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		setJMenuBar(menuBar);
 		menuBar.add(mnFileMenu);
@@ -266,7 +281,7 @@ public class MainFrame extends JFrame {
 		gbc_spotsPane.insets = new Insets(0, 0, 5, 0);
 		gbc_spotsPane.fill = GridBagConstraints.BOTH;
 		gbc_spotsPane.gridx = 0;
-		gbc_spotsPane.gridy = 0;
+		gbc_spotsPane.gridy = 1;
 		spotsPane.setFont(UI_SPOT_FONT);
 		spotsPane.setBorder(null);
 		contentPane.add(spotsPane, gbc_spotsPane);
@@ -444,7 +459,7 @@ public class MainFrame extends JFrame {
 		gbc_buttonPane.insets = new Insets(0, 0, 5, 0);
 		gbc_buttonPane.fill = GridBagConstraints.BOTH;
 		gbc_buttonPane.gridx = 0;
-		gbc_buttonPane.gridy = 1;
+		gbc_buttonPane.gridy = 2;
 		buttonPane.setBorder(null);
 		buttonPane.setFont(UI_TEXT_FONT);
 		contentPane.add(buttonPane, gbc_buttonPane);
@@ -498,6 +513,136 @@ public class MainFrame extends JFrame {
 		});
 		newGameButton.setEnabled(false);
 		buttonPane.add(newGameButton, gbc_newGameButton);
+		
+		// Stats Panel:
+		GridBagConstraints gbc_statsPane = new GridBagConstraints();
+		gbc_statsPane.insets = new Insets(0, 0, 5, 0);
+		gbc_statsPane.fill = GridBagConstraints.BOTH;
+		gbc_statsPane.gridx = 0;
+		gbc_statsPane.gridy = 3;
+		statsPane.setBorder(null);
+		contentPane.add(statsPane, gbc_statsPane);
+		GridBagLayout gbl_statsPane = new GridBagLayout();
+		gbl_statsPane.columnWidths = new int[]{0, 205, 70, 0, 0};
+		gbl_statsPane.rowHeights = new int[]{40, 40, 40, 0};
+		gbl_statsPane.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_statsPane.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		statsPane.setLayout(gbl_statsPane);
+		
+		// Stats Panel -> Wins Panel:
+		GridBagConstraints gbc_winsPane = new GridBagConstraints();
+		gbc_winsPane.insets = new Insets(0, 0, 5, 5);
+		gbc_winsPane.fill = GridBagConstraints.BOTH;
+		gbc_winsPane.gridx = 1;
+		gbc_winsPane.gridy = 0;
+		winsPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Wins:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		statsPane.add(winsPane, gbc_winsPane);
+		GridBagLayout gbl_winsPane = new GridBagLayout();
+		gbl_winsPane.columnWidths = new int[]{0, 0};
+		gbl_winsPane.rowHeights = new int[]{0, 0};
+		gbl_winsPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_winsPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		winsPane.setLayout(gbl_winsPane);
+		
+		// Stats Panel -> Wins Panel -> Wins Label:
+		GridBagConstraints gbc_winCountLabel = new GridBagConstraints();
+		gbc_winCountLabel.anchor = GridBagConstraints.EAST;
+		gbc_winCountLabel.gridx = 0;
+		gbc_winCountLabel.gridy = 0;
+		winCountLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		winsPane.add(winCountLabel, gbc_winCountLabel);
+		
+		// Stats Panel -> Wins Percent Panel -> Wins Percent Label:
+		GridBagConstraints gbc_winPercentPane = new GridBagConstraints();
+		gbc_winPercentPane.insets = new Insets(0, 0, 5, 5);
+		gbc_winPercentPane.fill = GridBagConstraints.BOTH;
+		gbc_winPercentPane.gridx = 2;
+		gbc_winPercentPane.gridy = 0;
+		winPercentPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Win %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		statsPane.add(winPercentPane, gbc_winPercentPane);
+		GridBagLayout gbl_winPercentPane = new GridBagLayout();
+		gbl_winPercentPane.columnWidths = new int[]{0, 0};
+		gbl_winPercentPane.rowHeights = new int[]{0, 0};
+		gbl_winPercentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_winPercentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		winPercentPane.setLayout(gbl_winPercentPane);
+		
+		// Stats Panel -> Wins Percent Panel -> Wins Percent Label:
+		GridBagConstraints gbc_winPercentLabel = new GridBagConstraints();
+		gbc_winPercentLabel.anchor = GridBagConstraints.EAST;
+		gbc_winPercentLabel.gridx = 0;
+		gbc_winPercentLabel.gridy = 0;
+		winPercentLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		winPercentPane.add(winPercentLabel, gbc_winPercentLabel);
+		
+		// Stats Panel -> Losses Panel:
+		GridBagConstraints gbc_lossesPane = new GridBagConstraints();
+		gbc_lossesPane.insets = new Insets(0, 0, 5, 5);
+		gbc_lossesPane.fill = GridBagConstraints.BOTH;
+		gbc_lossesPane.gridx = 1;
+		gbc_lossesPane.gridy = 1;
+		lossesPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Losses:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		statsPane.add(lossesPane, gbc_lossesPane);
+		GridBagLayout gbl_lossesPane = new GridBagLayout();
+		gbl_lossesPane.columnWidths = new int[]{0, 0};
+		gbl_lossesPane.rowHeights = new int[]{0, 0};
+		gbl_lossesPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_lossesPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		lossesPane.setLayout(gbl_lossesPane);
+		
+		// Stats Panel -> Losses Panel -> Losses Label:
+		GridBagConstraints gbc_lossCountLabel = new GridBagConstraints();
+		gbc_lossCountLabel.anchor = GridBagConstraints.EAST;
+		gbc_lossCountLabel.gridx = 0;
+		gbc_lossCountLabel.gridy = 0;
+		lossCountLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lossesPane.add(lossCountLabel, gbc_lossCountLabel);
+		
+		// Stats Panel -> Losses Percent Panel:
+		GridBagConstraints gbc_lossPercentPane = new GridBagConstraints();
+		gbc_lossPercentPane.insets = new Insets(0, 0, 5, 5);
+		gbc_lossPercentPane.fill = GridBagConstraints.BOTH;
+		gbc_lossPercentPane.gridx = 2;
+		gbc_lossPercentPane.gridy = 1;
+		lossPercentPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Loss %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		statsPane.add(lossPercentPane, gbc_lossPercentPane);
+		GridBagLayout gbl_lossPercentPane = new GridBagLayout();
+		gbl_lossPercentPane.columnWidths = new int[]{0, 0};
+		gbl_lossPercentPane.rowHeights = new int[]{0, 0};
+		gbl_lossPercentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_lossPercentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		lossPercentPane.setLayout(gbl_lossPercentPane);
+		
+		// Stats Panel -> Losses Percent Panel -> Losses Percent Label:
+		GridBagConstraints gbc_lossPercentLabel = new GridBagConstraints();
+		gbc_lossPercentLabel.anchor = GridBagConstraints.EAST;
+		gbc_lossPercentLabel.gridx = 0;
+		gbc_lossPercentLabel.gridy = 0;
+		lossPercentLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lossPercentPane.add(lossPercentLabel, gbc_lossPercentLabel);
+		
+		// Stats Panel -> Matches Panel:
+		GridBagConstraints gbc_matchesPane = new GridBagConstraints();
+		gbc_matchesPane.insets = new Insets(0, 0, 0, 5);
+		gbc_matchesPane.fill = GridBagConstraints.BOTH;
+		gbc_matchesPane.gridx = 1;
+		gbc_matchesPane.gridy = 2;
+		matchesPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Matches:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		statsPane.add(matchesPane, gbc_matchesPane);
+		GridBagLayout gbl_matchesPane = new GridBagLayout();
+		gbl_matchesPane.columnWidths = new int[]{0, 0};
+		gbl_matchesPane.rowHeights = new int[]{0, 0};
+		gbl_matchesPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_matchesPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		matchesPane.setLayout(gbl_matchesPane);
+		
+		// Stats Panel -> Matches Panel -> Matches Label:
+		GridBagConstraints gbc_matchCountLabel = new GridBagConstraints();
+		gbc_matchCountLabel.anchor = GridBagConstraints.EAST;
+		gbc_matchCountLabel.gridx = 0;
+		gbc_matchCountLabel.gridy = 0;
+		matchCountLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		matchesPane.add(matchCountLabel, gbc_matchCountLabel);
 	}
 
 }
