@@ -521,6 +521,7 @@ public class MainFrame extends JFrame {
 		gbc_statsPane.gridx = 0;
 		gbc_statsPane.gridy = 3;
 		statsPane.setBorder(null);
+		statsPane.setFont(UI_TEXT_FONT);
 		contentPane.add(statsPane, gbc_statsPane);
 		GridBagLayout gbl_statsPane = new GridBagLayout();
 		gbl_statsPane.columnWidths = new int[]{0, 205, 70, 0, 0};
@@ -536,6 +537,7 @@ public class MainFrame extends JFrame {
 		gbc_winsPane.gridx = 1;
 		gbc_winsPane.gridy = 0;
 		winsPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Wins:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		winsPane.setFont(UI_TEXT_FONT);
 		statsPane.add(winsPane, gbc_winsPane);
 		GridBagLayout gbl_winsPane = new GridBagLayout();
 		gbl_winsPane.columnWidths = new int[]{0, 0};
@@ -549,16 +551,17 @@ public class MainFrame extends JFrame {
 		gbc_winCountLabel.anchor = GridBagConstraints.EAST;
 		gbc_winCountLabel.gridx = 0;
 		gbc_winCountLabel.gridy = 0;
-		winCountLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		winCountLabel.setFont(UI_TEXT_FONT);
 		winsPane.add(winCountLabel, gbc_winCountLabel);
 		
-		// Stats Panel -> Wins Percent Panel -> Wins Percent Label:
+		// Stats Panel -> Wins Percent Panel:
 		GridBagConstraints gbc_winPercentPane = new GridBagConstraints();
 		gbc_winPercentPane.insets = new Insets(0, 0, 5, 5);
 		gbc_winPercentPane.fill = GridBagConstraints.BOTH;
 		gbc_winPercentPane.gridx = 2;
 		gbc_winPercentPane.gridy = 0;
 		winPercentPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Win %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		winPercentPane.setFont(UI_TEXT_FONT);
 		statsPane.add(winPercentPane, gbc_winPercentPane);
 		GridBagLayout gbl_winPercentPane = new GridBagLayout();
 		gbl_winPercentPane.columnWidths = new int[]{0, 0};
@@ -572,7 +575,7 @@ public class MainFrame extends JFrame {
 		gbc_winPercentLabel.anchor = GridBagConstraints.EAST;
 		gbc_winPercentLabel.gridx = 0;
 		gbc_winPercentLabel.gridy = 0;
-		winPercentLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		winPercentLabel.setFont(UI_TEXT_FONT);
 		winPercentPane.add(winPercentLabel, gbc_winPercentLabel);
 		
 		// Stats Panel -> Losses Panel:
@@ -582,6 +585,7 @@ public class MainFrame extends JFrame {
 		gbc_lossesPane.gridx = 1;
 		gbc_lossesPane.gridy = 1;
 		lossesPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Losses:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		lossesPane.setFont(UI_TEXT_FONT);
 		statsPane.add(lossesPane, gbc_lossesPane);
 		GridBagLayout gbl_lossesPane = new GridBagLayout();
 		gbl_lossesPane.columnWidths = new int[]{0, 0};
@@ -595,7 +599,7 @@ public class MainFrame extends JFrame {
 		gbc_lossCountLabel.anchor = GridBagConstraints.EAST;
 		gbc_lossCountLabel.gridx = 0;
 		gbc_lossCountLabel.gridy = 0;
-		lossCountLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lossCountLabel.setFont(UI_TEXT_FONT);
 		lossesPane.add(lossCountLabel, gbc_lossCountLabel);
 		
 		// Stats Panel -> Losses Percent Panel:
@@ -605,6 +609,7 @@ public class MainFrame extends JFrame {
 		gbc_lossPercentPane.gridx = 2;
 		gbc_lossPercentPane.gridy = 1;
 		lossPercentPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Loss %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		lossPercentPane.setFont(UI_TEXT_FONT);
 		statsPane.add(lossPercentPane, gbc_lossPercentPane);
 		GridBagLayout gbl_lossPercentPane = new GridBagLayout();
 		gbl_lossPercentPane.columnWidths = new int[]{0, 0};
@@ -618,7 +623,7 @@ public class MainFrame extends JFrame {
 		gbc_lossPercentLabel.anchor = GridBagConstraints.EAST;
 		gbc_lossPercentLabel.gridx = 0;
 		gbc_lossPercentLabel.gridy = 0;
-		lossPercentLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		lossPercentLabel.setFont(UI_TEXT_FONT);
 		lossPercentPane.add(lossPercentLabel, gbc_lossPercentLabel);
 		
 		// Stats Panel -> Matches Panel:
@@ -628,6 +633,7 @@ public class MainFrame extends JFrame {
 		gbc_matchesPane.gridx = 1;
 		gbc_matchesPane.gridy = 2;
 		matchesPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Matches:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		matchesPane.setFont(UI_TEXT_FONT);
 		statsPane.add(matchesPane, gbc_matchesPane);
 		GridBagLayout gbl_matchesPane = new GridBagLayout();
 		gbl_matchesPane.columnWidths = new int[]{0, 0};
@@ -641,7 +647,7 @@ public class MainFrame extends JFrame {
 		gbc_matchCountLabel.anchor = GridBagConstraints.EAST;
 		gbc_matchCountLabel.gridx = 0;
 		gbc_matchCountLabel.gridy = 0;
-		matchCountLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+		matchCountLabel.setFont(UI_TEXT_FONT);
 		matchesPane.add(matchCountLabel, gbc_matchCountLabel);
 	}
 
