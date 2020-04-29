@@ -89,13 +89,14 @@ public class MainFrame extends JFrame {
 	private final JPanel lossPercentPane = new JPanel();
 	private final JLabel lossPercentLabel = new JLabel("0");
 
-	private final JButton[][] spotButtons = new JButton[3][3];	
+	private final JButton[][] spotButtons = new JButton[3][3];
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					final MainFrame frame = new MainFrame();
@@ -113,7 +114,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		initialize();
 	}
-	
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -126,24 +127,25 @@ public class MainFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 		setJMenuBar(menuBar);
 		menuBar.add(mnFileMenu);
 		menuBar.add(mnStatMenu);
 		menuBar.add(mnToolMenu);
 		menuBar.add(mnHelpMenu);
-		
+
 		// File Menu:
 		mnFileMenu.setFont(UI_TEXT_FONT);
 		mnFileMenu.setMnemonic(KeyEvent.VK_F);
-		
+
 		// File Menu -> Start Button:
 		mntmFileStartMenuItem.setFont(UI_TEXT_FONT);
 		mntmFileStartMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement start
 			}
@@ -151,10 +153,11 @@ public class MainFrame extends JFrame {
 		mntmFileStartMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0));
 		mntmFileStartMenuItem.setMnemonic(KeyEvent.VK_S);
 		mnFileMenu.add(mntmFileStartMenuItem);
-		
+
 		// File Menu -> End Button:
 		mntmFileEndMenuItem.setFont(UI_TEXT_FONT);
 		mntmFileEndMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement end
 			}
@@ -163,13 +166,14 @@ public class MainFrame extends JFrame {
 		mntmFileEndMenuItem.setMnemonic(KeyEvent.VK_E);
 		mntmFileEndMenuItem.setEnabled(false);
 		mnFileMenu.add(mntmFileEndMenuItem);
-		
+
 		// File Menu -> Separator:
 		mnFileMenu.add(mntmFileSeparator0);
-		
+
 		// File Menu -> New Button:
 		mntmFileNewMenuItem.setFont(UI_TEXT_FONT);
 		mntmFileNewMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement new
 			}
@@ -178,13 +182,14 @@ public class MainFrame extends JFrame {
 		mntmFileNewMenuItem.setMnemonic(KeyEvent.VK_N);
 		mntmFileNewMenuItem.setEnabled(false);
 		mnFileMenu.add(mntmFileNewMenuItem);
-		
+
 		// File Menu -> Separator:
 		mnFileMenu.add(mntmFileSeparator1);
-		
+
 		// File Menu -> Exit Button:
 		mntmFileExitMenuItem.setFont(UI_TEXT_FONT);
 		mntmFileExitMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
@@ -192,14 +197,15 @@ public class MainFrame extends JFrame {
 		mntmFileExitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
 		mntmFileExitMenuItem.setMnemonic(KeyEvent.VK_X);
 		mnFileMenu.add(mntmFileExitMenuItem);
-		
+
 		// Stats Menu:
 		mnStatMenu.setFont(UI_TEXT_FONT);
 		mnStatMenu.setMnemonic(KeyEvent.VK_S);
-		
+
 		// Stats Menu -> View Button:
 		mntmStatViewMenuItem.setFont(UI_TEXT_FONT);
 		mntmStatViewMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement view stats frame
 			}
@@ -207,13 +213,14 @@ public class MainFrame extends JFrame {
 		mntmStatViewMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, 0));
 		mntmStatViewMenuItem.setMnemonic(KeyEvent.VK_V);
 		mnStatMenu.add(mntmStatViewMenuItem);
-		
+
 		// Stats Menu -> Separator:
 		mnStatMenu.add(mntmStatSeparator0);
-		
+
 		// Stats Menu -> Import Button:
 		mntmStatImportMenuItem.setFont(UI_TEXT_FONT);
 		mntmStatImportMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement import stats
 			}
@@ -221,10 +228,11 @@ public class MainFrame extends JFrame {
 		mntmStatImportMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
 		mntmStatImportMenuItem.setMnemonic(KeyEvent.VK_I);
 		mnStatMenu.add(mntmStatImportMenuItem);
-		
+
 		// Stats Menu -> Export Button:
 		mntmStatExportMenuItem.setFont(UI_TEXT_FONT);
 		mntmStatExportMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement export stats
 			}
@@ -232,13 +240,14 @@ public class MainFrame extends JFrame {
 		mntmStatExportMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
 		mntmStatExportMenuItem.setMnemonic(KeyEvent.VK_E);
 		mnStatMenu.add(mntmStatExportMenuItem);
-		
+
 		// Stats Menu -> Separator:
 		mnStatMenu.add(mntmStatSeparator1);
-		
+
 		// Stats Menu -> Reset Button:
 		mntmStatResetMenuItem.setFont(UI_TEXT_FONT);
 		mntmStatResetMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement reset stats
 			}
@@ -246,14 +255,15 @@ public class MainFrame extends JFrame {
 		mntmStatResetMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
 		mntmStatResetMenuItem.setMnemonic(KeyEvent.VK_R);
 		mnStatMenu.add(mntmStatResetMenuItem);
-		
+
 		// Tools Menu:
 		mnToolMenu.setFont(UI_TEXT_FONT);
 		mnToolMenu.setMnemonic(KeyEvent.VK_T);
-		
+
 		// Tools Menu -> Options Button:
 		mntmToolOptionMenuItem.setFont(UI_TEXT_FONT);
 		mntmToolOptionMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement options frame
 			}
@@ -261,37 +271,38 @@ public class MainFrame extends JFrame {
 		mntmToolOptionMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, 0));
 		mntmToolOptionMenuItem.setMnemonic(KeyEvent.VK_O);
 		mnToolMenu.add(mntmToolOptionMenuItem);
-		
+
 		// Help Menu:
 		mnHelpMenu.setFont(UI_TEXT_FONT);
 		mnHelpMenu.setMnemonic(KeyEvent.VK_H);
-		
+
 		// Help Menu -> About Button:
 		mntmHelpAboutMenuItem.setFont(UI_TEXT_FONT);
 		mntmHelpAboutMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement about frame
 			}
 		});
 		mntmHelpAboutMenuItem.setMnemonic(KeyEvent.VK_A);
 		mnHelpMenu.add(mntmHelpAboutMenuItem);
-		
+
 		// Spots Panel:
 		GridBagConstraints gbc_spotsPane = new GridBagConstraints();
 		gbc_spotsPane.insets = new Insets(0, 0, 5, 0);
 		gbc_spotsPane.fill = GridBagConstraints.BOTH;
 		gbc_spotsPane.gridx = 0;
-		gbc_spotsPane.gridy = 1;
+		gbc_spotsPane.gridy = 0;
 		spotsPane.setFont(UI_SPOT_FONT);
 		spotsPane.setBorder(null);
 		contentPane.add(spotsPane, gbc_spotsPane);
 		GridBagLayout gbl_spotsPane = new GridBagLayout();
-		gbl_spotsPane.columnWidths = new int[]{0, 100, 100, 100, 0, 0};
-		gbl_spotsPane.rowHeights = new int[]{100, 100, 100, 0};
-		gbl_spotsPane.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_spotsPane.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_spotsPane.columnWidths = new int[] { 0, 100, 100, 100, 0, 0 };
+		gbl_spotsPane.rowHeights = new int[] { 100, 100, 100, 0 };
+		gbl_spotsPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_spotsPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		spotsPane.setLayout(gbl_spotsPane);
-		
+
 		// Spots Panel -> Spot (0,0) Button:
 		GridBagConstraints gbc_spot00Button = new GridBagConstraints();
 		gbc_spot00Button.fill = GridBagConstraints.BOTH;
@@ -300,6 +311,7 @@ public class MainFrame extends JFrame {
 		gbc_spot00Button.gridy = 0;
 		spot00Button.setEnabled(false);
 		spot00Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -307,7 +319,7 @@ public class MainFrame extends JFrame {
 		spot00Button.setFocusable(false);
 		spot00Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot00Button, gbc_spot00Button);
-		
+
 		// Spots Panel -> Spot (0,1) Button:
 		GridBagConstraints gbc_spot01Button = new GridBagConstraints();
 		gbc_spot01Button.fill = GridBagConstraints.BOTH;
@@ -316,6 +328,7 @@ public class MainFrame extends JFrame {
 		gbc_spot01Button.gridy = 0;
 		spot01Button.setEnabled(false);
 		spot01Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -323,7 +336,7 @@ public class MainFrame extends JFrame {
 		spot01Button.setFocusable(false);
 		spot01Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot01Button, gbc_spot01Button);
-		
+
 		// Spots Panel -> Spot (0,2) Button:
 		GridBagConstraints gbc_spot02Button = new GridBagConstraints();
 		gbc_spot02Button.fill = GridBagConstraints.BOTH;
@@ -332,6 +345,7 @@ public class MainFrame extends JFrame {
 		gbc_spot02Button.gridy = 0;
 		spot02Button.setEnabled(false);
 		spot02Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -339,7 +353,7 @@ public class MainFrame extends JFrame {
 		spot02Button.setFocusable(false);
 		spot02Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot02Button, gbc_spot02Button);
-		
+
 		// Spots Panel -> Spot (1,0) Button:
 		GridBagConstraints gbc_spot10Button = new GridBagConstraints();
 		gbc_spot10Button.fill = GridBagConstraints.BOTH;
@@ -348,6 +362,7 @@ public class MainFrame extends JFrame {
 		gbc_spot10Button.gridy = 1;
 		spot10Button.setEnabled(false);
 		spot10Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -355,7 +370,7 @@ public class MainFrame extends JFrame {
 		spot10Button.setFocusable(false);
 		spot10Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot10Button, gbc_spot10Button);
-		
+
 		// Spots Panel -> Spot (1,1) Button:
 		GridBagConstraints gbc_spot11Button = new GridBagConstraints();
 		gbc_spot11Button.fill = GridBagConstraints.BOTH;
@@ -364,6 +379,7 @@ public class MainFrame extends JFrame {
 		gbc_spot11Button.gridy = 1;
 		spot11Button.setEnabled(false);
 		spot11Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -371,7 +387,7 @@ public class MainFrame extends JFrame {
 		spot11Button.setFocusable(false);
 		spot11Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot11Button, gbc_spot11Button);
-		
+
 		// Spots Panel -> Spot (1,2) Button:
 		GridBagConstraints gbc_spot12Button = new GridBagConstraints();
 		gbc_spot12Button.fill = GridBagConstraints.BOTH;
@@ -380,6 +396,7 @@ public class MainFrame extends JFrame {
 		gbc_spot12Button.gridy = 1;
 		spot12Button.setEnabled(false);
 		spot12Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -387,7 +404,7 @@ public class MainFrame extends JFrame {
 		spot12Button.setFocusable(false);
 		spot12Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot12Button, gbc_spot12Button);
-		
+
 		// Spots Panel -> Spot (2,0) Button:
 		GridBagConstraints gbc_spot20Button = new GridBagConstraints();
 		gbc_spot20Button.fill = GridBagConstraints.BOTH;
@@ -396,6 +413,7 @@ public class MainFrame extends JFrame {
 		gbc_spot20Button.gridy = 2;
 		spot20Button.setEnabled(false);
 		spot20Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -403,7 +421,7 @@ public class MainFrame extends JFrame {
 		spot20Button.setFocusable(false);
 		spot20Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot20Button, gbc_spot20Button);
-		
+
 		// Spots Panel -> Spot (2,1) Button:
 		GridBagConstraints gbc_spot21Button = new GridBagConstraints();
 		gbc_spot21Button.fill = GridBagConstraints.BOTH;
@@ -412,6 +430,7 @@ public class MainFrame extends JFrame {
 		gbc_spot21Button.gridy = 2;
 		spot21Button.setEnabled(false);
 		spot21Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -419,7 +438,7 @@ public class MainFrame extends JFrame {
 		spot21Button.setFocusable(false);
 		spot21Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot21Button, gbc_spot21Button);
-		
+
 		// Spots Panel -> Spot (2,2) Button:
 		GridBagConstraints gbc_spot22Button = new GridBagConstraints();
 		gbc_spot22Button.insets = new Insets(0, 0, 0, 5);
@@ -428,6 +447,7 @@ public class MainFrame extends JFrame {
 		gbc_spot22Button.gridy = 2;
 		spot22Button.setEnabled(false);
 		spot22Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO trigger player took spot
 			}
@@ -435,7 +455,7 @@ public class MainFrame extends JFrame {
 		spot22Button.setFocusable(false);
 		spot22Button.setFont(UI_SPOT_FONT);
 		spotsPane.add(spot22Button, gbc_spot22Button);
-		
+
 		// Add all the spot buttons to the array:
 		spotButtons[0][0] = spot00Button;
 		spotButtons[0][1] = spot01Button;
@@ -446,30 +466,30 @@ public class MainFrame extends JFrame {
 		spotButtons[2][0] = spot20Button;
 		spotButtons[2][1] = spot21Button;
 		spotButtons[2][2] = spot22Button;
-		
+
 		// Assign default text to each spot button:
 		for (int row = 0; row < MAX_ROW; row++) {
 			for (int col = 0; col < MAX_COL; col++) {
 				spotButtons[row][col].setText(Character.toString(LETTER_E));
 			}
 		}
-		
+
 		// Button Panel:
 		GridBagConstraints gbc_buttonPane = new GridBagConstraints();
 		gbc_buttonPane.insets = new Insets(0, 0, 5, 0);
 		gbc_buttonPane.fill = GridBagConstraints.BOTH;
 		gbc_buttonPane.gridx = 0;
-		gbc_buttonPane.gridy = 2;
+		gbc_buttonPane.gridy = 1;
 		buttonPane.setBorder(null);
 		buttonPane.setFont(UI_TEXT_FONT);
 		contentPane.add(buttonPane, gbc_buttonPane);
 		GridBagLayout gbl_buttonPane = new GridBagLayout();
-		gbl_buttonPane.columnWidths = new int[]{0, 125, 125, 125, 0, 0};
-		gbl_buttonPane.rowHeights = new int[]{25, 0};
-		gbl_buttonPane.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_buttonPane.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_buttonPane.columnWidths = new int[] { 0, 125, 125, 125, 0, 0 };
+		gbl_buttonPane.rowHeights = new int[] { 25, 0 };
+		gbl_buttonPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_buttonPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		buttonPane.setLayout(gbl_buttonPane);
-		
+
 		// Button Panel -> Start Button:
 		GridBagConstraints gbc_startGameButton = new GridBagConstraints();
 		gbc_startGameButton.fill = GridBagConstraints.BOTH;
@@ -478,12 +498,13 @@ public class MainFrame extends JFrame {
 		gbc_startGameButton.gridy = 0;
 		startGameButton.setFont(UI_TEXT_FONT);
 		startGameButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement start
 			}
 		});
 		buttonPane.add(startGameButton, gbc_startGameButton);
-		
+
 		// Button Panel -> End Button:
 		GridBagConstraints gbc_endGameButton = new GridBagConstraints();
 		gbc_endGameButton.fill = GridBagConstraints.BOTH;
@@ -492,13 +513,14 @@ public class MainFrame extends JFrame {
 		gbc_endGameButton.gridy = 0;
 		endGameButton.setFont(UI_TEXT_FONT);
 		endGameButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement end
 			}
 		});
 		endGameButton.setEnabled(false);
 		buttonPane.add(endGameButton, gbc_endGameButton);
-		
+
 		// Button Panel -> New Button:
 		GridBagConstraints gbc_newGameButton = new GridBagConstraints();
 		gbc_newGameButton.fill = GridBagConstraints.BOTH;
@@ -507,45 +529,48 @@ public class MainFrame extends JFrame {
 		gbc_newGameButton.gridy = 0;
 		newGameButton.setFont(UI_TEXT_FONT);
 		newGameButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement new
 			}
 		});
 		newGameButton.setEnabled(false);
 		buttonPane.add(newGameButton, gbc_newGameButton);
-		
+
 		// Stats Panel:
 		GridBagConstraints gbc_statsPane = new GridBagConstraints();
 		gbc_statsPane.insets = new Insets(0, 0, 5, 0);
 		gbc_statsPane.fill = GridBagConstraints.BOTH;
 		gbc_statsPane.gridx = 0;
-		gbc_statsPane.gridy = 3;
+		gbc_statsPane.gridy = 2;
 		statsPane.setBorder(null);
 		statsPane.setFont(UI_TEXT_FONT);
 		contentPane.add(statsPane, gbc_statsPane);
 		GridBagLayout gbl_statsPane = new GridBagLayout();
-		gbl_statsPane.columnWidths = new int[]{0, 205, 70, 0, 0};
-		gbl_statsPane.rowHeights = new int[]{40, 40, 40, 0};
-		gbl_statsPane.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_statsPane.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_statsPane.columnWidths = new int[] { 0, 205, 70, 0, 0 };
+		gbl_statsPane.rowHeights = new int[] { 40, 40, 40, 0 };
+		gbl_statsPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_statsPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		statsPane.setLayout(gbl_statsPane);
-		
+
 		// Stats Panel -> Wins Panel:
 		GridBagConstraints gbc_winsPane = new GridBagConstraints();
 		gbc_winsPane.insets = new Insets(0, 0, 5, 5);
 		gbc_winsPane.fill = GridBagConstraints.BOTH;
 		gbc_winsPane.gridx = 1;
 		gbc_winsPane.gridy = 0;
-		winsPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Wins:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		winsPane.setBorder(new TitledBorder(
+				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Wins:",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		winsPane.setFont(UI_TEXT_FONT);
 		statsPane.add(winsPane, gbc_winsPane);
 		GridBagLayout gbl_winsPane = new GridBagLayout();
-		gbl_winsPane.columnWidths = new int[]{0, 0};
-		gbl_winsPane.rowHeights = new int[]{0, 0};
-		gbl_winsPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_winsPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_winsPane.columnWidths = new int[] { 0, 0 };
+		gbl_winsPane.rowHeights = new int[] { 0, 0 };
+		gbl_winsPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_winsPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		winsPane.setLayout(gbl_winsPane);
-		
+
 		// Stats Panel -> Wins Panel -> Wins Label:
 		GridBagConstraints gbc_winCountLabel = new GridBagConstraints();
 		gbc_winCountLabel.anchor = GridBagConstraints.EAST;
@@ -553,23 +578,25 @@ public class MainFrame extends JFrame {
 		gbc_winCountLabel.gridy = 0;
 		winCountLabel.setFont(UI_TEXT_FONT);
 		winsPane.add(winCountLabel, gbc_winCountLabel);
-		
+
 		// Stats Panel -> Wins Percent Panel:
 		GridBagConstraints gbc_winPercentPane = new GridBagConstraints();
 		gbc_winPercentPane.insets = new Insets(0, 0, 5, 5);
 		gbc_winPercentPane.fill = GridBagConstraints.BOTH;
 		gbc_winPercentPane.gridx = 2;
 		gbc_winPercentPane.gridy = 0;
-		winPercentPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Win %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		winPercentPane.setBorder(new TitledBorder(
+				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Win %:",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		winPercentPane.setFont(UI_TEXT_FONT);
 		statsPane.add(winPercentPane, gbc_winPercentPane);
 		GridBagLayout gbl_winPercentPane = new GridBagLayout();
-		gbl_winPercentPane.columnWidths = new int[]{0, 0};
-		gbl_winPercentPane.rowHeights = new int[]{0, 0};
-		gbl_winPercentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_winPercentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_winPercentPane.columnWidths = new int[] { 0, 0 };
+		gbl_winPercentPane.rowHeights = new int[] { 0, 0 };
+		gbl_winPercentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_winPercentPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		winPercentPane.setLayout(gbl_winPercentPane);
-		
+
 		// Stats Panel -> Wins Percent Panel -> Wins Percent Label:
 		GridBagConstraints gbc_winPercentLabel = new GridBagConstraints();
 		gbc_winPercentLabel.anchor = GridBagConstraints.EAST;
@@ -577,23 +604,25 @@ public class MainFrame extends JFrame {
 		gbc_winPercentLabel.gridy = 0;
 		winPercentLabel.setFont(UI_TEXT_FONT);
 		winPercentPane.add(winPercentLabel, gbc_winPercentLabel);
-		
+
 		// Stats Panel -> Losses Panel:
 		GridBagConstraints gbc_lossesPane = new GridBagConstraints();
 		gbc_lossesPane.insets = new Insets(0, 0, 5, 5);
 		gbc_lossesPane.fill = GridBagConstraints.BOTH;
 		gbc_lossesPane.gridx = 1;
 		gbc_lossesPane.gridy = 1;
-		lossesPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Losses:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		lossesPane.setBorder(new TitledBorder(
+				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Losses:",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		lossesPane.setFont(UI_TEXT_FONT);
 		statsPane.add(lossesPane, gbc_lossesPane);
 		GridBagLayout gbl_lossesPane = new GridBagLayout();
-		gbl_lossesPane.columnWidths = new int[]{0, 0};
-		gbl_lossesPane.rowHeights = new int[]{0, 0};
-		gbl_lossesPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_lossesPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_lossesPane.columnWidths = new int[] { 0, 0 };
+		gbl_lossesPane.rowHeights = new int[] { 0, 0 };
+		gbl_lossesPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_lossesPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		lossesPane.setLayout(gbl_lossesPane);
-		
+
 		// Stats Panel -> Losses Panel -> Losses Label:
 		GridBagConstraints gbc_lossCountLabel = new GridBagConstraints();
 		gbc_lossCountLabel.anchor = GridBagConstraints.EAST;
@@ -601,23 +630,25 @@ public class MainFrame extends JFrame {
 		gbc_lossCountLabel.gridy = 0;
 		lossCountLabel.setFont(UI_TEXT_FONT);
 		lossesPane.add(lossCountLabel, gbc_lossCountLabel);
-		
+
 		// Stats Panel -> Losses Percent Panel:
 		GridBagConstraints gbc_lossPercentPane = new GridBagConstraints();
 		gbc_lossPercentPane.insets = new Insets(0, 0, 5, 5);
 		gbc_lossPercentPane.fill = GridBagConstraints.BOTH;
 		gbc_lossPercentPane.gridx = 2;
 		gbc_lossPercentPane.gridy = 1;
-		lossPercentPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Loss %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		lossPercentPane.setBorder(new TitledBorder(
+				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Loss %:",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		lossPercentPane.setFont(UI_TEXT_FONT);
 		statsPane.add(lossPercentPane, gbc_lossPercentPane);
 		GridBagLayout gbl_lossPercentPane = new GridBagLayout();
-		gbl_lossPercentPane.columnWidths = new int[]{0, 0};
-		gbl_lossPercentPane.rowHeights = new int[]{0, 0};
-		gbl_lossPercentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_lossPercentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_lossPercentPane.columnWidths = new int[] { 0, 0 };
+		gbl_lossPercentPane.rowHeights = new int[] { 0, 0 };
+		gbl_lossPercentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_lossPercentPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		lossPercentPane.setLayout(gbl_lossPercentPane);
-		
+
 		// Stats Panel -> Losses Percent Panel -> Losses Percent Label:
 		GridBagConstraints gbc_lossPercentLabel = new GridBagConstraints();
 		gbc_lossPercentLabel.anchor = GridBagConstraints.EAST;
@@ -625,23 +656,25 @@ public class MainFrame extends JFrame {
 		gbc_lossPercentLabel.gridy = 0;
 		lossPercentLabel.setFont(UI_TEXT_FONT);
 		lossPercentPane.add(lossPercentLabel, gbc_lossPercentLabel);
-		
+
 		// Stats Panel -> Matches Panel:
 		GridBagConstraints gbc_matchesPane = new GridBagConstraints();
 		gbc_matchesPane.insets = new Insets(0, 0, 0, 5);
 		gbc_matchesPane.fill = GridBagConstraints.BOTH;
 		gbc_matchesPane.gridx = 1;
 		gbc_matchesPane.gridy = 2;
-		matchesPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Matches:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		matchesPane.setBorder(new TitledBorder(
+				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Matches:",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		matchesPane.setFont(UI_TEXT_FONT);
 		statsPane.add(matchesPane, gbc_matchesPane);
 		GridBagLayout gbl_matchesPane = new GridBagLayout();
-		gbl_matchesPane.columnWidths = new int[]{0, 0};
-		gbl_matchesPane.rowHeights = new int[]{0, 0};
-		gbl_matchesPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_matchesPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_matchesPane.columnWidths = new int[] { 0, 0 };
+		gbl_matchesPane.rowHeights = new int[] { 0, 0 };
+		gbl_matchesPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_matchesPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		matchesPane.setLayout(gbl_matchesPane);
-		
+
 		// Stats Panel -> Matches Panel -> Matches Label:
 		GridBagConstraints gbc_matchCountLabel = new GridBagConstraints();
 		gbc_matchCountLabel.anchor = GridBagConstraints.EAST;
