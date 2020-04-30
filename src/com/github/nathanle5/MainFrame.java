@@ -100,6 +100,7 @@ public class MainFrame extends JFrame {
 			public void run() {
 				try {
 					final MainFrame frame = new MainFrame();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
