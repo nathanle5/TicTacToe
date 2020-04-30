@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +22,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -91,6 +94,8 @@ public class MainFrame extends JFrame {
 
 	private final JButton[][] spotButtons = new JButton[3][3];
 
+	private StatisticsFrame statisticsFrame;
+
 	/**
 	 * Launch the application.
 	 */
@@ -122,7 +127,7 @@ public class MainFrame extends JFrame {
 	private void initialize() {
 		setResizable(false);
 		setTitle("Tic-Tac-Toe");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 425, 595);
 		setFont(UI_TEXT_FONT);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -209,6 +214,20 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO implement view stats frame
+				if (statisticsFrame == null) {
+					statisticsFrame = new StatisticsFrame(getTitle());
+					statisticsFrame.setLocationRelativeTo(rootPane);
+					statisticsFrame.setVisible(true);
+					statisticsFrame.addWindowListener(new WindowAdapter() {
+						@Override
+						public void windowClosed(WindowEvent e) {
+							statisticsFrame = null;
+						}
+					});
+				}
+				else {
+					statisticsFrame.requestFocus();
+				}
 			}
 		});
 		mntmStatViewMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, 0));
