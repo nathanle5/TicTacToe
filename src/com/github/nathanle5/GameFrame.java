@@ -1,6 +1,8 @@
 package com.github.nathanle5;
 
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -10,6 +12,7 @@ import java.util.Vector;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -26,6 +29,11 @@ import javax.swing.border.EmptyBorder;
 public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = 7952751144657907378L;
+
+	private static final int MAX_ROW_SPOTS = 3;
+	private static final int MAX_COL_SPOTS = 3;
+
+	private JButton[][] spots;
 
 	private ButtonGroup gameModeRadioItems;
 	private ButtonGroup gameSymbolRadioItems;
@@ -81,6 +89,16 @@ public class GameFrame extends JFrame {
 	private JMenuItem helpAboutMenuItem;
 
 	private JPanel contentPane;
+	private JPanel spotPane;
+	private JButton spot00Button;
+	private JButton spot01Button;
+	private JButton spot02Button;
+	private JButton spot10Button;
+	private JButton spot11Button;
+	private JButton spot12Button;
+	private JButton spot20Button;
+	private JButton spot21Button;
+	private JButton spot22Button;
 
 	/**
 	 * Create the application.
@@ -118,6 +136,23 @@ public class GameFrame extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
+				spots = new JButton[MAX_ROW_SPOTS][MAX_COL_SPOTS];
+				spots[0][0] = spot00Button;
+				spots[0][1] = spot01Button;
+				spots[0][2] = spot02Button;
+				spots[1][0] = spot10Button;
+				spots[1][1] = spot11Button;
+				spots[1][2] = spot12Button;
+				spots[2][0] = spot20Button;
+				spots[2][1] = spot21Button;
+				spots[2][2] = spot22Button;
+				int count = MAX_ROW_SPOTS * MAX_COL_SPOTS;
+				for (int row = 0; row < spots.length; row++) {
+					for (int col = spots[row].length - 1; col >= 0; col--) {
+						spots[row][col].setText(Integer.toString(count));
+						count--;
+					}
+				}
 
 				gameModeRadioItems = new ButtonGroup();
 				gameModeRadioItems.add(gameModePvcRadioItem);
@@ -335,11 +370,88 @@ public class GameFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0 };
-		gbl_contentPane.rowHeights = new int[] { 0 };
-		gbl_contentPane.columnWeights = new double[] { Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { Double.MIN_VALUE };
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
+
+		spotPane = new JPanel();
+		spotPane.setBorder(null);
+		GridBagConstraints gbc_spotPane = new GridBagConstraints();
+		gbc_spotPane.insets = new Insets(0, 0, 0, 5);
+		gbc_spotPane.fill = GridBagConstraints.VERTICAL;
+		gbc_spotPane.gridx = 1;
+		gbc_spotPane.gridy = 0;
+		contentPane.add(spotPane, gbc_spotPane);
+		GridBagLayout gbl_spotPane = new GridBagLayout();
+		gbl_spotPane.columnWidths = new int[] { 0, 0, 0, 0 };
+		gbl_spotPane.rowHeights = new int[] { 0, 0, 0, 0 };
+		gbl_spotPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_spotPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		spotPane.setLayout(gbl_spotPane);
+
+		spot00Button = new JButton(" ");
+		GridBagConstraints gbc_spot00Button = new GridBagConstraints();
+		gbc_spot00Button.insets = new Insets(0, 0, 5, 5);
+		gbc_spot00Button.gridx = 0;
+		gbc_spot00Button.gridy = 0;
+		spotPane.add(spot00Button, gbc_spot00Button);
+
+		spot01Button = new JButton(" ");
+		GridBagConstraints gbc_spot01Button = new GridBagConstraints();
+		gbc_spot01Button.insets = new Insets(0, 0, 5, 5);
+		gbc_spot01Button.gridx = 1;
+		gbc_spot01Button.gridy = 0;
+		spotPane.add(spot01Button, gbc_spot01Button);
+
+		spot02Button = new JButton(" ");
+		GridBagConstraints gbc_spot02Button = new GridBagConstraints();
+		gbc_spot02Button.insets = new Insets(0, 0, 5, 0);
+		gbc_spot02Button.gridx = 2;
+		gbc_spot02Button.gridy = 0;
+		spotPane.add(spot02Button, gbc_spot02Button);
+
+		spot10Button = new JButton(" ");
+		GridBagConstraints gbc_spot10Button = new GridBagConstraints();
+		gbc_spot10Button.insets = new Insets(0, 0, 5, 5);
+		gbc_spot10Button.gridx = 0;
+		gbc_spot10Button.gridy = 1;
+		spotPane.add(spot10Button, gbc_spot10Button);
+
+		spot11Button = new JButton(" ");
+		GridBagConstraints gbc_spot11Button = new GridBagConstraints();
+		gbc_spot11Button.insets = new Insets(0, 0, 5, 5);
+		gbc_spot11Button.gridx = 1;
+		gbc_spot11Button.gridy = 1;
+		spotPane.add(spot11Button, gbc_spot11Button);
+
+		spot12Button = new JButton(" ");
+		GridBagConstraints gbc_spot12Button = new GridBagConstraints();
+		gbc_spot12Button.insets = new Insets(0, 0, 5, 0);
+		gbc_spot12Button.gridx = 2;
+		gbc_spot12Button.gridy = 1;
+		spotPane.add(spot12Button, gbc_spot12Button);
+
+		spot20Button = new JButton(" ");
+		GridBagConstraints gbc_spot20Button = new GridBagConstraints();
+		gbc_spot20Button.insets = new Insets(0, 0, 0, 5);
+		gbc_spot20Button.gridx = 0;
+		gbc_spot20Button.gridy = 2;
+		spotPane.add(spot20Button, gbc_spot20Button);
+
+		spot21Button = new JButton(" ");
+		GridBagConstraints gbc_spot21Button = new GridBagConstraints();
+		gbc_spot21Button.insets = new Insets(0, 0, 0, 5);
+		gbc_spot21Button.gridx = 1;
+		gbc_spot21Button.gridy = 2;
+		spotPane.add(spot21Button, gbc_spot21Button);
+
+		spot22Button = new JButton(" ");
+		GridBagConstraints gbc_spot22Button = new GridBagConstraints();
+		gbc_spot22Button.gridx = 2;
+		gbc_spot22Button.gridy = 2;
+		spotPane.add(spot22Button, gbc_spot22Button);
 	}
 
 }
