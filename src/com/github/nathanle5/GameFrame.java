@@ -89,6 +89,26 @@ public class GameFrame extends JFrame {
 		initialize();
 	}
 
+	private void findCurrentLookAndFeel(String name) {
+		for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+			// if (UIManager.getSystemLookAndFeelClassName().equals(info.getClassName())) {
+			if (name.equals(info.getName())) {
+				Vector<AbstractButton> abv = new Vector<AbstractButton>(windowStyleRadioItems.getButtonCount());
+				Iterator<AbstractButton> abi = windowStyleRadioItems.getElements().asIterator();
+				while (abi.hasNext()) {
+					abv.add(abi.next());
+				}
+				for (AbstractButton ab : abv) {
+					if (info.getName().equals(ab.getText())) {
+						ab.setSelected(true);
+						break;
+					}
+				}
+				break;
+			}
+		}
+	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -98,7 +118,6 @@ public class GameFrame extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
-				pack();
 
 				gameModeRadioItems = new ButtonGroup();
 				gameModeRadioItems.add(gameModePvcRadioItem);
@@ -129,23 +148,7 @@ public class GameFrame extends JFrame {
 				windowStyleRadioItems.add(windowStyle04RadioItem);
 				windowStyleRadioItems.add(windowStyle05RadioItem);
 
-				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-					// if (UIManager.getSystemLookAndFeelClassName().equals(info.getClassName())) {
-					if (UIManager.getLookAndFeel().getName().equals(info.getName())) {
-						Vector<AbstractButton> abv = new Vector<AbstractButton>(windowStyleRadioItems.getButtonCount());
-						Iterator<AbstractButton> abi = windowStyleRadioItems.getElements().asIterator();
-						while (abi.hasNext()) {
-							abv.add(abi.next());
-						}
-						for (AbstractButton ab : abv) {
-							if (info.getName().equals(ab.getText())) {
-								ab.setSelected(true);
-								break;
-							}
-						}
-						break;
-					}
-				}
+				findCurrentLookAndFeel(UIManager.getLookAndFeel().getName());
 			}
 		});
 		setBounds(100, 100, 450, 300);

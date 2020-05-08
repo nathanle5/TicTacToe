@@ -27,6 +27,7 @@ public class Main {
 
 				try {
 					final GameFrame frame = new GameFrame();
+					frame.pack();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
