@@ -14,6 +14,7 @@ import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -103,6 +104,15 @@ public class GameFrame extends JFrame {
 	private JButton gameStartMatchButton;
 	private JButton gameEndMatchButton;
 	private JButton gameNewRoundButton;
+	private JPanel optionPane;
+	private JLabel gameModeHintLabel;
+	private JLabel gameModeValueLabel;
+	private JLabel gameSymbolHintLabel;
+	private JLabel gameSymbolValueLabel;
+	private JLabel gameStartingHintLabel;
+	private JLabel gameStartingValueLabel;
+	private JLabel gameDifficultyHintLabel;
+	private JLabel gameDifficultyValueLabel;
 
 	/**
 	 * Create the application.
@@ -375,9 +385,9 @@ public class GameFrame extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		spotPane = new JPanel();
@@ -460,6 +470,7 @@ public class GameFrame extends JFrame {
 
 		gamePane = new JPanel();
 		GridBagConstraints gbc_gamePane = new GridBagConstraints();
+		gbc_gamePane.insets = new Insets(0, 0, 5, 0);
 		gbc_gamePane.fill = GridBagConstraints.BOTH;
 		gbc_gamePane.gridx = 0;
 		gbc_gamePane.gridy = 1;
@@ -491,6 +502,83 @@ public class GameFrame extends JFrame {
 		gbc_gameNewRoundButton.gridx = 3;
 		gbc_gameNewRoundButton.gridy = 0;
 		gamePane.add(gameNewRoundButton, gbc_gameNewRoundButton);
+
+		optionPane = new JPanel();
+		GridBagConstraints gbc_optionPane = new GridBagConstraints();
+		gbc_optionPane.fill = GridBagConstraints.BOTH;
+		gbc_optionPane.gridx = 0;
+		gbc_optionPane.gridy = 2;
+		contentPane.add(optionPane, gbc_optionPane);
+		GridBagLayout gbl_optionPane = new GridBagLayout();
+		gbl_optionPane.columnWidths = new int[] { 0, 0, 0, 0, 0 };
+		gbl_optionPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_optionPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_optionPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		optionPane.setLayout(gbl_optionPane);
+
+		gameModeHintLabel = new JLabel("Mode:");
+		GridBagConstraints gbc_gameModeHintLabel = new GridBagConstraints();
+		gbc_gameModeHintLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameModeHintLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_gameModeHintLabel.gridx = 1;
+		gbc_gameModeHintLabel.gridy = 0;
+		optionPane.add(gameModeHintLabel, gbc_gameModeHintLabel);
+
+		gameModeValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_gameModeValueLabel = new GridBagConstraints();
+		gbc_gameModeValueLabel.anchor = GridBagConstraints.WEST;
+		gbc_gameModeValueLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_gameModeValueLabel.gridx = 2;
+		gbc_gameModeValueLabel.gridy = 0;
+		optionPane.add(gameModeValueLabel, gbc_gameModeValueLabel);
+
+		gameSymbolHintLabel = new JLabel("Symbol:");
+		GridBagConstraints gbc_gameSymbolHintLabel = new GridBagConstraints();
+		gbc_gameSymbolHintLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameSymbolHintLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSymbolHintLabel.gridx = 1;
+		gbc_gameSymbolHintLabel.gridy = 1;
+		optionPane.add(gameSymbolHintLabel, gbc_gameSymbolHintLabel);
+
+		gameSymbolValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_gameSymbolValueLabel = new GridBagConstraints();
+		gbc_gameSymbolValueLabel.anchor = GridBagConstraints.WEST;
+		gbc_gameSymbolValueLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSymbolValueLabel.gridx = 2;
+		gbc_gameSymbolValueLabel.gridy = 1;
+		optionPane.add(gameSymbolValueLabel, gbc_gameSymbolValueLabel);
+
+		gameStartingHintLabel = new JLabel("Starting:");
+		GridBagConstraints gbc_gameStartingHintLabel = new GridBagConstraints();
+		gbc_gameStartingHintLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStartingHintLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_gameStartingHintLabel.gridx = 1;
+		gbc_gameStartingHintLabel.gridy = 2;
+		optionPane.add(gameStartingHintLabel, gbc_gameStartingHintLabel);
+
+		gameStartingValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_gameStartingValueLabel = new GridBagConstraints();
+		gbc_gameStartingValueLabel.anchor = GridBagConstraints.WEST;
+		gbc_gameStartingValueLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_gameStartingValueLabel.gridx = 2;
+		gbc_gameStartingValueLabel.gridy = 2;
+		optionPane.add(gameStartingValueLabel, gbc_gameStartingValueLabel);
+
+		gameDifficultyHintLabel = new JLabel("Difficulty:");
+		GridBagConstraints gbc_gameDifficultyHintLabel = new GridBagConstraints();
+		gbc_gameDifficultyHintLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameDifficultyHintLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_gameDifficultyHintLabel.gridx = 1;
+		gbc_gameDifficultyHintLabel.gridy = 3;
+		optionPane.add(gameDifficultyHintLabel, gbc_gameDifficultyHintLabel);
+
+		gameDifficultyValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_gameDifficultyValueLabel = new GridBagConstraints();
+		gbc_gameDifficultyValueLabel.anchor = GridBagConstraints.WEST;
+		gbc_gameDifficultyValueLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_gameDifficultyValueLabel.gridx = 2;
+		gbc_gameDifficultyValueLabel.gridy = 3;
+		optionPane.add(gameDifficultyValueLabel, gbc_gameDifficultyValueLabel);
 	}
 
 }
