@@ -1,5 +1,6 @@
 package com.github.nathanle5;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -26,6 +27,8 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class GameFrame extends JFrame {
 
@@ -113,6 +116,21 @@ public class GameFrame extends JFrame {
 	private JLabel gameStartingValueLabel;
 	private JLabel gameDifficultyHintLabel;
 	private JLabel gameDifficultyValueLabel;
+	private JPanel dataPane;
+	private JPanel dataWinCountHintPane;
+	private JLabel dataWinCountValueLabel;
+	private JPanel dataWinPercentHintPane;
+	private JLabel dataWinPercentValueLabel;
+	private JPanel dataTieCountHintPane;
+	private JLabel dataTieCountValueLabel;
+	private JPanel dataTiePercentHintPane;
+	private JLabel dataTiePercentValueLabel;
+	private JPanel dataLossCountHintPane;
+	private JLabel dataLossCountValueLabel;
+	private JPanel dataLossPercentHintPane;
+	private JLabel dataLossPercentValueLabel;
+	private JPanel dataMatchCountHintPane;
+	private JLabel dataMatchCountValueLabel;
 
 	/**
 	 * Create the application.
@@ -200,7 +218,7 @@ public class GameFrame extends JFrame {
 				findCurrentLookAndFeel(UIManager.getLookAndFeel().getName());
 			}
 		});
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 411);
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -385,9 +403,9 @@ public class GameFrame extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		spotPane = new JPanel();
@@ -505,6 +523,7 @@ public class GameFrame extends JFrame {
 
 		optionPane = new JPanel();
 		GridBagConstraints gbc_optionPane = new GridBagConstraints();
+		gbc_optionPane.insets = new Insets(0, 0, 5, 0);
 		gbc_optionPane.fill = GridBagConstraints.BOTH;
 		gbc_optionPane.gridx = 0;
 		gbc_optionPane.gridy = 2;
@@ -579,6 +598,173 @@ public class GameFrame extends JFrame {
 		gbc_gameDifficultyValueLabel.gridx = 2;
 		gbc_gameDifficultyValueLabel.gridy = 3;
 		optionPane.add(gameDifficultyValueLabel, gbc_gameDifficultyValueLabel);
+
+		dataPane = new JPanel();
+		GridBagConstraints gbc_dataPane = new GridBagConstraints();
+		gbc_dataPane.fill = GridBagConstraints.BOTH;
+		gbc_dataPane.gridx = 0;
+		gbc_dataPane.gridy = 3;
+		contentPane.add(dataPane, gbc_dataPane);
+		GridBagLayout gbl_dataPane = new GridBagLayout();
+		gbl_dataPane.columnWidths = new int[] { 0, 0, 0, 0, 0 };
+		gbl_dataPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_dataPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_dataPane.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		dataPane.setLayout(gbl_dataPane);
+
+		dataWinCountHintPane = new JPanel();
+		dataWinCountHintPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Wins:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_dataWinCountHintPane = new GridBagConstraints();
+		gbc_dataWinCountHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_dataWinCountHintPane.fill = GridBagConstraints.BOTH;
+		gbc_dataWinCountHintPane.gridx = 1;
+		gbc_dataWinCountHintPane.gridy = 0;
+		dataPane.add(dataWinCountHintPane, gbc_dataWinCountHintPane);
+		GridBagLayout gbl_dataWinCountHintPane = new GridBagLayout();
+		gbl_dataWinCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataWinCountHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_dataWinCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataWinCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		dataWinCountHintPane.setLayout(gbl_dataWinCountHintPane);
+
+		dataWinCountValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_dataWinCountValueLabel = new GridBagConstraints();
+		gbc_dataWinCountValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_dataWinCountValueLabel.gridx = 1;
+		gbc_dataWinCountValueLabel.gridy = 0;
+		dataWinCountHintPane.add(dataWinCountValueLabel, gbc_dataWinCountValueLabel);
+
+		dataWinPercentHintPane = new JPanel();
+		dataWinPercentHintPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Win %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_dataWinPercentHintPane = new GridBagConstraints();
+		gbc_dataWinPercentHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_dataWinPercentHintPane.fill = GridBagConstraints.BOTH;
+		gbc_dataWinPercentHintPane.gridx = 2;
+		gbc_dataWinPercentHintPane.gridy = 0;
+		dataPane.add(dataWinPercentHintPane, gbc_dataWinPercentHintPane);
+		GridBagLayout gbl_dataWinPercentHintPane = new GridBagLayout();
+		gbl_dataWinPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataWinPercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_dataWinPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataWinPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		dataWinPercentHintPane.setLayout(gbl_dataWinPercentHintPane);
+
+		dataWinPercentValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_dataWinPercentValueLabel = new GridBagConstraints();
+		gbc_dataWinPercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_dataWinPercentValueLabel.gridx = 1;
+		gbc_dataWinPercentValueLabel.gridy = 0;
+		dataWinPercentHintPane.add(dataWinPercentValueLabel, gbc_dataWinPercentValueLabel);
+
+		dataTieCountHintPane = new JPanel();
+		dataTieCountHintPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Ties:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_dataTieCountHintPane = new GridBagConstraints();
+		gbc_dataTieCountHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_dataTieCountHintPane.fill = GridBagConstraints.BOTH;
+		gbc_dataTieCountHintPane.gridx = 1;
+		gbc_dataTieCountHintPane.gridy = 1;
+		dataPane.add(dataTieCountHintPane, gbc_dataTieCountHintPane);
+		GridBagLayout gbl_dataTieCountHintPane = new GridBagLayout();
+		gbl_dataTieCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataTieCountHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_dataTieCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataTieCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		dataTieCountHintPane.setLayout(gbl_dataTieCountHintPane);
+
+		dataTieCountValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_dataTieCountValueLabel = new GridBagConstraints();
+		gbc_dataTieCountValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_dataTieCountValueLabel.gridx = 1;
+		gbc_dataTieCountValueLabel.gridy = 0;
+		dataTieCountHintPane.add(dataTieCountValueLabel, gbc_dataTieCountValueLabel);
+
+		dataTiePercentHintPane = new JPanel();
+		dataTiePercentHintPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tie %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_dataTiePercentHintPane = new GridBagConstraints();
+		gbc_dataTiePercentHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_dataTiePercentHintPane.fill = GridBagConstraints.BOTH;
+		gbc_dataTiePercentHintPane.gridx = 2;
+		gbc_dataTiePercentHintPane.gridy = 1;
+		dataPane.add(dataTiePercentHintPane, gbc_dataTiePercentHintPane);
+		GridBagLayout gbl_dataTiePercentHintPane = new GridBagLayout();
+		gbl_dataTiePercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataTiePercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_dataTiePercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataTiePercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		dataTiePercentHintPane.setLayout(gbl_dataTiePercentHintPane);
+
+		dataTiePercentValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_dataTiePercentValueLabel = new GridBagConstraints();
+		gbc_dataTiePercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_dataTiePercentValueLabel.gridx = 1;
+		gbc_dataTiePercentValueLabel.gridy = 0;
+		dataTiePercentHintPane.add(dataTiePercentValueLabel, gbc_dataTiePercentValueLabel);
+
+		dataLossCountHintPane = new JPanel();
+		dataLossCountHintPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Losses:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_dataLossCountHintPane = new GridBagConstraints();
+		gbc_dataLossCountHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_dataLossCountHintPane.fill = GridBagConstraints.BOTH;
+		gbc_dataLossCountHintPane.gridx = 1;
+		gbc_dataLossCountHintPane.gridy = 2;
+		dataPane.add(dataLossCountHintPane, gbc_dataLossCountHintPane);
+		GridBagLayout gbl_dataLossCountHintPane = new GridBagLayout();
+		gbl_dataLossCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataLossCountHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_dataLossCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataLossCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		dataLossCountHintPane.setLayout(gbl_dataLossCountHintPane);
+
+		dataLossCountValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_dataLossCountValueLabel = new GridBagConstraints();
+		gbc_dataLossCountValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_dataLossCountValueLabel.gridx = 1;
+		gbc_dataLossCountValueLabel.gridy = 0;
+		dataLossCountHintPane.add(dataLossCountValueLabel, gbc_dataLossCountValueLabel);
+
+		dataLossPercentHintPane = new JPanel();
+		dataLossPercentHintPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Loss %:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_dataLossPercentHintPane = new GridBagConstraints();
+		gbc_dataLossPercentHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_dataLossPercentHintPane.fill = GridBagConstraints.BOTH;
+		gbc_dataLossPercentHintPane.gridx = 2;
+		gbc_dataLossPercentHintPane.gridy = 2;
+		dataPane.add(dataLossPercentHintPane, gbc_dataLossPercentHintPane);
+		GridBagLayout gbl_dataLossPercentHintPane = new GridBagLayout();
+		gbl_dataLossPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataLossPercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_dataLossPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataLossPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		dataLossPercentHintPane.setLayout(gbl_dataLossPercentHintPane);
+
+		dataLossPercentValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_dataLossPercentValueLabel = new GridBagConstraints();
+		gbc_dataLossPercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_dataLossPercentValueLabel.gridx = 1;
+		gbc_dataLossPercentValueLabel.gridy = 0;
+		dataLossPercentHintPane.add(dataLossPercentValueLabel, gbc_dataLossPercentValueLabel);
+
+		dataMatchCountHintPane = new JPanel();
+		dataMatchCountHintPane.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Matches:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_dataMatchCountHintPane = new GridBagConstraints();
+		gbc_dataMatchCountHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_dataMatchCountHintPane.fill = GridBagConstraints.BOTH;
+		gbc_dataMatchCountHintPane.gridx = 1;
+		gbc_dataMatchCountHintPane.gridy = 3;
+		dataPane.add(dataMatchCountHintPane, gbc_dataMatchCountHintPane);
+		GridBagLayout gbl_dataMatchCountHintPane = new GridBagLayout();
+		gbl_dataMatchCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataMatchCountHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_dataMatchCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataMatchCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		dataMatchCountHintPane.setLayout(gbl_dataMatchCountHintPane);
+
+		dataMatchCountValueLabel = new JLabel("N/A");
+		GridBagConstraints gbc_dataMatchCountValueLabel = new GridBagConstraints();
+		gbc_dataMatchCountValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_dataMatchCountValueLabel.gridx = 1;
+		gbc_dataMatchCountValueLabel.gridy = 0;
+		dataMatchCountHintPane.add(dataMatchCountValueLabel, gbc_dataMatchCountValueLabel);
 	}
 
 }
