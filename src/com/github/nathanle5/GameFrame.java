@@ -621,14 +621,15 @@ public class GameFrame extends JFrame {
 		gbc_dataWinCountHintPane.gridy = 0;
 		dataPane.add(dataWinCountHintPane, gbc_dataWinCountHintPane);
 		GridBagLayout gbl_dataWinCountHintPane = new GridBagLayout();
-		gbl_dataWinCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataWinCountHintPane.columnWidths = new int[] { 5, 158, 5, 0 };
 		gbl_dataWinCountHintPane.rowHeights = new int[] { 0, 0 };
-		gbl_dataWinCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataWinCountHintPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_dataWinCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		dataWinCountHintPane.setLayout(gbl_dataWinCountHintPane);
 
 		dataWinCountValueLabel = new JLabel("N/A");
 		GridBagConstraints gbc_dataWinCountValueLabel = new GridBagConstraints();
+		gbc_dataWinCountValueLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_dataWinCountValueLabel.anchor = GridBagConstraints.EAST;
 		gbc_dataWinCountValueLabel.gridx = 1;
 		gbc_dataWinCountValueLabel.gridy = 0;
@@ -643,14 +644,15 @@ public class GameFrame extends JFrame {
 		gbc_dataWinPercentHintPane.gridy = 0;
 		dataPane.add(dataWinPercentHintPane, gbc_dataWinPercentHintPane);
 		GridBagLayout gbl_dataWinPercentHintPane = new GridBagLayout();
-		gbl_dataWinPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataWinPercentHintPane.columnWidths = new int[] { 5, 58, 5, 0 };
 		gbl_dataWinPercentHintPane.rowHeights = new int[] { 0, 0 };
-		gbl_dataWinPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataWinPercentHintPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_dataWinPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		dataWinPercentHintPane.setLayout(gbl_dataWinPercentHintPane);
 
 		dataWinPercentValueLabel = new JLabel("N/A");
 		GridBagConstraints gbc_dataWinPercentValueLabel = new GridBagConstraints();
+		gbc_dataWinPercentValueLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_dataWinPercentValueLabel.anchor = GridBagConstraints.EAST;
 		gbc_dataWinPercentValueLabel.gridx = 1;
 		gbc_dataWinPercentValueLabel.gridy = 0;
@@ -665,14 +667,15 @@ public class GameFrame extends JFrame {
 		gbc_dataTieCountHintPane.gridy = 1;
 		dataPane.add(dataTieCountHintPane, gbc_dataTieCountHintPane);
 		GridBagLayout gbl_dataTieCountHintPane = new GridBagLayout();
-		gbl_dataTieCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataTieCountHintPane.columnWidths = new int[] { 5, 158, 5, 0 };
 		gbl_dataTieCountHintPane.rowHeights = new int[] { 0, 0 };
-		gbl_dataTieCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataTieCountHintPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_dataTieCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		dataTieCountHintPane.setLayout(gbl_dataTieCountHintPane);
 
 		dataTieCountValueLabel = new JLabel("N/A");
 		GridBagConstraints gbc_dataTieCountValueLabel = new GridBagConstraints();
+		gbc_dataTieCountValueLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_dataTieCountValueLabel.anchor = GridBagConstraints.EAST;
 		gbc_dataTieCountValueLabel.gridx = 1;
 		gbc_dataTieCountValueLabel.gridy = 0;
@@ -687,14 +690,15 @@ public class GameFrame extends JFrame {
 		gbc_dataTiePercentHintPane.gridy = 1;
 		dataPane.add(dataTiePercentHintPane, gbc_dataTiePercentHintPane);
 		GridBagLayout gbl_dataTiePercentHintPane = new GridBagLayout();
-		gbl_dataTiePercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataTiePercentHintPane.columnWidths = new int[] { 5, 58, 5, 0 };
 		gbl_dataTiePercentHintPane.rowHeights = new int[] { 0, 0 };
-		gbl_dataTiePercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataTiePercentHintPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_dataTiePercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		dataTiePercentHintPane.setLayout(gbl_dataTiePercentHintPane);
 
 		dataTiePercentValueLabel = new JLabel("N/A");
 		GridBagConstraints gbc_dataTiePercentValueLabel = new GridBagConstraints();
+		gbc_dataTiePercentValueLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_dataTiePercentValueLabel.anchor = GridBagConstraints.EAST;
 		gbc_dataTiePercentValueLabel.gridx = 1;
 		gbc_dataTiePercentValueLabel.gridy = 0;
@@ -709,14 +713,15 @@ public class GameFrame extends JFrame {
 		gbc_dataLossCountHintPane.gridy = 2;
 		dataPane.add(dataLossCountHintPane, gbc_dataLossCountHintPane);
 		GridBagLayout gbl_dataLossCountHintPane = new GridBagLayout();
-		gbl_dataLossCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataLossCountHintPane.columnWidths = new int[] { 5, 158, 5, 0 };
 		gbl_dataLossCountHintPane.rowHeights = new int[] { 0, 0 };
-		gbl_dataLossCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataLossCountHintPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_dataLossCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		dataLossCountHintPane.setLayout(gbl_dataLossCountHintPane);
 
 		dataLossCountValueLabel = new JLabel("N/A");
 		GridBagConstraints gbc_dataLossCountValueLabel = new GridBagConstraints();
+		gbc_dataLossCountValueLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_dataLossCountValueLabel.anchor = GridBagConstraints.EAST;
 		gbc_dataLossCountValueLabel.gridx = 1;
 		gbc_dataLossCountValueLabel.gridy = 0;
@@ -731,14 +736,15 @@ public class GameFrame extends JFrame {
 		gbc_dataLossPercentHintPane.gridy = 2;
 		dataPane.add(dataLossPercentHintPane, gbc_dataLossPercentHintPane);
 		GridBagLayout gbl_dataLossPercentHintPane = new GridBagLayout();
-		gbl_dataLossPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataLossPercentHintPane.columnWidths = new int[] { 5, 58, 5, 0 };
 		gbl_dataLossPercentHintPane.rowHeights = new int[] { 0, 0 };
-		gbl_dataLossPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataLossPercentHintPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_dataLossPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		dataLossPercentHintPane.setLayout(gbl_dataLossPercentHintPane);
 
 		dataLossPercentValueLabel = new JLabel("N/A");
 		GridBagConstraints gbc_dataLossPercentValueLabel = new GridBagConstraints();
+		gbc_dataLossPercentValueLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_dataLossPercentValueLabel.anchor = GridBagConstraints.EAST;
 		gbc_dataLossPercentValueLabel.gridx = 1;
 		gbc_dataLossPercentValueLabel.gridy = 0;
@@ -753,14 +759,15 @@ public class GameFrame extends JFrame {
 		gbc_dataMatchCountHintPane.gridy = 3;
 		dataPane.add(dataMatchCountHintPane, gbc_dataMatchCountHintPane);
 		GridBagLayout gbl_dataMatchCountHintPane = new GridBagLayout();
-		gbl_dataMatchCountHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_dataMatchCountHintPane.columnWidths = new int[] { 5, 158, 5, 0 };
 		gbl_dataMatchCountHintPane.rowHeights = new int[] { 0, 0 };
-		gbl_dataMatchCountHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_dataMatchCountHintPane.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_dataMatchCountHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		dataMatchCountHintPane.setLayout(gbl_dataMatchCountHintPane);
 
 		dataMatchCountValueLabel = new JLabel("N/A");
 		GridBagConstraints gbc_dataMatchCountValueLabel = new GridBagConstraints();
+		gbc_dataMatchCountValueLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_dataMatchCountValueLabel.anchor = GridBagConstraints.EAST;
 		gbc_dataMatchCountValueLabel.gridx = 1;
 		gbc_dataMatchCountValueLabel.gridy = 0;
