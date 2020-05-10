@@ -139,6 +139,14 @@ public class GameFrame extends JFrame {
 		initialize();
 	}
 
+	private void updateDataCountValueText(JLabel label, long maxValue) {
+		label.setText(String.format("%,d", maxValue));
+	}
+
+	private void updateDataPercentValueText(JLabel label, double value) {
+		label.setText(String.format("%.2f", value));
+	}
+
 	private void findCurrentLookAndFeel(String name) {
 		for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 			// if (UIManager.getSystemLookAndFeelClassName().equals(info.getClassName())) {
