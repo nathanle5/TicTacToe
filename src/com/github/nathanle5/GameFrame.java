@@ -209,13 +209,6 @@ public class GameFrame extends JFrame {
 				spots[2][0] = spot20Button;
 				spots[2][1] = spot21Button;
 				spots[2][2] = spot22Button;
-				int count = MAX_ROW_SPOTS * MAX_COL_SPOTS;
-				for (int row = 0; row < spots.length; row++) {
-					for (int col = spots[row].length - 1; col >= 0; col--) {
-						spots[row][col].setText(Integer.toString(count));
-						count--;
-					}
-				}
 
 				gameModeRadioItems = new ButtonGroup();
 				gameModeRadioItems.add(gameModePvcRadioItem);
@@ -509,63 +502,63 @@ public class GameFrame extends JFrame {
 		gbl_spotPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		spotPane.setLayout(gbl_spotPane);
 
-		spot00Button = new JButton(" ");
+		spot00Button = new JButton("7: ?");
 		GridBagConstraints gbc_spot00Button = new GridBagConstraints();
 		gbc_spot00Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot00Button.gridx = 1;
 		gbc_spot00Button.gridy = 0;
 		spotPane.add(spot00Button, gbc_spot00Button);
 
-		spot01Button = new JButton(" ");
+		spot01Button = new JButton("8: ?");
 		GridBagConstraints gbc_spot01Button = new GridBagConstraints();
 		gbc_spot01Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot01Button.gridx = 2;
 		gbc_spot01Button.gridy = 0;
 		spotPane.add(spot01Button, gbc_spot01Button);
 
-		spot02Button = new JButton(" ");
+		spot02Button = new JButton("9: ?");
 		GridBagConstraints gbc_spot02Button = new GridBagConstraints();
 		gbc_spot02Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot02Button.gridx = 3;
 		gbc_spot02Button.gridy = 0;
 		spotPane.add(spot02Button, gbc_spot02Button);
 
-		spot10Button = new JButton(" ");
+		spot10Button = new JButton("4: ?");
 		GridBagConstraints gbc_spot10Button = new GridBagConstraints();
 		gbc_spot10Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot10Button.gridx = 1;
 		gbc_spot10Button.gridy = 1;
 		spotPane.add(spot10Button, gbc_spot10Button);
 
-		spot11Button = new JButton(" ");
+		spot11Button = new JButton("5: ?");
 		GridBagConstraints gbc_spot11Button = new GridBagConstraints();
 		gbc_spot11Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot11Button.gridx = 2;
 		gbc_spot11Button.gridy = 1;
 		spotPane.add(spot11Button, gbc_spot11Button);
 
-		spot12Button = new JButton(" ");
+		spot12Button = new JButton("6: ?");
 		GridBagConstraints gbc_spot12Button = new GridBagConstraints();
 		gbc_spot12Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot12Button.gridx = 3;
 		gbc_spot12Button.gridy = 1;
 		spotPane.add(spot12Button, gbc_spot12Button);
 
-		spot20Button = new JButton(" ");
+		spot20Button = new JButton("1: ?");
 		GridBagConstraints gbc_spot20Button = new GridBagConstraints();
 		gbc_spot20Button.insets = new Insets(0, 0, 0, 5);
 		gbc_spot20Button.gridx = 1;
 		gbc_spot20Button.gridy = 2;
 		spotPane.add(spot20Button, gbc_spot20Button);
 
-		spot21Button = new JButton(" ");
+		spot21Button = new JButton("2: ?");
 		GridBagConstraints gbc_spot21Button = new GridBagConstraints();
 		gbc_spot21Button.insets = new Insets(0, 0, 0, 5);
 		gbc_spot21Button.gridx = 2;
 		gbc_spot21Button.gridy = 2;
 		spotPane.add(spot21Button, gbc_spot21Button);
 
-		spot22Button = new JButton(" ");
+		spot22Button = new JButton("3: ?");
 		GridBagConstraints gbc_spot22Button = new GridBagConstraints();
 		gbc_spot22Button.insets = new Insets(0, 0, 0, 5);
 		gbc_spot22Button.gridx = 3;
