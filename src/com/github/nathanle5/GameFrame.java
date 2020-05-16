@@ -37,6 +37,7 @@ public class GameFrame extends JFrame {
 	private static final int MAX_ROW_SPOTS = 3;
 	private static final int MAX_COL_SPOTS = 3;
 
+	private JMenuItem[][] menus;
 	private JButton[][] spots;
 
 	private ButtonGroup gameModeRadioItems;
@@ -60,6 +61,18 @@ public class GameFrame extends JFrame {
 	private JMenuItem gameStartMatchMenuItem;
 	private JMenuItem gameEndMatchMenuItem;
 	private JSeparator gameSeparator0;
+	private JMenu gameSpotMenuItem;
+	private JMenuItem gameSpot00MenuItem;
+	private JMenuItem gameSpot01MenuItem;
+	private JMenuItem gameSpot02MenuItem;
+	private JSeparator gameSpotSeparator0;
+	private JMenuItem gameSpot10MenuItem;
+	private JMenuItem gameSpot11MenuItem;
+	private JMenuItem gameSpot12MenuItem;
+	private JSeparator gameSpotSeparator1;
+	private JMenuItem gameSpot20MenuItem;
+	private JMenuItem gameSpot21MenuItem;
+	private JMenuItem gameSpot22MenuItem;
 	private JMenuItem gameNewRoundMenuItem;
 	private JSeparator gameSeparator1;
 	private JMenu gameModeMenu;
@@ -176,6 +189,16 @@ public class GameFrame extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
+				menus = new JMenuItem[MAX_ROW_SPOTS][MAX_COL_SPOTS];
+				menus[0][0] = gameSpot00MenuItem;
+				menus[0][1] = gameSpot01MenuItem;
+				menus[0][2] = gameSpot02MenuItem;
+				menus[1][0] = gameSpot10MenuItem;
+				menus[1][1] = gameSpot11MenuItem;
+				menus[1][2] = gameSpot12MenuItem;
+				menus[2][0] = gameSpot20MenuItem;
+				menus[2][1] = gameSpot21MenuItem;
+				menus[2][2] = gameSpot22MenuItem;
 				spots = new JButton[MAX_ROW_SPOTS][MAX_COL_SPOTS];
 				spots[0][0] = spot00Button;
 				spots[0][1] = spot01Button;
@@ -284,6 +307,61 @@ public class GameFrame extends JFrame {
 
 		gameSeparator0 = new JSeparator();
 		gameMenu.add(gameSeparator0);
+
+		gameSpotMenuItem = new JMenu("Spot");
+		gameSpotMenuItem.setMnemonic(KeyEvent.VK_P);
+		gameMenu.add(gameSpotMenuItem);
+
+		gameSpot00MenuItem = new JMenuItem("7: ?");
+		gameSpot00MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD7, 0));
+		gameSpot00MenuItem.setMnemonic(KeyEvent.VK_7);
+		gameSpotMenuItem.add(gameSpot00MenuItem);
+
+		gameSpot01MenuItem = new JMenuItem("8: ?");
+		gameSpot01MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD8, 0));
+		gameSpot01MenuItem.setMnemonic(KeyEvent.VK_8);
+		gameSpotMenuItem.add(gameSpot01MenuItem);
+
+		gameSpot02MenuItem = new JMenuItem("9: ?");
+		gameSpot02MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD9, 0));
+		gameSpot02MenuItem.setMnemonic(KeyEvent.VK_9);
+		gameSpotMenuItem.add(gameSpot02MenuItem);
+
+		gameSpotSeparator0 = new JSeparator();
+		gameSpotMenuItem.add(gameSpotSeparator0);
+
+		gameSpot10MenuItem = new JMenuItem("4: ?");
+		gameSpot10MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD4, 0));
+		gameSpot10MenuItem.setMnemonic(KeyEvent.VK_4);
+		gameSpotMenuItem.add(gameSpot10MenuItem);
+
+		gameSpot11MenuItem = new JMenuItem("5: ?");
+		gameSpot11MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD5, 0));
+		gameSpot11MenuItem.setMnemonic(KeyEvent.VK_5);
+		gameSpotMenuItem.add(gameSpot11MenuItem);
+
+		gameSpot12MenuItem = new JMenuItem("6: ?");
+		gameSpot12MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD6, 0));
+		gameSpot12MenuItem.setMnemonic(KeyEvent.VK_6);
+		gameSpotMenuItem.add(gameSpot12MenuItem);
+
+		gameSpotSeparator1 = new JSeparator();
+		gameSpotMenuItem.add(gameSpotSeparator1);
+
+		gameSpot20MenuItem = new JMenuItem("1: ?");
+		gameSpot20MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD1, 0));
+		gameSpot20MenuItem.setMnemonic(KeyEvent.VK_1);
+		gameSpotMenuItem.add(gameSpot20MenuItem);
+
+		gameSpot21MenuItem = new JMenuItem("2: ?");
+		gameSpot21MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD2, 0));
+		gameSpot21MenuItem.setMnemonic(KeyEvent.VK_2);
+		gameSpotMenuItem.add(gameSpot21MenuItem);
+
+		gameSpot22MenuItem = new JMenuItem("3: ?");
+		gameSpot22MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD3, 0));
+		gameSpot22MenuItem.setMnemonic(KeyEvent.VK_3);
+		gameSpotMenuItem.add(gameSpot22MenuItem);
 
 		gameNewRoundMenuItem = new JMenuItem("New Round");
 		gameNewRoundMenuItem.setMnemonic(KeyEvent.VK_N);
