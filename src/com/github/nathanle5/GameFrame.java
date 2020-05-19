@@ -8,6 +8,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -34,11 +35,14 @@ public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = 7952751144657907378L;
 
+	private Board board;
+
 	private static final int MAX_ROW_SPOTS = 3;
 	private static final int MAX_COL_SPOTS = 3;
 
-	private JMenuItem[][] menus;
-	private JButton[][] spots;
+	private char[][] spotSymbols;
+	private JMenuItem[][] spotMenuItems;
+	private JButton[][] spotButtons;
 
 	private ButtonGroup gameModeRadioItems;
 	private ButtonGroup gameSymbolRadioItems;
@@ -184,61 +188,62 @@ public class GameFrame extends JFrame {
 	 * Create the frame.
 	 */
 	private void initialize() {
+		ArrayList<JMenuItem> mnms = new ArrayList<JMenuItem>(Board.MAX_SIZE);
+		mnms.add(gameSpot00MenuItem);
+		mnms.add(gameSpot01MenuItem);
+		mnms.add(gameSpot02MenuItem);
+		mnms.add(gameSpot10MenuItem);
+		mnms.add(gameSpot11MenuItem);
+		mnms.add(gameSpot12MenuItem);
+		mnms.add(gameSpot20MenuItem);
+		mnms.add(gameSpot21MenuItem);
+		mnms.add(gameSpot22MenuItem);
+		ArrayList<JButton> btns = new ArrayList<JButton>(Board.MAX_SIZE);
+		btns.add(spot00Button);
+		btns.add(spot01Button);
+		btns.add(spot02Button);
+		btns.add(spot10Button);
+		btns.add(spot11Button);
+		btns.add(spot12Button);
+		btns.add(spot20Button);
+		btns.add(spot21Button);
+		btns.add(spot22Button);
+		board = new Board(btns, mnms);
+
+		gameModeRadioItems = new ButtonGroup();
+		gameModeRadioItems.add(gameModePvcRadioItem);
+		gameModeRadioItems.add(gameModePvpRadioItem);
+
+		gameSymbolRadioItems = new ButtonGroup();
+		gameSymbolRadioItems.add(gameSymbolRandomRadioItem);
+		gameSymbolRadioItems.add(gameSymbolXsRadioItem);
+		gameSymbolRadioItems.add(gameSymbolOsRadioItem);
+
+		gameStartingRadioItems = new ButtonGroup();
+		gameStartingRadioItems.add(gameStartingRandomRadioItem);
+		gameStartingRadioItems.add(gameStartingPlayerRadioItem);
+		gameStartingRadioItems.add(gameStartingComputerRadioItem);
+
+		gameDifficultyRadioItems = new ButtonGroup();
+		gameDifficultyRadioItems.add(gameDifficultyRandomRadioItem);
+		gameDifficultyRadioItems.add(gameDifficultyAimlessRadioItem);
+		gameDifficultyRadioItems.add(gameDifficultyEasyRadioItem);
+		gameDifficultyRadioItems.add(gameDifficultyNormalRadioItem);
+		gameDifficultyRadioItems.add(gameDifficultyHardRadioItem);
+		gameDifficultyRadioItems.add(gameDifficultyInsaneRadioItem);
+
+		windowStyleRadioItems = new ButtonGroup();
+		windowStyleRadioItems.add(windowStyle01RadioItem);
+		windowStyleRadioItems.add(windowStyle02RadioItem);
+		windowStyleRadioItems.add(windowStyle03RadioItem);
+		windowStyleRadioItems.add(windowStyle04RadioItem);
+		windowStyleRadioItems.add(windowStyle05RadioItem);
+
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
-				menus = new JMenuItem[MAX_ROW_SPOTS][MAX_COL_SPOTS];
-				menus[0][0] = gameSpot00MenuItem;
-				menus[0][1] = gameSpot01MenuItem;
-				menus[0][2] = gameSpot02MenuItem;
-				menus[1][0] = gameSpot10MenuItem;
-				menus[1][1] = gameSpot11MenuItem;
-				menus[1][2] = gameSpot12MenuItem;
-				menus[2][0] = gameSpot20MenuItem;
-				menus[2][1] = gameSpot21MenuItem;
-				menus[2][2] = gameSpot22MenuItem;
-				spots = new JButton[MAX_ROW_SPOTS][MAX_COL_SPOTS];
-				spots[0][0] = spot00Button;
-				spots[0][1] = spot01Button;
-				spots[0][2] = spot02Button;
-				spots[1][0] = spot10Button;
-				spots[1][1] = spot11Button;
-				spots[1][2] = spot12Button;
-				spots[2][0] = spot20Button;
-				spots[2][1] = spot21Button;
-				spots[2][2] = spot22Button;
-
-				gameModeRadioItems = new ButtonGroup();
-				gameModeRadioItems.add(gameModePvcRadioItem);
-				gameModeRadioItems.add(gameModePvpRadioItem);
-
-				gameSymbolRadioItems = new ButtonGroup();
-				gameSymbolRadioItems.add(gameSymbolRandomRadioItem);
-				gameSymbolRadioItems.add(gameSymbolXsRadioItem);
-				gameSymbolRadioItems.add(gameSymbolOsRadioItem);
-
-				gameStartingRadioItems = new ButtonGroup();
-				gameStartingRadioItems.add(gameStartingRandomRadioItem);
-				gameStartingRadioItems.add(gameStartingPlayerRadioItem);
-				gameStartingRadioItems.add(gameStartingComputerRadioItem);
-
-				gameDifficultyRadioItems = new ButtonGroup();
-				gameDifficultyRadioItems.add(gameDifficultyRandomRadioItem);
-				gameDifficultyRadioItems.add(gameDifficultyAimlessRadioItem);
-				gameDifficultyRadioItems.add(gameDifficultyEasyRadioItem);
-				gameDifficultyRadioItems.add(gameDifficultyNormalRadioItem);
-				gameDifficultyRadioItems.add(gameDifficultyHardRadioItem);
-				gameDifficultyRadioItems.add(gameDifficultyInsaneRadioItem);
-
-				windowStyleRadioItems = new ButtonGroup();
-				windowStyleRadioItems.add(windowStyle01RadioItem);
-				windowStyleRadioItems.add(windowStyle02RadioItem);
-				windowStyleRadioItems.add(windowStyle03RadioItem);
-				windowStyleRadioItems.add(windowStyle04RadioItem);
-				windowStyleRadioItems.add(windowStyle05RadioItem);
-
 				findCurrentLookAndFeel(UIManager.getLookAndFeel().getName());
 			}
 		});
