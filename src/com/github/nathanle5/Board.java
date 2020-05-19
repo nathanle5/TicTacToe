@@ -38,25 +38,25 @@ public final class Board {
 				symbols[row][col] = SYMBOL_N;
 			}
 		}
-		if (btns != null && btns.size() == (MAX_SIZE - 1)) {
+		if (btns != null && btns.size() == MAX_SIZE) {
 			buttons = new JButton[MAX_ROWS][MAX_COLS];
 			int row = 0;
 			int col = 0;
 			for (int size = 0; size < MAX_SIZE; size++) {
 				col = size % 3;
-				if (col == 0) {
+				if (col == 0 && size > 0) {
 					row++;
 				}
 				buttons[row][col] = btns.get(size);
 			}
 		}
-		if (mnms != null && mnms.size() == (MAX_SIZE - 1)) {
+		if (mnms != null && mnms.size() == MAX_SIZE) {
 			menus = new JMenuItem[MAX_ROWS][MAX_COLS];
 			int row = 0;
 			int col = 0;
 			for (int size = 0; size < MAX_SIZE; size++) {
 				col = size % 3;
-				if (col == 0) {
+				if (col == 0 && size > 0) {
 					row++;
 				}
 				menus[row][col] = mnms.get(size);
