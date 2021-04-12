@@ -49,6 +49,7 @@ public class GameFrame extends JFrame {
 	private ButtonGroup gameStartingRadioItems;
 	private ButtonGroup gameDifficultyRadioItems;
 	private ButtonGroup windowStyleRadioItems;
+	private ButtonGroup windowNumberRadioItems;
 
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
@@ -241,6 +242,10 @@ public class GameFrame extends JFrame {
 		windowStyleRadioItems.add(windowStyle03RadioItem);
 		windowStyleRadioItems.add(windowStyle04RadioItem);
 		windowStyleRadioItems.add(windowStyle05RadioItem);
+
+		windowNumberRadioItems = new ButtonGroup();
+		windowNumberRadioItems.add(windowNumberShowRadioItem);
+		windowNumberRadioItems.add(windowNumberHideRadioItem);
 
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
