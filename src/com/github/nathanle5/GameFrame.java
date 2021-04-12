@@ -106,6 +106,9 @@ public class GameFrame extends JFrame {
 	private JRadioButtonMenuItem windowStyle03RadioItem;
 	private JRadioButtonMenuItem windowStyle04RadioItem;
 	private JRadioButtonMenuItem windowStyle05RadioItem;
+	private JMenu windowNumberMenu;
+	private JRadioButtonMenuItem windowNumberShowRadioItem;
+	private JRadioButtonMenuItem windowNumberHideRadioItem;
 	private JMenu helpMenu;
 	private JMenuItem helpAboutMenuItem;
 
@@ -473,6 +476,19 @@ public class GameFrame extends JFrame {
 
 		windowStyle05RadioItem = new JRadioButtonMenuItem("Windows Classic");
 		windowStyleMenu.add(windowStyle05RadioItem);
+
+		windowNumberMenu = new JMenu("Numbering");
+		windowNumberMenu.setMnemonic(KeyEvent.VK_N);
+		windowMenu.add(windowNumberMenu);
+
+		windowNumberShowRadioItem = new JRadioButtonMenuItem("Show");
+		windowNumberShowRadioItem.setMnemonic(KeyEvent.VK_S);
+		windowNumberShowRadioItem.setSelected(true);
+		windowNumberMenu.add(windowNumberShowRadioItem);
+
+		windowNumberHideRadioItem = new JRadioButtonMenuItem("Hide");
+		windowNumberHideRadioItem.setMnemonic(KeyEvent.VK_S);
+		windowNumberMenu.add(windowNumberHideRadioItem);
 
 		helpMenu = new JMenu("Help");
 		helpMenu.setMnemonic(KeyEvent.VK_H);
