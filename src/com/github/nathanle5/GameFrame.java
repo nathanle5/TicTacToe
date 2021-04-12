@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -78,6 +80,10 @@ public class GameFrame extends JFrame {
 	private JMenuItem gameSpot20MenuItem;
 	private JMenuItem gameSpot21MenuItem;
 	private JMenuItem gameSpot22MenuItem;
+	private JSeparator gameSpotSeparator2;
+	private JMenu gameSpotNumberMenu;
+	private JRadioButtonMenuItem gameSpotNumberShowRadioItem;
+	private JRadioButtonMenuItem gameSpotNumberHideRadioItem;
 	private JMenuItem gameNewRoundMenuItem;
 	private JSeparator gameSeparator1;
 	private JMenu gameModeMenu;
@@ -107,9 +113,6 @@ public class GameFrame extends JFrame {
 	private JRadioButtonMenuItem windowStyle03RadioItem;
 	private JRadioButtonMenuItem windowStyle04RadioItem;
 	private JRadioButtonMenuItem windowStyle05RadioItem;
-	private JMenu windowNumberMenu;
-	private JRadioButtonMenuItem windowNumberShowRadioItem;
-	private JRadioButtonMenuItem windowNumberHideRadioItem;
 	private JMenu helpMenu;
 	private JMenuItem helpAboutMenuItem;
 
@@ -223,8 +226,8 @@ public class GameFrame extends JFrame {
 		windowStyleRadioItems.add(windowStyle05RadioItem);
 
 		windowNumberRadioItems = new ButtonGroup();
-		windowNumberRadioItems.add(windowNumberShowRadioItem);
-		windowNumberRadioItems.add(windowNumberHideRadioItem);
+		windowNumberRadioItems.add(gameSpotNumberShowRadioItem);
+		windowNumberRadioItems.add(gameSpotNumberHideRadioItem);
 	}
 
 	/**
@@ -322,21 +325,23 @@ public class GameFrame extends JFrame {
 		gameMenu.add(gameSeparator0);
 
 		gameSpotMenuItem = new JMenu("Spot");
-		gameSpotMenuItem.setEnabled(false);
 		gameSpotMenuItem.setMnemonic(KeyEvent.VK_P);
 		gameMenu.add(gameSpotMenuItem);
 
 		gameSpot00MenuItem = new JMenuItem("7: ?");
+		gameSpot00MenuItem.setEnabled(false);
 		gameSpot00MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD7, 0));
 		gameSpot00MenuItem.setMnemonic(KeyEvent.VK_7);
 		gameSpotMenuItem.add(gameSpot00MenuItem);
 
 		gameSpot01MenuItem = new JMenuItem("8: ?");
+		gameSpot01MenuItem.setEnabled(false);
 		gameSpot01MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD8, 0));
 		gameSpot01MenuItem.setMnemonic(KeyEvent.VK_8);
 		gameSpotMenuItem.add(gameSpot01MenuItem);
 
 		gameSpot02MenuItem = new JMenuItem("9: ?");
+		gameSpot02MenuItem.setEnabled(false);
 		gameSpot02MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD9, 0));
 		gameSpot02MenuItem.setMnemonic(KeyEvent.VK_9);
 		gameSpotMenuItem.add(gameSpot02MenuItem);
@@ -345,16 +350,19 @@ public class GameFrame extends JFrame {
 		gameSpotMenuItem.add(gameSpotSeparator0);
 
 		gameSpot10MenuItem = new JMenuItem("4: ?");
+		gameSpot10MenuItem.setEnabled(false);
 		gameSpot10MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD4, 0));
 		gameSpot10MenuItem.setMnemonic(KeyEvent.VK_4);
 		gameSpotMenuItem.add(gameSpot10MenuItem);
 
 		gameSpot11MenuItem = new JMenuItem("5: ?");
+		gameSpot11MenuItem.setEnabled(false);
 		gameSpot11MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD5, 0));
 		gameSpot11MenuItem.setMnemonic(KeyEvent.VK_5);
 		gameSpotMenuItem.add(gameSpot11MenuItem);
 
 		gameSpot12MenuItem = new JMenuItem("6: ?");
+		gameSpot12MenuItem.setEnabled(false);
 		gameSpot12MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD6, 0));
 		gameSpot12MenuItem.setMnemonic(KeyEvent.VK_6);
 		gameSpotMenuItem.add(gameSpot12MenuItem);
@@ -363,19 +371,50 @@ public class GameFrame extends JFrame {
 		gameSpotMenuItem.add(gameSpotSeparator1);
 
 		gameSpot20MenuItem = new JMenuItem("1: ?");
+		gameSpot20MenuItem.setEnabled(false);
 		gameSpot20MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD1, 0));
 		gameSpot20MenuItem.setMnemonic(KeyEvent.VK_1);
 		gameSpotMenuItem.add(gameSpot20MenuItem);
 
 		gameSpot21MenuItem = new JMenuItem("2: ?");
+		gameSpot21MenuItem.setEnabled(false);
 		gameSpot21MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD2, 0));
 		gameSpot21MenuItem.setMnemonic(KeyEvent.VK_2);
 		gameSpotMenuItem.add(gameSpot21MenuItem);
 
 		gameSpot22MenuItem = new JMenuItem("3: ?");
+		gameSpot22MenuItem.setEnabled(false);
 		gameSpot22MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD3, 0));
 		gameSpot22MenuItem.setMnemonic(KeyEvent.VK_3);
 		gameSpotMenuItem.add(gameSpot22MenuItem);
+
+		gameSpotSeparator2 = new JSeparator();
+		gameSpotMenuItem.add(gameSpotSeparator2);
+
+		gameSpotNumberMenu = new JMenu("Numbering");
+		gameSpotNumberMenu.setMnemonic(KeyEvent.VK_N);
+		gameSpotMenuItem.add(gameSpotNumberMenu);
+
+		gameSpotNumberShowRadioItem = new JRadioButtonMenuItem("Show");
+		gameSpotNumberShowRadioItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Show number "1: ?" etc. in menuitems and buttons.
+			}
+		});
+		gameSpotNumberShowRadioItem.setMnemonic(KeyEvent.VK_S);
+		gameSpotNumberShowRadioItem.setSelected(true);
+		gameSpotNumberMenu.add(gameSpotNumberShowRadioItem);
+
+		gameSpotNumberHideRadioItem = new JRadioButtonMenuItem("Hide");
+		gameSpotNumberHideRadioItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Hide number "1: ?" etc. in menuitems and buttons.
+			}
+		});
+		gameSpotNumberHideRadioItem.setMnemonic(KeyEvent.VK_H);
+		gameSpotNumberMenu.add(gameSpotNumberHideRadioItem);
 
 		gameNewRoundMenuItem = new JMenuItem("New Round");
 		gameNewRoundMenuItem.setEnabled(false);
@@ -490,19 +529,6 @@ public class GameFrame extends JFrame {
 
 		windowStyle05RadioItem = new JRadioButtonMenuItem("Windows Classic");
 		windowStyleMenu.add(windowStyle05RadioItem);
-
-		windowNumberMenu = new JMenu("Numbering");
-		windowNumberMenu.setMnemonic(KeyEvent.VK_N);
-		windowMenu.add(windowNumberMenu);
-
-		windowNumberShowRadioItem = new JRadioButtonMenuItem("Show");
-		windowNumberShowRadioItem.setMnemonic(KeyEvent.VK_S);
-		windowNumberShowRadioItem.setSelected(true);
-		windowNumberMenu.add(windowNumberShowRadioItem);
-
-		windowNumberHideRadioItem = new JRadioButtonMenuItem("Hide");
-		windowNumberHideRadioItem.setMnemonic(KeyEvent.VK_S);
-		windowNumberMenu.add(windowNumberHideRadioItem);
 
 		helpMenu = new JMenu("Help");
 		helpMenu.setMnemonic(KeyEvent.VK_H);
