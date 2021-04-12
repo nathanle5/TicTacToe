@@ -314,6 +314,7 @@ public class GameFrame extends JFrame {
 		gameMenu.add(gameStartMatchMenuItem);
 
 		gameEndMatchMenuItem = new JMenuItem("End Match");
+		gameEndMatchMenuItem.setEnabled(false);
 		gameEndMatchMenuItem.setMnemonic(KeyEvent.VK_E);
 		gameMenu.add(gameEndMatchMenuItem);
 
@@ -321,6 +322,7 @@ public class GameFrame extends JFrame {
 		gameMenu.add(gameSeparator0);
 
 		gameSpotMenuItem = new JMenu("Spot");
+		gameSpotMenuItem.setEnabled(false);
 		gameSpotMenuItem.setMnemonic(KeyEvent.VK_P);
 		gameMenu.add(gameSpotMenuItem);
 
@@ -376,6 +378,7 @@ public class GameFrame extends JFrame {
 		gameSpotMenuItem.add(gameSpot22MenuItem);
 
 		gameNewRoundMenuItem = new JMenuItem("New Round");
+		gameNewRoundMenuItem.setEnabled(false);
 		gameNewRoundMenuItem.setMnemonic(KeyEvent.VK_N);
 		gameMenu.add(gameNewRoundMenuItem);
 
@@ -535,6 +538,7 @@ public class GameFrame extends JFrame {
 		spotPane.setLayout(gbl_spotPane);
 
 		spot00Button = new JButton("7: ?");
+		spot00Button.setEnabled(false);
 		GridBagConstraints gbc_spot00Button = new GridBagConstraints();
 		gbc_spot00Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot00Button.gridx = 1;
@@ -542,6 +546,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot00Button, gbc_spot00Button);
 
 		spot01Button = new JButton("8: ?");
+		spot01Button.setEnabled(false);
 		GridBagConstraints gbc_spot01Button = new GridBagConstraints();
 		gbc_spot01Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot01Button.gridx = 2;
@@ -549,6 +554,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot01Button, gbc_spot01Button);
 
 		spot02Button = new JButton("9: ?");
+		spot02Button.setEnabled(false);
 		GridBagConstraints gbc_spot02Button = new GridBagConstraints();
 		gbc_spot02Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot02Button.gridx = 3;
@@ -556,6 +562,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot02Button, gbc_spot02Button);
 
 		spot10Button = new JButton("4: ?");
+		spot10Button.setEnabled(false);
 		GridBagConstraints gbc_spot10Button = new GridBagConstraints();
 		gbc_spot10Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot10Button.gridx = 1;
@@ -563,6 +570,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot10Button, gbc_spot10Button);
 
 		spot11Button = new JButton("5: ?");
+		spot11Button.setEnabled(false);
 		GridBagConstraints gbc_spot11Button = new GridBagConstraints();
 		gbc_spot11Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot11Button.gridx = 2;
@@ -570,6 +578,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot11Button, gbc_spot11Button);
 
 		spot12Button = new JButton("6: ?");
+		spot12Button.setEnabled(false);
 		GridBagConstraints gbc_spot12Button = new GridBagConstraints();
 		gbc_spot12Button.insets = new Insets(0, 0, 5, 5);
 		gbc_spot12Button.gridx = 3;
@@ -577,6 +586,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot12Button, gbc_spot12Button);
 
 		spot20Button = new JButton("1: ?");
+		spot20Button.setEnabled(false);
 		GridBagConstraints gbc_spot20Button = new GridBagConstraints();
 		gbc_spot20Button.insets = new Insets(0, 0, 0, 5);
 		gbc_spot20Button.gridx = 1;
@@ -584,6 +594,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot20Button, gbc_spot20Button);
 
 		spot21Button = new JButton("2: ?");
+		spot21Button.setEnabled(false);
 		GridBagConstraints gbc_spot21Button = new GridBagConstraints();
 		gbc_spot21Button.insets = new Insets(0, 0, 0, 5);
 		gbc_spot21Button.gridx = 2;
@@ -591,6 +602,7 @@ public class GameFrame extends JFrame {
 		spotPane.add(spot21Button, gbc_spot21Button);
 
 		spot22Button = new JButton("3: ?");
+		spot22Button.setEnabled(false);
 		GridBagConstraints gbc_spot22Button = new GridBagConstraints();
 		gbc_spot22Button.insets = new Insets(0, 0, 0, 5);
 		gbc_spot22Button.gridx = 3;
@@ -619,6 +631,7 @@ public class GameFrame extends JFrame {
 		gamePane.add(gameStartMatchButton, gbc_gameStartMatchButton);
 
 		gameEndMatchButton = new JButton("End Match");
+		gameEndMatchButton.setEnabled(false);
 		GridBagConstraints gbc_gameEndMatchButton = new GridBagConstraints();
 		gbc_gameEndMatchButton.insets = new Insets(0, 0, 0, 5);
 		gbc_gameEndMatchButton.gridx = 2;
@@ -626,6 +639,7 @@ public class GameFrame extends JFrame {
 		gamePane.add(gameEndMatchButton, gbc_gameEndMatchButton);
 
 		gameNewRoundButton = new JButton("New Round");
+		gameNewRoundButton.setEnabled(false);
 		GridBagConstraints gbc_gameNewRoundButton = new GridBagConstraints();
 		gbc_gameNewRoundButton.insets = new Insets(0, 0, 0, 5);
 		gbc_gameNewRoundButton.gridx = 3;
