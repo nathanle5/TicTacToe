@@ -387,11 +387,11 @@ public class GameFrame extends JFrame {
 
 		gameSymbolRandomRadioItem = new JRadioButtonMenuItem("Random");
 		gameSymbolRandomRadioItem.setMnemonic(KeyEvent.VK_R);
-		gameSymbolRandomRadioItem.setSelected(true);
 		gameSymbolMenu.add(gameSymbolRandomRadioItem);
 
 		gameSymbolXsRadioItem = new JRadioButtonMenuItem("X");
 		gameSymbolXsRadioItem.setMnemonic(KeyEvent.VK_X);
+		gameSymbolXsRadioItem.setSelected(true);
 		gameSymbolMenu.add(gameSymbolXsRadioItem);
 
 		gameSymbolOsRadioItem = new JRadioButtonMenuItem("O");
@@ -404,11 +404,11 @@ public class GameFrame extends JFrame {
 
 		gameStartingRandomRadioItem = new JRadioButtonMenuItem("Random");
 		gameStartingRandomRadioItem.setMnemonic(KeyEvent.VK_R);
-		gameStartingRandomRadioItem.setSelected(true);
 		gameStartingMenu.add(gameStartingRandomRadioItem);
 
 		gameStartingPlayerRadioItem = new JRadioButtonMenuItem("Player");
 		gameStartingPlayerRadioItem.setMnemonic(KeyEvent.VK_P);
+		gameStartingPlayerRadioItem.setSelected(true);
 		gameStartingMenu.add(gameStartingPlayerRadioItem);
 
 		gameStartingComputerRadioItem = new JRadioButtonMenuItem("Computer");
@@ -421,11 +421,11 @@ public class GameFrame extends JFrame {
 
 		gameDifficultyRandomRadioItem = new JRadioButtonMenuItem("Random");
 		gameDifficultyRandomRadioItem.setMnemonic(KeyEvent.VK_R);
-		gameDifficultyRandomRadioItem.setSelected(true);
 		gameDifficultyMenu.add(gameDifficultyRandomRadioItem);
 
 		gameDifficultyAimlessRadioItem = new JRadioButtonMenuItem("Aimless");
 		gameDifficultyAimlessRadioItem.setMnemonic(KeyEvent.VK_A);
+		gameDifficultyAimlessRadioItem.setSelected(true);
 		gameDifficultyMenu.add(gameDifficultyAimlessRadioItem);
 
 		gameDifficultyEasyRadioItem = new JRadioButtonMenuItem("Easy");
