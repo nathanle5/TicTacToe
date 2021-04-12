@@ -100,12 +100,12 @@ public class GameFrame extends JFrame {
 	private JMenu windowMenu;
 	private JMenu windowStyleMenu;
 	private JMenuItem windowStyleSystemMenuItem;
+	private JSeparator windowStyleSeparator;
 	private JRadioButtonMenuItem windowStyle01RadioItem;
 	private JRadioButtonMenuItem windowStyle02RadioItem;
 	private JRadioButtonMenuItem windowStyle03RadioItem;
 	private JRadioButtonMenuItem windowStyle04RadioItem;
 	private JRadioButtonMenuItem windowStyle05RadioItem;
-	private JSeparator separator;
 	private JMenu helpMenu;
 	private JMenuItem helpAboutMenuItem;
 
@@ -456,8 +456,8 @@ public class GameFrame extends JFrame {
 		windowStyleSystemMenuItem.setMnemonic(KeyEvent.VK_S);
 		windowStyleMenu.add(windowStyleSystemMenuItem);
 
-		separator = new JSeparator();
-		windowStyleMenu.add(separator);
+		windowStyleSeparator = new JSeparator();
+		windowStyleMenu.add(windowStyleSeparator);
 
 		windowStyle01RadioItem = new JRadioButtonMenuItem("Metal");
 		windowStyleMenu.add(windowStyle01RadioItem);
