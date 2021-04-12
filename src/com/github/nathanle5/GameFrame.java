@@ -158,6 +158,7 @@ public class GameFrame extends JFrame {
 	 */
 	public GameFrame() {
 		initialize();
+		complete();
 	}
 
 	private void updateDataCountValueText(JLabel label, long maxValue) {
@@ -189,31 +190,9 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Complete any actions needed after creating the frame.
 	 */
-	private void initialize() {
-		ArrayList<JMenuItem> mnms = new ArrayList<JMenuItem>(Board.MAX_SIZE);
-		mnms.add(gameSpot00MenuItem);
-		mnms.add(gameSpot01MenuItem);
-		mnms.add(gameSpot02MenuItem);
-		mnms.add(gameSpot10MenuItem);
-		mnms.add(gameSpot11MenuItem);
-		mnms.add(gameSpot12MenuItem);
-		mnms.add(gameSpot20MenuItem);
-		mnms.add(gameSpot21MenuItem);
-		mnms.add(gameSpot22MenuItem);
-		ArrayList<JButton> btns = new ArrayList<JButton>(Board.MAX_SIZE);
-		btns.add(spot00Button);
-		btns.add(spot01Button);
-		btns.add(spot02Button);
-		btns.add(spot10Button);
-		btns.add(spot11Button);
-		btns.add(spot12Button);
-		btns.add(spot20Button);
-		btns.add(spot21Button);
-		btns.add(spot22Button);
-		board = new Board(btns, mnms);
-
+	private void complete() {
 		gameModeRadioItems = new ButtonGroup();
 		gameModeRadioItems.add(gameModePvcRadioItem);
 		gameModeRadioItems.add(gameModePvpRadioItem);
@@ -246,6 +225,33 @@ public class GameFrame extends JFrame {
 		windowNumberRadioItems = new ButtonGroup();
 		windowNumberRadioItems.add(windowNumberShowRadioItem);
 		windowNumberRadioItems.add(windowNumberHideRadioItem);
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	private void initialize() {
+		ArrayList<JMenuItem> mnms = new ArrayList<JMenuItem>(Board.MAX_SIZE);
+		mnms.add(gameSpot00MenuItem);
+		mnms.add(gameSpot01MenuItem);
+		mnms.add(gameSpot02MenuItem);
+		mnms.add(gameSpot10MenuItem);
+		mnms.add(gameSpot11MenuItem);
+		mnms.add(gameSpot12MenuItem);
+		mnms.add(gameSpot20MenuItem);
+		mnms.add(gameSpot21MenuItem);
+		mnms.add(gameSpot22MenuItem);
+		ArrayList<JButton> btns = new ArrayList<JButton>(Board.MAX_SIZE);
+		btns.add(spot00Button);
+		btns.add(spot01Button);
+		btns.add(spot02Button);
+		btns.add(spot10Button);
+		btns.add(spot11Button);
+		btns.add(spot12Button);
+		btns.add(spot20Button);
+		btns.add(spot21Button);
+		btns.add(spot22Button);
+		board = new Board(btns, mnms);
 
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
