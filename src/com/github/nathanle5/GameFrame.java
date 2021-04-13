@@ -411,10 +411,12 @@ public class GameFrame extends JFrame {
 		menuBar.add(gameMenu);
 
 		gameStartMatchMenuItem = new JMenuItem("Start Match");
+		gameStartMatchMenuItem.addActionListener(startMatchActionListener);
 		gameStartMatchMenuItem.setMnemonic(KeyEvent.VK_S);
 		gameMenu.add(gameStartMatchMenuItem);
 
 		gameEndMatchMenuItem = new JMenuItem("End Match");
+		gameEndMatchMenuItem.addActionListener(endMatchActionListener);
 		gameEndMatchMenuItem.setEnabled(false);
 		gameEndMatchMenuItem.setMnemonic(KeyEvent.VK_E);
 		gameMenu.add(gameEndMatchMenuItem);
@@ -515,6 +517,7 @@ public class GameFrame extends JFrame {
 		gameSpotNumberMenu.add(gameSpotNumberHideRadioItem);
 
 		gameNewRoundMenuItem = new JMenuItem("New Round");
+		gameNewRoundMenuItem.addActionListener(newRoundActionListener);
 		gameNewRoundMenuItem.setEnabled(false);
 		gameNewRoundMenuItem.setMnemonic(KeyEvent.VK_N);
 		gameMenu.add(gameNewRoundMenuItem);
@@ -822,6 +825,7 @@ public class GameFrame extends JFrame {
 		gamePane.setLayout(gbl_gamePane);
 
 		gameStartMatchButton = new JButton("Start Match");
+		gameStartMatchButton.addActionListener(startMatchActionListener);
 		GridBagConstraints gbc_gameStartMatchButton = new GridBagConstraints();
 		gbc_gameStartMatchButton.insets = new Insets(0, 0, 0, 5);
 		gbc_gameStartMatchButton.gridx = 1;
@@ -829,6 +833,7 @@ public class GameFrame extends JFrame {
 		gamePane.add(gameStartMatchButton, gbc_gameStartMatchButton);
 
 		gameEndMatchButton = new JButton("End Match");
+		gameEndMatchButton.addActionListener(endMatchActionListener);
 		gameEndMatchButton.setEnabled(false);
 		GridBagConstraints gbc_gameEndMatchButton = new GridBagConstraints();
 		gbc_gameEndMatchButton.insets = new Insets(0, 0, 0, 5);
@@ -837,6 +842,7 @@ public class GameFrame extends JFrame {
 		gamePane.add(gameEndMatchButton, gbc_gameEndMatchButton);
 
 		gameNewRoundButton = new JButton("New Round");
+		gameNewRoundButton.addActionListener(newRoundActionListener);
 		gameNewRoundButton.setEnabled(false);
 		GridBagConstraints gbc_gameNewRoundButton = new GridBagConstraints();
 		gbc_gameNewRoundButton.insets = new Insets(0, 0, 0, 5);
@@ -1124,4 +1130,26 @@ public class GameFrame extends JFrame {
 		gbc_dataMatchCountValueLabel.gridy = 0;
 		dataMatchCountHintPane.add(dataMatchCountValueLabel, gbc_dataMatchCountValueLabel);
 	}
+
+	private ActionListener startMatchActionListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO
+		}
+	};
+
+	private ActionListener endMatchActionListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO
+		}
+	};
+
+	private ActionListener newRoundActionListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO
+		}
+	};
+
 }
