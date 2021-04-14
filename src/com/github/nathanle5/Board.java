@@ -11,11 +11,7 @@ public final class Board {
 	public static final int MAX_ROWS = 3;
 	public static final int MAX_SIZE = MAX_COLS * MAX_ROWS;
 
-	public static final char SYMBOL_N = '?';
-	public static final char SYMBOL_X = 'X';
-	public static final char SYMBOL_O = 'O';
-
-	private char[][] symbols;
+	private GameSymbol[][] symbols;
 	private JButton[][] buttons;
 	private JMenuItem[][] menus;
 
@@ -32,10 +28,10 @@ public final class Board {
 	}
 
 	private void initialize(ArrayList<JButton> btns, ArrayList<JMenuItem> mnms) {
-		symbols = new char[MAX_ROWS][MAX_COLS];
+		symbols = new GameSymbol[MAX_ROWS][MAX_COLS];
 		for (int row = 0; row < MAX_ROWS; row++) {
 			for (int col = 0; col < MAX_COLS; col++) {
-				symbols[row][col] = SYMBOL_N;
+				symbols[row][col] = GameSymbol.N;
 			}
 		}
 		if (btns != null && btns.size() == MAX_SIZE) {

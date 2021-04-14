@@ -40,37 +40,18 @@ public class GameFrame extends JFrame {
 
 	private Board board;
 
-	private static final int MAX_ROW_SPOTS = 3;
-	private static final int MAX_COL_SPOTS = 3;
-
-	private enum GameMode {
-		PLAYER_VS_COMPUTER, PLAYER_VS_PLAYER
-	}
-
-	private enum GameSymbol {
-		X, O
-	}
-
-	private enum GameStarting {
-		RANDOM, PLAYER, COMPUTER
-	}
-
-	private enum GameDifficulty {
-		RANDOM, AIMLESS, EASY, NORMAL, HARD, INSANE
-	}
-
 	private char[][] spotSymbols;
 	private JMenuItem[][] spotMenuItems;
 	private JButton[][] spotButtons;
 
 	private GameMode currentGameMode;
 	private GameSymbol currentGameSymbol;
-	private GameStarting currentGameStarting;
+	private GameStart currentGameStart;
 	private GameDifficulty currentGameDifficulty;
 
 	private ButtonGroup gameModeRadioItems;
 	private ButtonGroup gameSymbolRadioItems;
-	private ButtonGroup gameStartingRadioItems;
+	private ButtonGroup gameStartRadioItems;
 	private ButtonGroup gameDifficultyRadioItems;
 	private ButtonGroup windowStyleRadioItems;
 	private ButtonGroup windowNumberRadioItems;
@@ -115,9 +96,9 @@ public class GameFrame extends JFrame {
 	private JRadioButtonMenuItem gameSymbolXsRadioItem;
 	private JRadioButtonMenuItem gameSymbolOsRadioItem;
 	private JMenu gameStartingMenu;
-	private JRadioButtonMenuItem gameStartingRandomRadioItem;
-	private JRadioButtonMenuItem gameStartingPlayerRadioItem;
-	private JRadioButtonMenuItem gameStartingComputerRadioItem;
+	private JRadioButtonMenuItem gameStartRandomRadioItem;
+	private JRadioButtonMenuItem gameStartPlayerRadioItem;
+	private JRadioButtonMenuItem gameStartComputerRadioItem;
 	private JMenu gameDifficultyMenu;
 	private JRadioButtonMenuItem gameDifficultyRandomRadioItem;
 	private JRadioButtonMenuItem gameDifficultyAimlessRadioItem;
@@ -224,8 +205,8 @@ public class GameFrame extends JFrame {
 		refresh();
 	}
 
-	private void changeGameStarting(GameStarting gs) {
-		currentGameStarting = gs;
+	private void changeGameStart(GameStart gs) {
+		currentGameStart = gs;
 		refresh();
 	}
 
@@ -257,7 +238,7 @@ public class GameFrame extends JFrame {
 	private void refresh() {
 		optionModeValueLabel.setText(getSelectedRadioButtonText(gameModeRadioItems));
 		optionSymbolValueLabel.setText(getSelectedRadioButtonText(gameSymbolRadioItems));
-		optionStartingValueLabel.setText(getSelectedRadioButtonText(gameStartingRadioItems));
+		optionStartingValueLabel.setText(getSelectedRadioButtonText(gameStartRadioItems));
 		optionDifficultyValueLabel.setText(getSelectedRadioButtonText(gameDifficultyRadioItems));
 	}
 
@@ -283,16 +264,16 @@ public class GameFrame extends JFrame {
 			currentGameSymbol = GameSymbol.O;
 		}
 
-		gameStartingRadioItems = new ButtonGroup();
-		gameStartingRadioItems.add(gameStartingRandomRadioItem);
-		gameStartingRadioItems.add(gameStartingPlayerRadioItem);
-		gameStartingRadioItems.add(gameStartingComputerRadioItem);
-		if (gameStartingRandomRadioItem.isSelected()) {
-			currentGameStarting = GameStarting.RANDOM;
-		} else if (gameStartingPlayerRadioItem.isSelected()) {
-			currentGameStarting = GameStarting.PLAYER;
+		gameStartRadioItems = new ButtonGroup();
+		gameStartRadioItems.add(gameStartRandomRadioItem);
+		gameStartRadioItems.add(gameStartPlayerRadioItem);
+		gameStartRadioItems.add(gameStartComputerRadioItem);
+		if (gameStartRandomRadioItem.isSelected()) {
+			currentGameStart = GameStart.RANDOM;
+		} else if (gameStartPlayerRadioItem.isSelected()) {
+			currentGameStart = GameStart.PLAYER;
 		} else {
-			currentGameStarting = GameStarting.COMPUTER;
+			currentGameStart = GameStart.COMPUTER;
 		}
 
 		gameDifficultyRadioItems = new ButtonGroup();
@@ -579,36 +560,36 @@ public class GameFrame extends JFrame {
 		gameStartingMenu.setMnemonic(KeyEvent.VK_T);
 		gameMenu.add(gameStartingMenu);
 
-		gameStartingRandomRadioItem = new JRadioButtonMenuItem("Random");
-		gameStartingRandomRadioItem.addActionListener(new ActionListener() {
+		gameStartRandomRadioItem = new JRadioButtonMenuItem("Random");
+		gameStartRandomRadioItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				changeGameStarting(GameStarting.RANDOM);
+				changeGameStart(GameStart.RANDOM);
 			}
 		});
-		gameStartingRandomRadioItem.setMnemonic(KeyEvent.VK_R);
-		gameStartingMenu.add(gameStartingRandomRadioItem);
+		gameStartRandomRadioItem.setMnemonic(KeyEvent.VK_R);
+		gameStartingMenu.add(gameStartRandomRadioItem);
 
-		gameStartingPlayerRadioItem = new JRadioButtonMenuItem("Player");
-		gameStartingPlayerRadioItem.addActionListener(new ActionListener() {
+		gameStartPlayerRadioItem = new JRadioButtonMenuItem("Player");
+		gameStartPlayerRadioItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				changeGameStarting(GameStarting.PLAYER);
+				changeGameStart(GameStart.PLAYER);
 			}
 		});
-		gameStartingPlayerRadioItem.setMnemonic(KeyEvent.VK_P);
-		gameStartingPlayerRadioItem.setSelected(true);
-		gameStartingMenu.add(gameStartingPlayerRadioItem);
+		gameStartPlayerRadioItem.setMnemonic(KeyEvent.VK_P);
+		gameStartPlayerRadioItem.setSelected(true);
+		gameStartingMenu.add(gameStartPlayerRadioItem);
 
-		gameStartingComputerRadioItem = new JRadioButtonMenuItem("Computer");
-		gameStartingComputerRadioItem.addActionListener(new ActionListener() {
+		gameStartComputerRadioItem = new JRadioButtonMenuItem("Computer");
+		gameStartComputerRadioItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				changeGameStarting(GameStarting.COMPUTER);
+				changeGameStart(GameStart.COMPUTER);
 			}
 		});
-		gameStartingComputerRadioItem.setMnemonic(KeyEvent.VK_C);
-		gameStartingMenu.add(gameStartingComputerRadioItem);
+		gameStartComputerRadioItem.setMnemonic(KeyEvent.VK_C);
+		gameStartingMenu.add(gameStartComputerRadioItem);
 
 		gameDifficultyMenu = new JMenu("Difficulty");
 		gameDifficultyMenu.setMnemonic(KeyEvent.VK_D);
