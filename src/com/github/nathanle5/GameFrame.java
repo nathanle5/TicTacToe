@@ -39,6 +39,7 @@ public class GameFrame extends JFrame {
 	private static final long serialVersionUID = 7952751144657907378L;
 
 	private Board board;
+	private Game game;
 
 	private JMenuItem[][] spotMenuItems;
 	private JButton[][] spotButtons;
