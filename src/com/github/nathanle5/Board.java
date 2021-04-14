@@ -11,6 +11,7 @@ public final class Board {
 	public static final int MAX_ROWS = 3;
 	public static final int MAX_SIZE = MAX_COLS * MAX_ROWS;
 
+	private Integer[][] numbers;
 	private GameSymbol[][] symbols;
 	private JButton[][] buttons;
 	private JMenuItem[][] menus;
@@ -28,12 +29,24 @@ public final class Board {
 	}
 
 	private void initialize(ArrayList<JButton> btns, ArrayList<JMenuItem> mnms) {
+		numbers = new Integer[MAX_ROWS][MAX_COLS];
+		numbers[0][0] = 7;
+		numbers[0][1] = 8;
+		numbers[0][2] = 9;
+		numbers[1][0] = 4;
+		numbers[1][1] = 5;
+		numbers[1][2] = 6;
+		numbers[2][0] = 1;
+		numbers[2][1] = 2;
+		numbers[2][2] = 3;
+
 		symbols = new GameSymbol[MAX_ROWS][MAX_COLS];
 		for (int row = 0; row < MAX_ROWS; row++) {
 			for (int col = 0; col < MAX_COLS; col++) {
 				symbols[row][col] = GameSymbol.N;
 			}
 		}
+
 		if (btns != null && btns.size() == MAX_SIZE) {
 			buttons = new JButton[MAX_ROWS][MAX_COLS];
 			int row = 0;
@@ -46,6 +59,7 @@ public final class Board {
 				buttons[row][col] = btns.get(size);
 			}
 		}
+
 		if (mnms != null && mnms.size() == MAX_SIZE) {
 			menus = new JMenuItem[MAX_ROWS][MAX_COLS];
 			int row = 0;
@@ -56,6 +70,44 @@ public final class Board {
 					row++;
 				}
 				menus[row][col] = mnms.get(size);
+			}
+		}
+	}
+
+	public void setEnabled(boolean isEnabled, boolean isShow) {
+		JButton tempButton;
+		JMenuItem tempMenuItem;
+		for (int row = 0; row < MAX_ROWS; row++) {
+			for (int col = 0; col < MAX_COLS; col++) {
+				tempButton = buttons[row][col];
+				tempMenuItem = menus[row][col];
+				if (!isEnabled) {
+					symbols[row][col] = GameSymbol.N;
+					if (isShow) {
+						tempButton.setText(numbers[row][col] + ": " + GameSymbol.N.value);
+						tempMenuItem.setText(numbers[row][col] + ": " + GameSymbol.N.value);
+					} else {
+						tempButton.setText(GameSymbol.N.value);
+						tempMenuItem.setText(GameSymbol.N.value);
+					}
+				}
+				tempButton.setEnabled(isEnabled);
+				tempMenuItem.setEnabled(isEnabled);
+			}
+		}
+	}
+
+	public void updateNumber(boolean isShow) {
+		for (int row = 0; row < MAX_ROWS; row++) {
+			for (int col = 0; col < MAX_COLS; col++) {
+				symbols[row][col] = GameSymbol.N;
+				if (isShow) {
+					buttons[row][col].setText(numbers[row][col] + ": " + symbols[row][col].value);
+					menus[row][col].setText(numbers[row][col] + ": " + symbols[row][col].value);
+				} else {
+					buttons[row][col].setText(symbols[row][col].value);
+					menus[row][col].setText(symbols[row][col].value);
+				}
 			}
 		}
 	}

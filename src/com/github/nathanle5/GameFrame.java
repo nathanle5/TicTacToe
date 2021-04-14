@@ -40,7 +40,6 @@ public class GameFrame extends JFrame {
 
 	private Board board;
 
-	private char[][] spotSymbols;
 	private JMenuItem[][] spotMenuItems;
 	private JButton[][] spotButtons;
 
@@ -313,6 +312,50 @@ public class GameFrame extends JFrame {
 	 * Complete any actions needed after creating the frame.
 	 */
 	private void complete() {
+		ArrayList<JMenuItem> mnms = new ArrayList<JMenuItem>(Board.MAX_SIZE);
+		mnms.add(gameSpot00MenuItem);
+		mnms.add(gameSpot01MenuItem);
+		mnms.add(gameSpot02MenuItem);
+		mnms.add(gameSpot10MenuItem);
+		mnms.add(gameSpot11MenuItem);
+		mnms.add(gameSpot12MenuItem);
+		mnms.add(gameSpot20MenuItem);
+		mnms.add(gameSpot21MenuItem);
+		mnms.add(gameSpot22MenuItem);
+		ArrayList<JButton> btns = new ArrayList<JButton>(Board.MAX_SIZE);
+		btns.add(spot00Button);
+		btns.add(spot01Button);
+		btns.add(spot02Button);
+		btns.add(spot10Button);
+		btns.add(spot11Button);
+		btns.add(spot12Button);
+		btns.add(spot20Button);
+		btns.add(spot21Button);
+		btns.add(spot22Button);
+		board = new Board(btns, mnms);
+
+		spotMenuItems = new JMenuItem[Board.MAX_ROWS][Board.MAX_COLS];
+		spotMenuItems[0][0] = gameSpot00MenuItem;
+		spotMenuItems[0][1] = gameSpot01MenuItem;
+		spotMenuItems[0][2] = gameSpot02MenuItem;
+		spotMenuItems[1][0] = gameSpot10MenuItem;
+		spotMenuItems[1][1] = gameSpot11MenuItem;
+		spotMenuItems[1][2] = gameSpot12MenuItem;
+		spotMenuItems[2][0] = gameSpot20MenuItem;
+		spotMenuItems[2][1] = gameSpot21MenuItem;
+		spotMenuItems[2][2] = gameSpot22MenuItem;
+
+		spotButtons = new JButton[Board.MAX_ROWS][Board.MAX_COLS];
+		spotButtons[0][0] = spot00Button;
+		spotButtons[0][1] = spot01Button;
+		spotButtons[0][2] = spot02Button;
+		spotButtons[1][0] = spot10Button;
+		spotButtons[1][1] = spot11Button;
+		spotButtons[1][2] = spot12Button;
+		spotButtons[2][0] = spot20Button;
+		spotButtons[2][1] = spot21Button;
+		spotButtons[2][2] = spot22Button;
+
 		gameModeRadioItems = new ButtonGroup();
 		gameModeRadioItems.add(gameModePvcRadioItem);
 		gameModeRadioItems.add(gameModePvpRadioItem);
@@ -392,28 +435,6 @@ public class GameFrame extends JFrame {
 	 * Create the frame.
 	 */
 	private void initialize() {
-		ArrayList<JMenuItem> mnms = new ArrayList<JMenuItem>(Board.MAX_SIZE);
-		mnms.add(gameSpot00MenuItem);
-		mnms.add(gameSpot01MenuItem);
-		mnms.add(gameSpot02MenuItem);
-		mnms.add(gameSpot10MenuItem);
-		mnms.add(gameSpot11MenuItem);
-		mnms.add(gameSpot12MenuItem);
-		mnms.add(gameSpot20MenuItem);
-		mnms.add(gameSpot21MenuItem);
-		mnms.add(gameSpot22MenuItem);
-		ArrayList<JButton> btns = new ArrayList<JButton>(Board.MAX_SIZE);
-		btns.add(spot00Button);
-		btns.add(spot01Button);
-		btns.add(spot02Button);
-		btns.add(spot10Button);
-		btns.add(spot11Button);
-		btns.add(spot12Button);
-		btns.add(spot20Button);
-		btns.add(spot21Button);
-		btns.add(spot22Button);
-		board = new Board(btns, mnms);
-
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
@@ -559,7 +580,7 @@ public class GameFrame extends JFrame {
 		gameSpotNumberShowRadioItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Show number "1: ?" etc. in menuitems and buttons.
+				board.updateNumber(true);
 			}
 		});
 		gameSpotNumberShowRadioItem.setMnemonic(KeyEvent.VK_S);
@@ -570,7 +591,7 @@ public class GameFrame extends JFrame {
 		gameSpotNumberHideRadioItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Hide number "1: ?" etc. in menuitems and buttons.
+				board.updateNumber(false);
 			}
 		});
 		gameSpotNumberHideRadioItem.setMnemonic(KeyEvent.VK_H);
@@ -1239,6 +1260,14 @@ public class GameFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO
+			board.setEnabled(true, gameSpotNumberShowRadioItem.isSelected());
+			gameStartMatchButton.setEnabled(false);
+			gameStartMatchMenuItem.setEnabled(false);
+			gameEndMatchButton.setEnabled(true);
+			gameEndMatchMenuItem.setEnabled(true);
+			gameNewRoundButton.setEnabled(true);
+			gameNewRoundMenuItem.setEnabled(true);
+			game = new Game(board, currentGameMode, currentGameSymbol, currentGameStart, currentGameDifficulty);
 		}
 	};
 
@@ -1246,6 +1275,14 @@ public class GameFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO
+			board.setEnabled(false, gameSpotNumberShowRadioItem.isSelected());
+			gameStartMatchButton.setEnabled(true);
+			gameStartMatchMenuItem.setEnabled(true);
+			gameEndMatchButton.setEnabled(false);
+			gameEndMatchMenuItem.setEnabled(false);
+			gameNewRoundButton.setEnabled(false);
+			gameNewRoundMenuItem.setEnabled(false);
+			game = null;
 		}
 	};
 
