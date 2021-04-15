@@ -12,7 +12,9 @@ public final class Board {
 	public static final int MAX_SIZE = MAX_COLS * MAX_ROWS;
 
 	private Integer[][] numbers;
+	private boolean[][] opens;
 	private GameSymbol[][] symbols;
+	private GameStart[][] spots;
 	private JButton[][] buttons;
 	private JMenuItem[][] menus;
 
@@ -40,10 +42,14 @@ public final class Board {
 		numbers[2][1] = 2;
 		numbers[2][2] = 3;
 
+		opens = new boolean[MAX_ROWS][MAX_COLS];
 		symbols = new GameSymbol[MAX_ROWS][MAX_COLS];
+		spots = new GameStart[MAX_ROWS][MAX_COLS];
 		for (int row = 0; row < MAX_ROWS; row++) {
 			for (int col = 0; col < MAX_COLS; col++) {
+				opens[row][col] = true;
 				symbols[row][col] = GameSymbol.N;
+				spots[row][col] = GameStart.RANDOM;
 			}
 		}
 
@@ -71,6 +77,31 @@ public final class Board {
 				}
 				menus[row][col] = mnms.get(size);
 			}
+		}
+	}
+
+	public boolean isSpotOpen(GameSpot gameSpot) {
+		return opens[gameSpot.row][gameSpot.col];
+	}
+
+	public void claimSpot(GameSpot gameSpot, GameSymbol gameSymbol, GameStart gameStart, boolean isShow) { // TODO pass value of isShow into this class; if value changes update value.
+		opens[gameSpot.row][gameSpot.col] = false;
+		symbols[gameSpot.row][gameSpot.col] = GameSymbol.O; // FIXME hardcoded; need to create a class to hold player one and player two. In GameStart, change to Human One and Human Two etc.
+		spots[gameSpot.row][gameSpot.col] = gameStart;
+		updateBoard(gameSpot, isShow);
+	}
+
+	private void updateBoard(GameSpot gameSpot, boolean isShow) {
+		JButton b = buttons[gameSpot.row][gameSpot.col];
+		JMenuItem m = menus[gameSpot.row][gameSpot.col];
+		b.setEnabled(false);
+		b.setText(null);
+		if (isShow) {
+			b.setText(numbers[gameSpot.row][gameSpot.col] + ": " + symbols[gameSpot.col][gameSpot.col].value);
+			m.setText(numbers[gameSpot.row][gameSpot.col] + ": " + symbols[gameSpot.col][gameSpot.col].value);
+		} else {
+			b.setText(symbols[gameSpot.row][gameSpot.col].value);
+			m.setText(symbols[gameSpot.row][gameSpot.col].value);
 		}
 	}
 

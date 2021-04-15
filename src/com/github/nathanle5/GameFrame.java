@@ -1268,7 +1268,11 @@ public class GameFrame extends JFrame {
 			gameEndMatchMenuItem.setEnabled(true);
 			gameNewRoundButton.setEnabled(true);
 			gameNewRoundMenuItem.setEnabled(true);
-			game = new Game(board, currentGameMode, currentGameSymbol, currentGameStart, currentGameDifficulty);
+			game = new Game(board);
+			if (currentGameMode == GameMode.PLAYER_VS_COMPUTER && currentGameStart == GameStart.COMPUTER) {
+				board.claimSpot(game.runAI(currentGameDifficulty), currentGameSymbol, currentGameStart,
+						gameSpotNumberShowRadioItem.isSelected());
+			}
 		}
 	};
 
