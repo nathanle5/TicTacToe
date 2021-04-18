@@ -35,6 +35,10 @@ public class GameFrame extends JFrame {
 	private JMenuItem gameEndMatchMenuItem;
 	private JSeparator gameSeparator0;
 	private JMenu gameSpotMenuItem;
+	private JMenuItem gameSpots0MenuItem;
+	private JMenuItem gameSpots1MenuItem;
+	private JMenuItem gameSpots2MenuItem;
+	private JSeparator gameSpotSeparator0;
 	private JMenuItem gameSpot00MenuItem;
 	private JMenuItem gameSpot01MenuItem;
 	private JMenuItem gameSpot02MenuItem;
@@ -97,10 +101,6 @@ public class GameFrame extends JFrame {
 	private JMenuItem helpAboutMenuItem;
 
 	private JPanel contentPane;
-	private JSeparator gameSpotSeparator0;
-	private JMenuItem gameSpots0MenuItem;
-	private JMenuItem gameSpots1MenuItem;
-	private JMenuItem gameSpots2MenuItem;
 
 	/**
 	 * Create the frame.
