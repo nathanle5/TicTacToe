@@ -12,11 +12,17 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
 
 public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = 4543273208336829L;
+
+	private static final int defaultWindowStyleIndex = 1;
+
+	private String[] windowStyleNames;
 
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
@@ -92,11 +98,7 @@ public class GameFrame extends JFrame {
 	private JMenu windowStyleMenu;
 	private JMenuItem windowStyleSystemMenuItem;
 	private JSeparator windowStyleSeparator;
-	private JRadioButtonMenuItem windowStyle01RadioItem;
-	private JRadioButtonMenuItem windowStyle02RadioItem;
-	private JRadioButtonMenuItem windowStyle03RadioItem;
-	private JRadioButtonMenuItem windowStyle04RadioItem;
-	private JRadioButtonMenuItem windowStyle05RadioItem;
+	private JRadioButtonMenuItem[] windowStyleRadioItems;
 	private JMenu helpMenu;
 	private JMenuItem helpAboutMenuItem;
 
@@ -106,7 +108,33 @@ public class GameFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public GameFrame() {
+		preinitialize();
 		initialize();
+	}
+
+	/**
+	 * Before the user interface is created in {@link #initialize()}, define the
+	 * default look-and-feel.
+	 */
+	private void preinitialize() {
+		try {
+			LookAndFeelInfo[] lookAndFeelInfos = UIManager.getInstalledLookAndFeels();
+			windowStyleNames = new String[lookAndFeelInfos.length];
+			for (int i = 0; i < lookAndFeelInfos.length; i++) {
+				LookAndFeelInfo lookAndFeelInfo = lookAndFeelInfos[i];
+				windowStyleNames[i] = lookAndFeelInfo.getName();
+			}
+			if (windowStyleNames.length >= defaultWindowStyleIndex) {
+				for (LookAndFeelInfo lookAndFeelInfo : UIManager.getInstalledLookAndFeels()) {
+					if (windowStyleNames[defaultWindowStyleIndex].equals(lookAndFeelInfo.getName())) {
+						UIManager.setLookAndFeel(lookAndFeelInfo.getClassName());
+						break;
+					}
+				}
+			}
+			windowStyleRadioItems = new JRadioButtonMenuItem[lookAndFeelInfos.length];
+		} catch (Exception e) {
+		}
 	}
 
 	/**
@@ -422,20 +450,14 @@ public class GameFrame extends JFrame {
 		windowStyleSeparator = new JSeparator();
 		windowStyleMenu.add(windowStyleSeparator);
 
-		windowStyle01RadioItem = new JRadioButtonMenuItem("Metal");
-		windowStyleMenu.add(windowStyle01RadioItem);
-
-		windowStyle02RadioItem = new JRadioButtonMenuItem("Nimbus");
-		windowStyleMenu.add(windowStyle02RadioItem);
-
-		windowStyle03RadioItem = new JRadioButtonMenuItem("CDE/Motif");
-		windowStyleMenu.add(windowStyle03RadioItem);
-
-		windowStyle04RadioItem = new JRadioButtonMenuItem("Windows");
-		windowStyleMenu.add(windowStyle04RadioItem);
-
-		windowStyle05RadioItem = new JRadioButtonMenuItem("Windows Classic");
-		windowStyleMenu.add(windowStyle05RadioItem);
+		for (int i = 0; i < windowStyleNames.length; i++) {
+			JRadioButtonMenuItem radioButtonMenuItem = new JRadioButtonMenuItem(windowStyleNames[i]);
+			if (i == defaultWindowStyleIndex) {
+				radioButtonMenuItem.setSelected(true);
+			}
+			windowStyleMenu.add(radioButtonMenuItem);
+			windowStyleRadioItems[i] = radioButtonMenuItem;
+		}
 
 		helpMenu = new JMenu("Help");
 		helpMenu.setMnemonic(KeyEvent.VK_H);
