@@ -1,9 +1,14 @@
 package com.github.nathanle5;
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -103,6 +108,16 @@ public class GameFrame extends JFrame {
 	private JMenuItem helpAboutMenuItem;
 
 	private JPanel contentPane;
+	private JPanel gameSpotPane;
+	private JButton gameSpot00Button;
+	private JButton gameSpot01Button;
+	private JButton gameSpot02Button;
+	private JButton gameSpot10Button;
+	private JButton gameSpot11Button;
+	private JButton gameSpot12Button;
+	private JButton gameSpot20Button;
+	private JButton gameSpot21Button;
+	private JButton gameSpot22Button;
 
 	/**
 	 * Create the frame.
@@ -471,11 +486,114 @@ public class GameFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0 };
-		gbl_contentPane.rowHeights = new int[] { 0 };
-		gbl_contentPane.columnWeights = new double[] { Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { Double.MIN_VALUE };
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
+
+		gameSpotPane = new JPanel();
+		GridBagConstraints gbc_gameSpotPane = new GridBagConstraints();
+		gbc_gameSpotPane.fill = GridBagConstraints.BOTH;
+		gbc_gameSpotPane.gridx = 0;
+		gbc_gameSpotPane.gridy = 0;
+		contentPane.add(gameSpotPane, gbc_gameSpotPane);
+		GridBagLayout gbl_gameSpotPane = new GridBagLayout();
+		gbl_gameSpotPane.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_gameSpotPane.rowHeights = new int[] { 0, 0, 0, 0 };
+		gbl_gameSpotPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_gameSpotPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gameSpotPane.setLayout(gbl_gameSpotPane);
+
+		gameSpot00Button = new JButton("?");
+		gameSpot00Button.setEnabled(false);
+		gameSpot00Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot00Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot00Button = new GridBagConstraints();
+		gbc_gameSpot00Button.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSpot00Button.gridx = 1;
+		gbc_gameSpot00Button.gridy = 0;
+		gameSpotPane.add(gameSpot00Button, gbc_gameSpot00Button);
+
+		gameSpot01Button = new JButton("?");
+		gameSpot01Button.setEnabled(false);
+		gameSpot01Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot01Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot01Button = new GridBagConstraints();
+		gbc_gameSpot01Button.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSpot01Button.gridx = 2;
+		gbc_gameSpot01Button.gridy = 0;
+		gameSpotPane.add(gameSpot01Button, gbc_gameSpot01Button);
+
+		gameSpot02Button = new JButton("?");
+		gameSpot02Button.setEnabled(false);
+		gameSpot02Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot02Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot02Button = new GridBagConstraints();
+		gbc_gameSpot02Button.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSpot02Button.gridx = 3;
+		gbc_gameSpot02Button.gridy = 0;
+		gameSpotPane.add(gameSpot02Button, gbc_gameSpot02Button);
+
+		gameSpot10Button = new JButton("?");
+		gameSpot10Button.setEnabled(false);
+		gameSpot10Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot10Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot10Button = new GridBagConstraints();
+		gbc_gameSpot10Button.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSpot10Button.gridx = 1;
+		gbc_gameSpot10Button.gridy = 1;
+		gameSpotPane.add(gameSpot10Button, gbc_gameSpot10Button);
+
+		gameSpot11Button = new JButton("?");
+		gameSpot11Button.setEnabled(false);
+		gameSpot11Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot11Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot11Button = new GridBagConstraints();
+		gbc_gameSpot11Button.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSpot11Button.gridx = 2;
+		gbc_gameSpot11Button.gridy = 1;
+		gameSpotPane.add(gameSpot11Button, gbc_gameSpot11Button);
+
+		gameSpot12Button = new JButton("?");
+		gameSpot12Button.setEnabled(false);
+		gameSpot12Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot12Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot12Button = new GridBagConstraints();
+		gbc_gameSpot12Button.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSpot12Button.gridx = 3;
+		gbc_gameSpot12Button.gridy = 1;
+		gameSpotPane.add(gameSpot12Button, gbc_gameSpot12Button);
+
+		gameSpot20Button = new JButton("?");
+		gameSpot20Button.setEnabled(false);
+		gameSpot20Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot20Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot20Button = new GridBagConstraints();
+		gbc_gameSpot20Button.insets = new Insets(0, 0, 0, 5);
+		gbc_gameSpot20Button.gridx = 1;
+		gbc_gameSpot20Button.gridy = 2;
+		gameSpotPane.add(gameSpot20Button, gbc_gameSpot20Button);
+
+		gameSpot21Button = new JButton("?");
+		gameSpot21Button.setEnabled(false);
+		gameSpot21Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot21Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot21Button = new GridBagConstraints();
+		gbc_gameSpot21Button.insets = new Insets(0, 0, 0, 5);
+		gbc_gameSpot21Button.gridx = 2;
+		gbc_gameSpot21Button.gridy = 2;
+		gameSpotPane.add(gameSpot21Button, gbc_gameSpot21Button);
+
+		gameSpot22Button = new JButton("?");
+		gameSpot22Button.setEnabled(false);
+		gameSpot22Button.setPreferredSize(new Dimension(100, 100));
+		gameSpot22Button.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+		GridBagConstraints gbc_gameSpot22Button = new GridBagConstraints();
+		gbc_gameSpot22Button.insets = new Insets(0, 0, 0, 5);
+		gbc_gameSpot22Button.gridx = 3;
+		gbc_gameSpot22Button.gridy = 2;
+		gameSpotPane.add(gameSpot22Button, gbc_gameSpot22Button);
 	}
 
 }
