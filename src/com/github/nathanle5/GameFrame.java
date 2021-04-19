@@ -118,6 +118,10 @@ public class GameFrame extends JFrame {
 	private JButton gameSpot20Button;
 	private JButton gameSpot21Button;
 	private JButton gameSpot22Button;
+	private JPanel gameControlPane;
+	private JButton gameStartMatchButton;
+	private JButton gameEndMatchButton;
+	private JButton gameNewRoundButton;
 
 	/**
 	 * Create the frame.
@@ -159,7 +163,7 @@ public class GameFrame extends JFrame {
 		setResizable(false);
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 415);
+		setBounds(100, 100, 450, 455);
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -487,13 +491,14 @@ public class GameFrame extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		gameSpotPane = new JPanel();
 		GridBagConstraints gbc_gameSpotPane = new GridBagConstraints();
+		gbc_gameSpotPane.insets = new Insets(0, 0, 5, 0);
 		gbc_gameSpotPane.fill = GridBagConstraints.BOTH;
 		gbc_gameSpotPane.gridx = 0;
 		gbc_gameSpotPane.gridy = 0;
@@ -594,6 +599,51 @@ public class GameFrame extends JFrame {
 		gbc_gameSpot22Button.gridx = 3;
 		gbc_gameSpot22Button.gridy = 2;
 		gameSpotPane.add(gameSpot22Button, gbc_gameSpot22Button);
+
+		gameControlPane = new JPanel();
+		GridBagConstraints gbc_gameControlPane = new GridBagConstraints();
+		gbc_gameControlPane.fill = GridBagConstraints.BOTH;
+		gbc_gameControlPane.gridx = 0;
+		gbc_gameControlPane.gridy = 1;
+		contentPane.add(gameControlPane, gbc_gameControlPane);
+		GridBagLayout gbl_gameControlPane = new GridBagLayout();
+		gbl_gameControlPane.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_gameControlPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameControlPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_gameControlPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameControlPane.setLayout(gbl_gameControlPane);
+
+		gameStartMatchButton = new JButton("Start Match");
+		gameStartMatchButton.setPreferredSize(new Dimension(100, 30));
+		gameStartMatchButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStartMatchButton = new GridBagConstraints();
+		gbc_gameStartMatchButton.fill = GridBagConstraints.BOTH;
+		gbc_gameStartMatchButton.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStartMatchButton.gridx = 1;
+		gbc_gameStartMatchButton.gridy = 0;
+		gameControlPane.add(gameStartMatchButton, gbc_gameStartMatchButton);
+
+		gameEndMatchButton = new JButton("End Match");
+		gameEndMatchButton.setEnabled(false);
+		gameEndMatchButton.setPreferredSize(new Dimension(100, 30));
+		gameEndMatchButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameEndMatchButton = new GridBagConstraints();
+		gbc_gameEndMatchButton.fill = GridBagConstraints.BOTH;
+		gbc_gameEndMatchButton.insets = new Insets(0, 0, 0, 5);
+		gbc_gameEndMatchButton.gridx = 2;
+		gbc_gameEndMatchButton.gridy = 0;
+		gameControlPane.add(gameEndMatchButton, gbc_gameEndMatchButton);
+
+		gameNewRoundButton = new JButton("New Round");
+		gameNewRoundButton.setEnabled(false);
+		gameNewRoundButton.setPreferredSize(new Dimension(100, 30));
+		gameNewRoundButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameNewRoundButton = new GridBagConstraints();
+		gbc_gameNewRoundButton.fill = GridBagConstraints.BOTH;
+		gbc_gameNewRoundButton.insets = new Insets(0, 0, 0, 5);
+		gbc_gameNewRoundButton.gridx = 3;
+		gbc_gameNewRoundButton.gridy = 0;
+		gameControlPane.add(gameNewRoundButton, gbc_gameNewRoundButton);
 	}
 
 }
