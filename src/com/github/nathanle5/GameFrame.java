@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -20,6 +21,7 @@ import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 public class GameFrame extends JFrame {
 
@@ -122,6 +124,15 @@ public class GameFrame extends JFrame {
 	private JButton gameStartMatchButton;
 	private JButton gameEndMatchButton;
 	private JButton gameNewRoundButton;
+	private JPanel gameSettingPane;
+	private JPanel gameModeHintPane;
+	private JLabel gameModeValueLabel;
+	private JPanel gameDifficultyHintPane;
+	private JLabel gameDifficultyValueLabel;
+	private JPanel gameStartHintPane;
+	private JLabel gameStartValueLabel;
+	private JPanel gameSymbolHintPane;
+	private JLabel gameSymbolValueLabel;
 
 	/**
 	 * Create the frame.
@@ -160,10 +171,12 @@ public class GameFrame extends JFrame {
 	 * Create the user interface.
 	 */
 	private void initialize() {
+		setMinimumSize(new Dimension(352, 572));
+		setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		setResizable(false);
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 455);
+		setBounds(100, 100, 450, 555);
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -487,16 +500,18 @@ public class GameFrame extends JFrame {
 		helpMenu.add(helpAboutMenuItem);
 
 		contentPane = new JPanel();
+		contentPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		gameSpotPane = new JPanel();
+		gameSpotPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		GridBagConstraints gbc_gameSpotPane = new GridBagConstraints();
 		gbc_gameSpotPane.insets = new Insets(0, 0, 5, 0);
 		gbc_gameSpotPane.fill = GridBagConstraints.BOTH;
@@ -601,7 +616,9 @@ public class GameFrame extends JFrame {
 		gameSpotPane.add(gameSpot22Button, gbc_gameSpot22Button);
 
 		gameControlPane = new JPanel();
+		gameControlPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		GridBagConstraints gbc_gameControlPane = new GridBagConstraints();
+		gbc_gameControlPane.insets = new Insets(0, 0, 5, 0);
 		gbc_gameControlPane.fill = GridBagConstraints.BOTH;
 		gbc_gameControlPane.gridx = 0;
 		gbc_gameControlPane.gridy = 1;
@@ -644,6 +661,127 @@ public class GameFrame extends JFrame {
 		gbc_gameNewRoundButton.gridx = 3;
 		gbc_gameNewRoundButton.gridy = 0;
 		gameControlPane.add(gameNewRoundButton, gbc_gameNewRoundButton);
+
+		gameSettingPane = new JPanel();
+		gameSettingPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameSettingPane.setBorder(
+				new TitledBorder(null, "Game Settings:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameSettingPane = new GridBagConstraints();
+		gbc_gameSettingPane.fill = GridBagConstraints.BOTH;
+		gbc_gameSettingPane.gridx = 0;
+		gbc_gameSettingPane.gridy = 2;
+		contentPane.add(gameSettingPane, gbc_gameSettingPane);
+		GridBagLayout gbl_gameSettingPane = new GridBagLayout();
+		gbl_gameSettingPane.columnWidths = new int[] { 0, 0, 0, 0, 0 };
+		gbl_gameSettingPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_gameSettingPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_gameSettingPane.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gameSettingPane.setLayout(gbl_gameSettingPane);
+
+		gameModeHintPane = new JPanel();
+		gameModeHintPane.setPreferredSize(new Dimension(140, 50));
+		gameModeHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameModeHintPane.setBorder(new TitledBorder(null, "Mode:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameModeHintPane = new GridBagConstraints();
+		gbc_gameModeHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameModeHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_gameModeHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameModeHintPane.gridx = 1;
+		gbc_gameModeHintPane.gridy = 0;
+		gameSettingPane.add(gameModeHintPane, gbc_gameModeHintPane);
+		GridBagLayout gbl_gameModeHintPane = new GridBagLayout();
+		gbl_gameModeHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameModeHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameModeHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameModeHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameModeHintPane.setLayout(gbl_gameModeHintPane);
+
+		gameModeValueLabel = new JLabel("N/A");
+		gameModeValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameModeValueLabel = new GridBagConstraints();
+		gbc_gameModeValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameModeValueLabel.gridx = 1;
+		gbc_gameModeValueLabel.gridy = 0;
+		gameModeHintPane.add(gameModeValueLabel, gbc_gameModeValueLabel);
+
+		gameDifficultyHintPane = new JPanel();
+		gameDifficultyHintPane.setPreferredSize(new Dimension(140, 50));
+		gameDifficultyHintPane
+				.setBorder(new TitledBorder(null, "Difficulty:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameDifficultyHintPane = new GridBagConstraints();
+		gbc_gameDifficultyHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_gameDifficultyHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameDifficultyHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameDifficultyHintPane.gridx = 2;
+		gbc_gameDifficultyHintPane.gridy = 0;
+		gameSettingPane.add(gameDifficultyHintPane, gbc_gameDifficultyHintPane);
+		GridBagLayout gbl_gameDifficultyHintPane = new GridBagLayout();
+		gbl_gameDifficultyHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameDifficultyHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameDifficultyHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameDifficultyHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameDifficultyHintPane.setLayout(gbl_gameDifficultyHintPane);
+
+		gameDifficultyValueLabel = new JLabel("N/A");
+		gameDifficultyValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameDifficultyValueLabel = new GridBagConstraints();
+		gbc_gameDifficultyValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameDifficultyValueLabel.gridx = 1;
+		gbc_gameDifficultyValueLabel.gridy = 0;
+		gameDifficultyHintPane.add(gameDifficultyValueLabel, gbc_gameDifficultyValueLabel);
+
+		gameStartHintPane = new JPanel();
+		gameStartHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStartHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStartHintPane
+				.setBorder(new TitledBorder(null, "Starting:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStartHintPane = new GridBagConstraints();
+		gbc_gameStartHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStartHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_gameStartHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStartHintPane.gridx = 1;
+		gbc_gameStartHintPane.gridy = 1;
+		gameSettingPane.add(gameStartHintPane, gbc_gameStartHintPane);
+		GridBagLayout gbl_gameStartHintPane = new GridBagLayout();
+		gbl_gameStartHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStartHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStartHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStartHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStartHintPane.setLayout(gbl_gameStartHintPane);
+
+		gameStartValueLabel = new JLabel("N/A");
+		gameStartValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStartValueLabel = new GridBagConstraints();
+		gbc_gameStartValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStartValueLabel.gridx = 1;
+		gbc_gameStartValueLabel.gridy = 0;
+		gameStartHintPane.add(gameStartValueLabel, gbc_gameStartValueLabel);
+
+		gameSymbolHintPane = new JPanel();
+		gameSymbolHintPane.setPreferredSize(new Dimension(140, 50));
+		gameSymbolHintPane
+				.setBorder(new TitledBorder(null, "Symbol:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameSymbolHintPane = new GridBagConstraints();
+		gbc_gameSymbolHintPane.insets = new Insets(0, 0, 5, 5);
+		gbc_gameSymbolHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameSymbolHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameSymbolHintPane.gridx = 2;
+		gbc_gameSymbolHintPane.gridy = 1;
+		gameSettingPane.add(gameSymbolHintPane, gbc_gameSymbolHintPane);
+		GridBagLayout gbl_gameSymbolHintPane = new GridBagLayout();
+		gbl_gameSymbolHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameSymbolHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameSymbolHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameSymbolHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameSymbolHintPane.setLayout(gbl_gameSymbolHintPane);
+
+		gameSymbolValueLabel = new JLabel("N/A");
+		gameSymbolValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameSymbolValueLabel = new GridBagConstraints();
+		gbc_gameSymbolValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameSymbolValueLabel.gridx = 1;
+		gbc_gameSymbolValueLabel.gridy = 0;
+		gameSymbolHintPane.add(gameSymbolValueLabel, gbc_gameSymbolValueLabel);
 	}
 
 }
