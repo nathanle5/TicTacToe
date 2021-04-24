@@ -133,6 +133,37 @@ public class GameFrame extends JFrame {
 	private JLabel gameStartValueLabel;
 	private JPanel gameSymbolHintPane;
 	private JLabel gameSymbolValueLabel;
+	private JPanel gameStatisticPane;
+	private JPanel gameStatisticData1Pane;
+	private JPanel gameStatisticData1WinHintPane;
+	private JLabel gameStatisticData1WinValueLabel;
+	private JPanel gameStatisticData1WinPercentHintPane;
+	private JLabel gameStatisticData1WinPercentValueLabel;
+	private JPanel gameStatisticData1LossHintPane;
+	private JLabel gameStatisticData1LossValueLabel;
+	private JPanel gameStatisticData1LossPercentHintPane;
+	private JLabel gameStatisticData1LossPercentValueLabel;
+	private JPanel gameStatisticData1TieHintPane;
+	private JLabel gameStatisticData1TieValueLabel;
+	private JPanel gameStatisticData1TiePercentHintPane;
+	private JLabel gameStatisticData1TiePercentValueLabel;
+	private JPanel gameStatisticData1RoundHintPane;
+	private JLabel gameStatisticData1RoundValueLabel;
+	private JPanel gameStatisticData2Pane;
+	private JPanel gameStatisticData2WinHintPane;
+	private JLabel gameStatisticData2WinValueLabel;
+	private JPanel gameStatisticData2WinPercentHintPane;
+	private JLabel gameStatisticData2WinPercentValueLabel;
+	private JPanel gameStatisticData2LossHintPane;
+	private JLabel gameStatisticData2LossValueLabel;
+	private JPanel gameStatisticData2LossPercentHintPane;
+	private JLabel gameStatisticData2LossPercentValueLabel;
+	private JPanel gameStatisticData2TieHintPane;
+	private JLabel gameStatisticData2TieValueLabel;
+	private JPanel gameStatisticData2TiePercentHintPane;
+	private JLabel gameStatisticData2TiePercentValueLabel;
+	private JPanel gameStatisticData2RoundHintPane;
+	private JLabel gameStatisticData2RoundValueLabel;
 
 	/**
 	 * Create the frame.
@@ -171,12 +202,12 @@ public class GameFrame extends JFrame {
 	 * Create the user interface.
 	 */
 	private void initialize() {
-		setMinimumSize(new Dimension(352, 572));
+		setPreferredSize(new Dimension(708, 591));
 		setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		setResizable(false);
 		setTitle("Tic-Tac-Toe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 555);
+		setBounds(414, 117, 708, 572);
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -504,16 +535,16 @@ public class GameFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
-		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		gameSpotPane = new JPanel();
 		gameSpotPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		GridBagConstraints gbc_gameSpotPane = new GridBagConstraints();
-		gbc_gameSpotPane.insets = new Insets(0, 0, 5, 0);
+		gbc_gameSpotPane.insets = new Insets(0, 0, 5, 5);
 		gbc_gameSpotPane.fill = GridBagConstraints.BOTH;
 		gbc_gameSpotPane.gridx = 0;
 		gbc_gameSpotPane.gridy = 0;
@@ -615,10 +646,445 @@ public class GameFrame extends JFrame {
 		gbc_gameSpot22Button.gridy = 2;
 		gameSpotPane.add(gameSpot22Button, gbc_gameSpot22Button);
 
+		gameStatisticPane = new JPanel();
+		gameStatisticPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticPane
+				.setBorder(new TitledBorder(null, "Statistics:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticPane = new GridBagConstraints();
+		gbc_gameStatisticPane.gridheight = 4;
+		gbc_gameStatisticPane.insets = new Insets(0, 0, 5, 0);
+		gbc_gameStatisticPane.fill = GridBagConstraints.BOTH;
+		gbc_gameStatisticPane.gridx = 1;
+		gbc_gameStatisticPane.gridy = 0;
+		contentPane.add(gameStatisticPane, gbc_gameStatisticPane);
+		GridBagLayout gbl_gameStatisticPane = new GridBagLayout();
+		gbl_gameStatisticPane.columnWidths = new int[] { 0, 0, 0, 0 };
+		gbl_gameStatisticPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_gameStatisticPane.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_gameStatisticPane.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gameStatisticPane.setLayout(gbl_gameStatisticPane);
+		
+		gameStatisticData1Pane = new JPanel();
+		gameStatisticData1Pane.setBorder(new TitledBorder(null, "Human:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		gameStatisticData1Pane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1Pane = new GridBagConstraints();
+		gbc_gameStatisticData1Pane.insets = new Insets(0, 0, 5, 5);
+		gbc_gameStatisticData1Pane.fill = GridBagConstraints.BOTH;
+		gbc_gameStatisticData1Pane.gridx = 1;
+		gbc_gameStatisticData1Pane.gridy = 0;
+		gameStatisticPane.add(gameStatisticData1Pane, gbc_gameStatisticData1Pane);
+		GridBagLayout gbl_gameStatisticData1Pane = new GridBagLayout();
+		gbl_gameStatisticData1Pane.columnWidths = new int[] { 0, 0, 0, 0, 0 };
+		gbl_gameStatisticData1Pane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_gameStatisticData1Pane.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1Pane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gameStatisticData1Pane.setLayout(gbl_gameStatisticData1Pane);
+
+		gameStatisticData1WinHintPane = new JPanel();
+		gameStatisticData1WinHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData1WinHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData1WinHintPane
+				.setBorder(new TitledBorder(null, "Win Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData1WinHintPane = new GridBagConstraints();
+		gbc_gameStatisticData1WinHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1WinHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData1WinHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData1WinHintPane.gridx = 1;
+		gbc_gameStatisticData1WinHintPane.gridy = 0;
+		gameStatisticData1Pane.add(gameStatisticData1WinHintPane, gbc_gameStatisticData1WinHintPane);
+		GridBagLayout gbl_gameStatisticData1WinHintPane = new GridBagLayout();
+		gbl_gameStatisticData1WinHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData1WinHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData1WinHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1WinHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData1WinHintPane.setLayout(gbl_gameStatisticData1WinHintPane);
+
+		gameStatisticData1WinValueLabel = new JLabel("N/A");
+		gameStatisticData1WinValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1WinValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData1WinValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1WinValueLabel.gridx = 1;
+		gbc_gameStatisticData1WinValueLabel.gridy = 0;
+		gameStatisticData1WinHintPane.add(gameStatisticData1WinValueLabel, gbc_gameStatisticData1WinValueLabel);
+
+		gameStatisticData1WinPercentHintPane = new JPanel();
+		gameStatisticData1WinPercentHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData1WinPercentHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData1WinPercentHintPane
+				.setBorder(new TitledBorder(null, "Win Percent:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData1WinPercentHintPane = new GridBagConstraints();
+		gbc_gameStatisticData1WinPercentHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameStatisticData1WinPercentHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData1WinPercentHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData1WinPercentHintPane.gridx = 2;
+		gbc_gameStatisticData1WinPercentHintPane.gridy = 0;
+		gameStatisticData1Pane.add(gameStatisticData1WinPercentHintPane, gbc_gameStatisticData1WinPercentHintPane);
+		GridBagLayout gbl_gameStatisticData1WinPercentHintPane = new GridBagLayout();
+		gbl_gameStatisticData1WinPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData1WinPercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData1WinPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1WinPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData1WinPercentHintPane.setLayout(gbl_gameStatisticData1WinPercentHintPane);
+
+		gameStatisticData1WinPercentValueLabel = new JLabel("N/A");
+		gameStatisticData1WinPercentValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1WinPercentValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData1WinPercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1WinPercentValueLabel.gridx = 1;
+		gbc_gameStatisticData1WinPercentValueLabel.gridy = 0;
+		gameStatisticData1WinPercentHintPane.add(gameStatisticData1WinPercentValueLabel,
+				gbc_gameStatisticData1WinPercentValueLabel);
+
+		gameStatisticData1LossHintPane = new JPanel();
+		gameStatisticData1LossHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData1LossHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData1LossHintPane
+				.setBorder(new TitledBorder(null, "Loss Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData1LossHintPane = new GridBagConstraints();
+		gbc_gameStatisticData1LossHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1LossHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData1LossHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData1LossHintPane.gridx = 1;
+		gbc_gameStatisticData1LossHintPane.gridy = 1;
+		gameStatisticData1Pane.add(gameStatisticData1LossHintPane, gbc_gameStatisticData1LossHintPane);
+		GridBagLayout gbl_gameStatisticData1LossHintPane = new GridBagLayout();
+		gbl_gameStatisticData1LossHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData1LossHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData1LossHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1LossHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData1LossHintPane.setLayout(gbl_gameStatisticData1LossHintPane);
+
+		gameStatisticData1LossValueLabel = new JLabel("N/A");
+		gameStatisticData1LossValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1LossValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData1LossValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1LossValueLabel.gridx = 1;
+		gbc_gameStatisticData1LossValueLabel.gridy = 0;
+		gameStatisticData1LossHintPane.add(gameStatisticData1LossValueLabel, gbc_gameStatisticData1LossValueLabel);
+
+		gameStatisticData1LossPercentHintPane = new JPanel();
+		gameStatisticData1LossPercentHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData1LossPercentHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData1LossPercentHintPane
+				.setBorder(new TitledBorder(null, "Loss Percent:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData1LossPercentHintPane = new GridBagConstraints();
+		gbc_gameStatisticData1LossPercentHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameStatisticData1LossPercentHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData1LossPercentHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData1LossPercentHintPane.gridx = 2;
+		gbc_gameStatisticData1LossPercentHintPane.gridy = 1;
+		gameStatisticData1Pane.add(gameStatisticData1LossPercentHintPane, gbc_gameStatisticData1LossPercentHintPane);
+		GridBagLayout gbl_gameStatisticData1LossPercentHintPane = new GridBagLayout();
+		gbl_gameStatisticData1LossPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData1LossPercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData1LossPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1LossPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData1LossPercentHintPane.setLayout(gbl_gameStatisticData1LossPercentHintPane);
+
+		gameStatisticData1LossPercentValueLabel = new JLabel("N/A");
+		gameStatisticData1LossPercentValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1LossPercentValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData1LossPercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1LossPercentValueLabel.gridx = 1;
+		gbc_gameStatisticData1LossPercentValueLabel.gridy = 0;
+		gameStatisticData1LossPercentHintPane.add(gameStatisticData1LossPercentValueLabel,
+				gbc_gameStatisticData1LossPercentValueLabel);
+
+		gameStatisticData1TieHintPane = new JPanel();
+		gameStatisticData1TieHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData1TieHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData1TieHintPane
+				.setBorder(new TitledBorder(null, "Tie Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData1TieHintPane = new GridBagConstraints();
+		gbc_gameStatisticData1TieHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1TieHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData1TieHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData1TieHintPane.gridx = 1;
+		gbc_gameStatisticData1TieHintPane.gridy = 2;
+		gameStatisticData1Pane.add(gameStatisticData1TieHintPane, gbc_gameStatisticData1TieHintPane);
+		GridBagLayout gbl_gameStatisticData1TieHintPane = new GridBagLayout();
+		gbl_gameStatisticData1TieHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData1TieHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData1TieHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1TieHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData1TieHintPane.setLayout(gbl_gameStatisticData1TieHintPane);
+
+		gameStatisticData1TieValueLabel = new JLabel("N/A");
+		gameStatisticData1TieValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1TieValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData1TieValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1TieValueLabel.gridx = 1;
+		gbc_gameStatisticData1TieValueLabel.gridy = 0;
+		gameStatisticData1TieHintPane.add(gameStatisticData1TieValueLabel, gbc_gameStatisticData1TieValueLabel);
+
+		gameStatisticData1TiePercentHintPane = new JPanel();
+		gameStatisticData1TiePercentHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData1TiePercentHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData1TiePercentHintPane
+				.setBorder(new TitledBorder(null, "Tie Percent:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData1TiePercentHintPane = new GridBagConstraints();
+		gbc_gameStatisticData1TiePercentHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameStatisticData1TiePercentHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData1TiePercentHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData1TiePercentHintPane.gridx = 2;
+		gbc_gameStatisticData1TiePercentHintPane.gridy = 2;
+		gameStatisticData1Pane.add(gameStatisticData1TiePercentHintPane, gbc_gameStatisticData1TiePercentHintPane);
+		GridBagLayout gbl_gameStatisticData1TiePercentHintPane = new GridBagLayout();
+		gbl_gameStatisticData1TiePercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData1TiePercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData1TiePercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1TiePercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData1TiePercentHintPane.setLayout(gbl_gameStatisticData1TiePercentHintPane);
+
+		gameStatisticData1TiePercentValueLabel = new JLabel("N/A");
+		gameStatisticData1TiePercentValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1TiePercentValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData1TiePercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1TiePercentValueLabel.gridx = 1;
+		gbc_gameStatisticData1TiePercentValueLabel.gridy = 0;
+		gameStatisticData1TiePercentHintPane.add(gameStatisticData1TiePercentValueLabel,
+				gbc_gameStatisticData1TiePercentValueLabel);
+
+		gameStatisticData1RoundHintPane = new JPanel();
+		gameStatisticData1RoundHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData1RoundHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData1RoundHintPane
+				.setBorder(new TitledBorder(null, "Round Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData1RoundHintPane = new GridBagConstraints();
+		gbc_gameStatisticData1RoundHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1RoundHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData1RoundHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData1RoundHintPane.gridx = 1;
+		gbc_gameStatisticData1RoundHintPane.gridy = 3;
+		gameStatisticData1Pane.add(gameStatisticData1RoundHintPane, gbc_gameStatisticData1RoundHintPane);
+		GridBagLayout gbl_gameStatisticData1RoundHintPane = new GridBagLayout();
+		gbl_gameStatisticData1RoundHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData1RoundHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData1RoundHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData1RoundHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData1RoundHintPane.setLayout(gbl_gameStatisticData1RoundHintPane);
+
+		gameStatisticData1RoundValueLabel = new JLabel("N/A");
+		gameStatisticData1RoundValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData1RoundValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData1RoundValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData1RoundValueLabel.gridx = 1;
+		gbc_gameStatisticData1RoundValueLabel.gridy = 0;
+		gameStatisticData1RoundHintPane.add(gameStatisticData1RoundValueLabel, gbc_gameStatisticData1RoundValueLabel);
+
+		gameStatisticData2Pane = new JPanel();
+		gameStatisticData2Pane
+				.setBorder(new TitledBorder(null, "Computer:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		gameStatisticData2Pane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2Pane = new GridBagConstraints();
+		gbc_gameStatisticData2Pane.insets = new Insets(0, 0, 5, 5);
+		gbc_gameStatisticData2Pane.fill = GridBagConstraints.BOTH;
+		gbc_gameStatisticData2Pane.gridx = 1;
+		gbc_gameStatisticData2Pane.gridy = 1;
+		gameStatisticPane.add(gameStatisticData2Pane, gbc_gameStatisticData2Pane);
+		GridBagLayout gbl_gameStatisticData2Pane = new GridBagLayout();
+		gbl_gameStatisticData2Pane.columnWidths = new int[] { 0, 0, 0, 0, 0 };
+		gbl_gameStatisticData2Pane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_gameStatisticData2Pane.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2Pane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gameStatisticData2Pane.setLayout(gbl_gameStatisticData2Pane);
+
+		gameStatisticData2WinHintPane = new JPanel();
+		gameStatisticData2WinHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData2WinHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData2WinHintPane
+				.setBorder(new TitledBorder(null, "Win Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData2WinHintPane = new GridBagConstraints();
+		gbc_gameStatisticData2WinHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2WinHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData2WinHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData2WinHintPane.gridx = 1;
+		gbc_gameStatisticData2WinHintPane.gridy = 0;
+		gameStatisticData2Pane.add(gameStatisticData2WinHintPane, gbc_gameStatisticData2WinHintPane);
+		GridBagLayout gbl_gameStatisticData2WinHintPane = new GridBagLayout();
+		gbl_gameStatisticData2WinHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData2WinHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData2WinHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2WinHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData2WinHintPane.setLayout(gbl_gameStatisticData2WinHintPane);
+
+		gameStatisticData2WinValueLabel = new JLabel("N/A");
+		gameStatisticData2WinValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2WinValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData2WinValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2WinValueLabel.gridx = 1;
+		gbc_gameStatisticData2WinValueLabel.gridy = 0;
+		gameStatisticData2WinHintPane.add(gameStatisticData2WinValueLabel, gbc_gameStatisticData2WinValueLabel);
+
+		gameStatisticData2WinPercentHintPane = new JPanel();
+		gameStatisticData2WinPercentHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData2WinPercentHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData2WinPercentHintPane
+				.setBorder(new TitledBorder(null, "Win Percent:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData2WinPercentHintPane = new GridBagConstraints();
+		gbc_gameStatisticData2WinPercentHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameStatisticData2WinPercentHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData2WinPercentHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData2WinPercentHintPane.gridx = 2;
+		gbc_gameStatisticData2WinPercentHintPane.gridy = 0;
+		gameStatisticData2Pane.add(gameStatisticData2WinPercentHintPane, gbc_gameStatisticData2WinPercentHintPane);
+		GridBagLayout gbl_gameStatisticData2WinPercentHintPane = new GridBagLayout();
+		gbl_gameStatisticData2WinPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData2WinPercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData2WinPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2WinPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData2WinPercentHintPane.setLayout(gbl_gameStatisticData2WinPercentHintPane);
+
+		gameStatisticData2WinPercentValueLabel = new JLabel("N/A");
+		gameStatisticData2WinPercentValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2WinPercentValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData2WinPercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2WinPercentValueLabel.gridx = 1;
+		gbc_gameStatisticData2WinPercentValueLabel.gridy = 0;
+		gameStatisticData2WinPercentHintPane.add(gameStatisticData2WinPercentValueLabel,
+				gbc_gameStatisticData2WinPercentValueLabel);
+
+		gameStatisticData2LossHintPane = new JPanel();
+		gameStatisticData2LossHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData2LossHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData2LossHintPane
+				.setBorder(new TitledBorder(null, "Loss Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData2LossHintPane = new GridBagConstraints();
+		gbc_gameStatisticData2LossHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2LossHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData2LossHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData2LossHintPane.gridx = 1;
+		gbc_gameStatisticData2LossHintPane.gridy = 1;
+		gameStatisticData2Pane.add(gameStatisticData2LossHintPane, gbc_gameStatisticData2LossHintPane);
+		GridBagLayout gbl_gameStatisticData2LossHintPane = new GridBagLayout();
+		gbl_gameStatisticData2LossHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData2LossHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData2LossHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2LossHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData2LossHintPane.setLayout(gbl_gameStatisticData2LossHintPane);
+
+		gameStatisticData2LossValueLabel = new JLabel("N/A");
+		gameStatisticData2LossValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2LossValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData2LossValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2LossValueLabel.gridx = 1;
+		gbc_gameStatisticData2LossValueLabel.gridy = 0;
+		gameStatisticData2LossHintPane.add(gameStatisticData2LossValueLabel, gbc_gameStatisticData2LossValueLabel);
+
+		gameStatisticData2LossPercentHintPane = new JPanel();
+		gameStatisticData2LossPercentHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData2LossPercentHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData2LossPercentHintPane
+				.setBorder(new TitledBorder(null, "Loss Percent:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData2LossPercentHintPane = new GridBagConstraints();
+		gbc_gameStatisticData2LossPercentHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameStatisticData2LossPercentHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData2LossPercentHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData2LossPercentHintPane.gridx = 2;
+		gbc_gameStatisticData2LossPercentHintPane.gridy = 1;
+		gameStatisticData2Pane.add(gameStatisticData2LossPercentHintPane, gbc_gameStatisticData2LossPercentHintPane);
+		GridBagLayout gbl_gameStatisticData2LossPercentHintPane = new GridBagLayout();
+		gbl_gameStatisticData2LossPercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData2LossPercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData2LossPercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2LossPercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData2LossPercentHintPane.setLayout(gbl_gameStatisticData2LossPercentHintPane);
+
+		gameStatisticData2LossPercentValueLabel = new JLabel("N/A");
+		gameStatisticData2LossPercentValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2LossPercentValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData2LossPercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2LossPercentValueLabel.gridx = 1;
+		gbc_gameStatisticData2LossPercentValueLabel.gridy = 0;
+		gameStatisticData2LossPercentHintPane.add(gameStatisticData2LossPercentValueLabel,
+				gbc_gameStatisticData2LossPercentValueLabel);
+
+		gameStatisticData2TieHintPane = new JPanel();
+		gameStatisticData2TieHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData2TieHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData2TieHintPane
+				.setBorder(new TitledBorder(null, "Tie Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData2TieHintPane = new GridBagConstraints();
+		gbc_gameStatisticData2TieHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2TieHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData2TieHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData2TieHintPane.gridx = 1;
+		gbc_gameStatisticData2TieHintPane.gridy = 2;
+		gameStatisticData2Pane.add(gameStatisticData2TieHintPane, gbc_gameStatisticData2TieHintPane);
+		GridBagLayout gbl_gameStatisticData2TieHintPane = new GridBagLayout();
+		gbl_gameStatisticData2TieHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData2TieHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData2TieHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2TieHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData2TieHintPane.setLayout(gbl_gameStatisticData2TieHintPane);
+
+		gameStatisticData2TieValueLabel = new JLabel("N/A");
+		gameStatisticData2TieValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2TieValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData2TieValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2TieValueLabel.gridx = 1;
+		gbc_gameStatisticData2TieValueLabel.gridy = 0;
+		gameStatisticData2TieHintPane.add(gameStatisticData2TieValueLabel, gbc_gameStatisticData2TieValueLabel);
+
+		gameStatisticData2TiePercentHintPane = new JPanel();
+		gameStatisticData2TiePercentHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData2TiePercentHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData2TiePercentHintPane
+				.setBorder(new TitledBorder(null, "Tie Percent:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData2TiePercentHintPane = new GridBagConstraints();
+		gbc_gameStatisticData2TiePercentHintPane.anchor = GridBagConstraints.WEST;
+		gbc_gameStatisticData2TiePercentHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData2TiePercentHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData2TiePercentHintPane.gridx = 2;
+		gbc_gameStatisticData2TiePercentHintPane.gridy = 2;
+		gameStatisticData2Pane.add(gameStatisticData2TiePercentHintPane, gbc_gameStatisticData2TiePercentHintPane);
+		GridBagLayout gbl_gameStatisticData2TiePercentHintPane = new GridBagLayout();
+		gbl_gameStatisticData2TiePercentHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData2TiePercentHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData2TiePercentHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2TiePercentHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData2TiePercentHintPane.setLayout(gbl_gameStatisticData2TiePercentHintPane);
+
+		gameStatisticData2TiePercentValueLabel = new JLabel("N/A");
+		gameStatisticData2TiePercentValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2TiePercentValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData2TiePercentValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2TiePercentValueLabel.gridx = 1;
+		gbc_gameStatisticData2TiePercentValueLabel.gridy = 0;
+		gameStatisticData2TiePercentHintPane.add(gameStatisticData2TiePercentValueLabel,
+				gbc_gameStatisticData2TiePercentValueLabel);
+
+		gameStatisticData2RoundHintPane = new JPanel();
+		gameStatisticData2RoundHintPane.setPreferredSize(new Dimension(140, 50));
+		gameStatisticData2RoundHintPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		gameStatisticData2RoundHintPane
+				.setBorder(new TitledBorder(null, "Round Count:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_gameStatisticData2RoundHintPane = new GridBagConstraints();
+		gbc_gameStatisticData2RoundHintPane.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2RoundHintPane.insets = new Insets(0, 0, 0, 5);
+		gbc_gameStatisticData2RoundHintPane.fill = GridBagConstraints.VERTICAL;
+		gbc_gameStatisticData2RoundHintPane.gridx = 1;
+		gbc_gameStatisticData2RoundHintPane.gridy = 3;
+		gameStatisticData2Pane.add(gameStatisticData2RoundHintPane, gbc_gameStatisticData2RoundHintPane);
+		GridBagLayout gbl_gameStatisticData2RoundHintPane = new GridBagLayout();
+		gbl_gameStatisticData2RoundHintPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_gameStatisticData2RoundHintPane.rowHeights = new int[] { 0, 0 };
+		gbl_gameStatisticData2RoundHintPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_gameStatisticData2RoundHintPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gameStatisticData2RoundHintPane.setLayout(gbl_gameStatisticData2RoundHintPane);
+
+		gameStatisticData2RoundValueLabel = new JLabel("N/A");
+		gameStatisticData2RoundValueLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameStatisticData2RoundValueLabel = new GridBagConstraints();
+		gbc_gameStatisticData2RoundValueLabel.anchor = GridBagConstraints.EAST;
+		gbc_gameStatisticData2RoundValueLabel.gridx = 1;
+		gbc_gameStatisticData2RoundValueLabel.gridy = 0;
+		gameStatisticData2RoundHintPane.add(gameStatisticData2RoundValueLabel, gbc_gameStatisticData2RoundValueLabel);
+
 		gameControlPane = new JPanel();
 		gameControlPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		GridBagConstraints gbc_gameControlPane = new GridBagConstraints();
-		gbc_gameControlPane.insets = new Insets(0, 0, 5, 0);
+		gbc_gameControlPane.insets = new Insets(0, 0, 5, 5);
 		gbc_gameControlPane.fill = GridBagConstraints.BOTH;
 		gbc_gameControlPane.gridx = 0;
 		gbc_gameControlPane.gridy = 1;
@@ -667,6 +1133,7 @@ public class GameFrame extends JFrame {
 		gameSettingPane.setBorder(
 				new TitledBorder(null, "Game Settings:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_gameSettingPane = new GridBagConstraints();
+		gbc_gameSettingPane.insets = new Insets(0, 0, 5, 5);
 		gbc_gameSettingPane.fill = GridBagConstraints.BOTH;
 		gbc_gameSettingPane.gridx = 0;
 		gbc_gameSettingPane.gridy = 2;
