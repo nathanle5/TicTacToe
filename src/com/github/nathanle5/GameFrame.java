@@ -665,7 +665,8 @@ public class GameFrame extends JFrame {
 		gameStatisticPane.setLayout(gbl_gameStatisticPane);
 		
 		gameStatisticData1Pane = new JPanel();
-		gameStatisticData1Pane.setBorder(new TitledBorder(null, "Human:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		gameStatisticData1Pane
+				.setBorder(new TitledBorder(null, "Player:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		gameStatisticData1Pane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		GridBagConstraints gbc_gameStatisticData1Pane = new GridBagConstraints();
 		gbc_gameStatisticData1Pane.insets = new Insets(0, 0, 5, 5);
