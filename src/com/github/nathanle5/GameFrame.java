@@ -29,6 +29,7 @@ public class GameFrame extends JFrame {
 
 	private static final int defaultWindowStyleIndex = 1;
 
+	private Board board;
 	private String[] windowStyleNames;
 
 	private JMenuBar menuBar;
@@ -171,6 +172,7 @@ public class GameFrame extends JFrame {
 	public GameFrame() {
 		preinitialize();
 		initialize();
+		postinitialize();
 	}
 
 	/**
@@ -1250,6 +1252,31 @@ public class GameFrame extends JFrame {
 		gbc_gameSymbolValueLabel.gridx = 1;
 		gbc_gameSymbolValueLabel.gridy = 0;
 		gameSymbolHintPane.add(gameSymbolValueLabel, gbc_gameSymbolValueLabel);
+	}
+
+	/**
+	 * After the user interface is created in {@link #initialize()}, finish with
+	 * creating objects and groups.
+	 */
+	private void postinitialize() {
+		board = new Board();
+		board.populateSpotMenuItems(gameSpot00MenuItem, gameSpot01MenuItem, gameSpot02MenuItem, gameSpot10MenuItem,
+				gameSpot11MenuItem, gameSpot12MenuItem, gameSpot20MenuItem, gameSpot21MenuItem, gameSpot22MenuItem);
+		board.populateSpotButtons(gameSpot00Button, gameSpot01Button, gameSpot02Button, gameSpot10Button,
+				gameSpot11Button, gameSpot12Button, gameSpot20Button, gameSpot21Button, gameSpot22Button);
+		board.populateSettingLabels(gameModeValueLabel, gameDifficultyValueLabel, gameStartValueLabel,
+				gameSymbolValueLabel, (TitledBorder) gameStatisticData1Pane.getBorder(),
+				(TitledBorder) gameStatisticData2Pane.getBorder());
+		board.populateStatisticLabels(gameStatisticData1WinValueLabel, gameStatisticData1WinPercentValueLabel,
+				gameStatisticData1LossValueLabel, gameStatisticData1LossPercentValueLabel,
+				gameStatisticData1TieValueLabel, gameStatisticData1TiePercentValueLabel,
+				gameStatisticData1RoundValueLabel, gameStatisticData2WinValueLabel,
+				gameStatisticData2WinPercentValueLabel, gameStatisticData2LossValueLabel,
+				gameStatisticData2LossPercentValueLabel, gameStatisticData2TieValueLabel,
+				gameStatisticData2TiePercentValueLabel, gameStatisticData2RoundValueLabel);
+		board.updateSpotText();
+		board.updateSettingText();
+		board.updateStatisticText();
 	}
 
 }
