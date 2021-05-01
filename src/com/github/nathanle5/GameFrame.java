@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,6 +32,16 @@ public class GameFrame extends JFrame {
 
 	private Board board;
 	private String[] windowStyleNames;
+
+	private ButtonGroup gameModePvcButtonGroup;
+	private ButtonGroup gameSettingPvcDifficultyButtonGroup;
+	private ButtonGroup gameSettingPvcStartButtonGroup;
+	private ButtonGroup gameSettingPvcSymbolButtonGroup;
+	private ButtonGroup gameSettingPvpStartButtonGroup;
+	private ButtonGroup gameSettingPvpSymbolButtonGroup;
+	private ButtonGroup windowStyleButtonGroup;
+	private ButtonGroup windowDisplaySettingButtonGroup;
+	private ButtonGroup windowDisplayStatisticButtonGroup;
 
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
@@ -1289,6 +1300,51 @@ public class GameFrame extends JFrame {
 	 * creating objects and groups.
 	 */
 	private void postinitialize() {
+		gameModePvcButtonGroup = new ButtonGroup();
+		gameModePvcButtonGroup.add(gameModePvcRadioItem);
+		gameModePvcButtonGroup.add(gameModePvpRadioItem);
+
+		gameSettingPvcDifficultyButtonGroup = new ButtonGroup();
+		gameSettingPvcDifficultyButtonGroup.add(gameSettingPvcDifficultyRandomRadioItem);
+		gameSettingPvcDifficultyButtonGroup.add(gameSettingPvcDifficultyAimlessRadioItem);
+		gameSettingPvcDifficultyButtonGroup.add(gameSettingPvcDifficultyEasyRadioItem);
+		gameSettingPvcDifficultyButtonGroup.add(gameSettingPvcDifficultyNormalRadioItem);
+		gameSettingPvcDifficultyButtonGroup.add(gameSettingPvcDifficultyHardRadioItem);
+		gameSettingPvcDifficultyButtonGroup.add(gameSettingPvcDifficultyInsaneRadioItem);
+
+		gameSettingPvcStartButtonGroup = new ButtonGroup();
+		gameSettingPvcStartButtonGroup.add(gameSettingPvcStartRandomRadioItem);
+		gameSettingPvcStartButtonGroup.add(gameSettingPvcStartPlayerRadioItem);
+		gameSettingPvcStartButtonGroup.add(gameSettingPvcStartComputerRadioItem);
+
+		gameSettingPvcSymbolButtonGroup = new ButtonGroup();
+		gameSettingPvcSymbolButtonGroup.add(gameSettingPvcSymbolNsRadioItem);
+		gameSettingPvcSymbolButtonGroup.add(gameSettingPvcSymbolXsRadioItem);
+		gameSettingPvcSymbolButtonGroup.add(gameSettingPvcSymbolOsRadioItem);
+
+		gameSettingPvpStartButtonGroup = new ButtonGroup();
+		gameSettingPvpStartButtonGroup.add(gameSettingPvpStartRandomRadioItem);
+		gameSettingPvpStartButtonGroup.add(gameSettingPvpStartPlayer1RadioItem);
+		gameSettingPvpStartButtonGroup.add(gameSettingPvpStartPlayer2RadioItem);
+
+		gameSettingPvpSymbolButtonGroup = new ButtonGroup();
+		gameSettingPvpSymbolButtonGroup.add(gameSettingPvpSymbolNsRadioItem);
+		gameSettingPvpSymbolButtonGroup.add(gameSettingPvpSymbolXsRadioItem);
+		gameSettingPvpSymbolButtonGroup.add(gameSettingPvpSymbolOsRadioItem);
+
+		windowStyleButtonGroup = new ButtonGroup();
+		for (int i = 0; i < windowStyleRadioItems.length; i++) {
+			windowStyleButtonGroup.add(windowStyleRadioItems[i]);
+		}
+
+		windowDisplaySettingButtonGroup = new ButtonGroup();
+		windowDisplaySettingButtonGroup.add(windowDisplaySettingShowRadioItem);
+		windowDisplaySettingButtonGroup.add(windowDisplaySettingHideRadioItem);
+
+		windowDisplayStatisticButtonGroup = new ButtonGroup();
+		windowDisplayStatisticButtonGroup.add(windowDisplayStatisticShowRadioItem);
+		windowDisplayStatisticButtonGroup.add(windowDisplayStatisticHideRadioItem);
+
 		board = new Board();
 		board.populateSpotMenuItems(gameSpot00MenuItem, gameSpot01MenuItem, gameSpot02MenuItem, gameSpot10MenuItem,
 				gameSpot11MenuItem, gameSpot12MenuItem, gameSpot20MenuItem, gameSpot21MenuItem, gameSpot22MenuItem);
