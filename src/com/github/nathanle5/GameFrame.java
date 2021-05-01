@@ -107,6 +107,13 @@ public class GameFrame extends JFrame {
 	private JMenuItem windowStyleSystemMenuItem;
 	private JSeparator windowStyleSeparator;
 	private JRadioButtonMenuItem[] windowStyleRadioItems;
+	private JSeparator windowSeparator;
+	private JMenu windowDisplaySettingMenu;
+	private JRadioButtonMenuItem windowDisplaySettingShowRadioItem;
+	private JRadioButtonMenuItem windowDisplaySettingHideRadioItem;
+	private JMenu windowDisplayStatisticMenu;
+	private JRadioButtonMenuItem windowDisplayStatisticShowRadioItem;
+	private JRadioButtonMenuItem windowDisplayStatisticHideRadioItem;
 	private JMenu helpMenu;
 	private JMenuItem helpAboutMenuItem;
 
@@ -523,6 +530,29 @@ public class GameFrame extends JFrame {
 			windowStyleMenu.add(radioButtonMenuItem);
 			windowStyleRadioItems[i] = radioButtonMenuItem;
 		}
+
+		windowSeparator = new JSeparator();
+		windowMenu.add(windowSeparator);
+
+		windowDisplaySettingMenu = new JMenu("Display Settings Panel");
+		windowMenu.add(windowDisplaySettingMenu);
+
+		windowDisplaySettingShowRadioItem = new JRadioButtonMenuItem("Show");
+		windowDisplaySettingShowRadioItem.setSelected(true);
+		windowDisplaySettingMenu.add(windowDisplaySettingShowRadioItem);
+
+		windowDisplaySettingHideRadioItem = new JRadioButtonMenuItem("Hide");
+		windowDisplaySettingMenu.add(windowDisplaySettingHideRadioItem);
+
+		windowDisplayStatisticMenu = new JMenu("Display Statistics Panel");
+		windowMenu.add(windowDisplayStatisticMenu);
+
+		windowDisplayStatisticShowRadioItem = new JRadioButtonMenuItem("Show");
+		windowDisplayStatisticShowRadioItem.setSelected(true);
+		windowDisplayStatisticMenu.add(windowDisplayStatisticShowRadioItem);
+
+		windowDisplayStatisticHideRadioItem = new JRadioButtonMenuItem("Hide");
+		windowDisplayStatisticMenu.add(windowDisplayStatisticHideRadioItem);
 
 		helpMenu = new JMenu("Help");
 		helpMenu.setMnemonic(KeyEvent.VK_H);
