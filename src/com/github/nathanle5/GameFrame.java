@@ -56,8 +56,8 @@ public class GameFrame extends JFrame {
 	private JMenuItem dataViewPvpStatMenuItem;
 	private JMenuItem dataResetPvpStatMenuItem;
 	private JMenu gameMenu;
-	private JMenuItem gameStartMatchMenuItem;
-	private JMenuItem gameEndMatchMenuItem;
+	private JMenuItem gameControlStartMatchMenuItem;
+	private JMenuItem gameControlEndMatchMenuItem;
 	private JSeparator gameSeparator0;
 	private JMenu gameSpotMenuItem;
 	private JMenuItem gameSpots0MenuItem;
@@ -75,7 +75,7 @@ public class GameFrame extends JFrame {
 	private JMenuItem gameSpot20MenuItem;
 	private JMenuItem gameSpot21MenuItem;
 	private JMenuItem gameSpot22MenuItem;
-	private JMenuItem gameNewRoundMenuItem;
+	private JMenuItem gameControlNewRoundMenuItem;
 	private JSeparator gameSeparator1;
 	private JMenuItem gameViewSettingMenuItem;
 	private JMenu gameSettingModeMenu;
@@ -140,9 +140,9 @@ public class GameFrame extends JFrame {
 	private JButton gameSpot21Button;
 	private JButton gameSpot22Button;
 	private JPanel gameControlPane;
-	private JButton gameStartMatchButton;
-	private JButton gameEndMatchButton;
-	private JButton gameNewRoundButton;
+	private JButton gameControlStartMatchButton;
+	private JButton gameControlEndMatchButton;
+	private JButton gameControlNewRoundButton;
 	private JPanel gameSettingPane;
 	private JPanel gameModeHintPane;
 	private JLabel gameModeValueLabel;
@@ -279,22 +279,21 @@ public class GameFrame extends JFrame {
 		gameMenu.setMnemonic(KeyEvent.VK_G);
 		menuBar.add(gameMenu);
 
-		gameStartMatchMenuItem = new JMenuItem("Start Match");
-		gameStartMatchMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0));
-		gameStartMatchMenuItem.setMnemonic(KeyEvent.VK_S);
-		gameMenu.add(gameStartMatchMenuItem);
+		gameControlStartMatchMenuItem = new JMenuItem("Start Match");
+		gameControlStartMatchMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0));
+		gameControlStartMatchMenuItem.setMnemonic(KeyEvent.VK_S);
+		gameMenu.add(gameControlStartMatchMenuItem);
 
-		gameEndMatchMenuItem = new JMenuItem("End Match");
-		gameEndMatchMenuItem.setEnabled(false);
-		gameEndMatchMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, 0));
-		gameEndMatchMenuItem.setMnemonic(KeyEvent.VK_E);
-		gameMenu.add(gameEndMatchMenuItem);
+		gameControlEndMatchMenuItem = new JMenuItem("End Match");
+		gameControlEndMatchMenuItem.setEnabled(false);
+		gameControlEndMatchMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, 0));
+		gameControlEndMatchMenuItem.setMnemonic(KeyEvent.VK_E);
+		gameMenu.add(gameControlEndMatchMenuItem);
 
 		gameSeparator0 = new JSeparator();
 		gameMenu.add(gameSeparator0);
 
 		gameSpotMenuItem = new JMenu("Spot");
-		gameSpotMenuItem.setEnabled(false);
 		gameSpotMenuItem.setMnemonic(KeyEvent.VK_P);
 		gameMenu.add(gameSpotMenuItem);
 
@@ -314,16 +313,19 @@ public class GameFrame extends JFrame {
 		gameSpotMenuItem.add(gameSpotSeparator0);
 
 		gameSpot00MenuItem = new JMenuItem("7: ?");
+		gameSpot00MenuItem.setEnabled(false);
 		gameSpot00MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD7, 0));
 		gameSpot00MenuItem.setMnemonic(KeyEvent.VK_7);
 		gameSpotMenuItem.add(gameSpot00MenuItem);
 
 		gameSpot01MenuItem = new JMenuItem("8: ?");
+		gameSpot01MenuItem.setEnabled(false);
 		gameSpot01MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD8, 0));
 		gameSpot01MenuItem.setMnemonic(KeyEvent.VK_8);
 		gameSpotMenuItem.add(gameSpot01MenuItem);
 
 		gameSpot02MenuItem = new JMenuItem("9: ?");
+		gameSpot02MenuItem.setEnabled(false);
 		gameSpot02MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD9, 0));
 		gameSpot02MenuItem.setMnemonic(KeyEvent.VK_9);
 		gameSpotMenuItem.add(gameSpot02MenuItem);
@@ -332,16 +334,19 @@ public class GameFrame extends JFrame {
 		gameSpotMenuItem.add(gameSpotSeparator1);
 
 		gameSpot10MenuItem = new JMenuItem("4: ?");
+		gameSpot10MenuItem.setEnabled(false);
 		gameSpot10MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD4, 0));
 		gameSpot10MenuItem.setMnemonic(KeyEvent.VK_4);
 		gameSpotMenuItem.add(gameSpot10MenuItem);
 
 		gameSpot11MenuItem = new JMenuItem("5: ?");
+		gameSpot11MenuItem.setEnabled(false);
 		gameSpot11MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD5, 0));
 		gameSpot11MenuItem.setMnemonic(KeyEvent.VK_5);
 		gameSpotMenuItem.add(gameSpot11MenuItem);
 
 		gameSpot12MenuItem = new JMenuItem("6: ?");
+		gameSpot12MenuItem.setEnabled(false);
 		gameSpot12MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD6, 0));
 		gameSpot12MenuItem.setMnemonic(KeyEvent.VK_6);
 		gameSpotMenuItem.add(gameSpot12MenuItem);
@@ -350,25 +355,28 @@ public class GameFrame extends JFrame {
 		gameSpotMenuItem.add(gameSpotSeparator2);
 
 		gameSpot20MenuItem = new JMenuItem("1: ?");
+		gameSpot20MenuItem.setEnabled(false);
 		gameSpot20MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD1, 0));
 		gameSpot20MenuItem.setMnemonic(KeyEvent.VK_1);
 		gameSpotMenuItem.add(gameSpot20MenuItem);
 
 		gameSpot21MenuItem = new JMenuItem("2: ?");
+		gameSpot21MenuItem.setEnabled(false);
 		gameSpot21MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD2, 0));
 		gameSpot21MenuItem.setMnemonic(KeyEvent.VK_2);
 		gameSpotMenuItem.add(gameSpot21MenuItem);
 
 		gameSpot22MenuItem = new JMenuItem("3: ?");
+		gameSpot22MenuItem.setEnabled(false);
 		gameSpot22MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD3, 0));
 		gameSpot22MenuItem.setMnemonic(KeyEvent.VK_3);
 		gameSpotMenuItem.add(gameSpot22MenuItem);
 
-		gameNewRoundMenuItem = new JMenuItem("New Round");
-		gameNewRoundMenuItem.setEnabled(false);
-		gameNewRoundMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, 0));
-		gameNewRoundMenuItem.setMnemonic(KeyEvent.VK_N);
-		gameMenu.add(gameNewRoundMenuItem);
+		gameControlNewRoundMenuItem = new JMenuItem("New Round");
+		gameControlNewRoundMenuItem.setEnabled(false);
+		gameControlNewRoundMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, 0));
+		gameControlNewRoundMenuItem.setMnemonic(KeyEvent.VK_N);
+		gameMenu.add(gameControlNewRoundMenuItem);
 
 		gameSeparator1 = new JSeparator();
 		gameMenu.add(gameSeparator1);
@@ -546,23 +554,29 @@ public class GameFrame extends JFrame {
 		windowMenu.add(windowSeparator);
 
 		windowDisplaySettingMenu = new JMenu("Display Settings Panel");
+		windowDisplaySettingMenu.setMnemonic(KeyEvent.VK_E);
 		windowMenu.add(windowDisplaySettingMenu);
 
 		windowDisplaySettingShowRadioItem = new JRadioButtonMenuItem("Show");
+		windowDisplaySettingShowRadioItem.setMnemonic(KeyEvent.VK_S);
 		windowDisplaySettingShowRadioItem.setSelected(true);
 		windowDisplaySettingMenu.add(windowDisplaySettingShowRadioItem);
 
 		windowDisplaySettingHideRadioItem = new JRadioButtonMenuItem("Hide");
+		windowDisplaySettingHideRadioItem.setMnemonic(KeyEvent.VK_H);
 		windowDisplaySettingMenu.add(windowDisplaySettingHideRadioItem);
 
 		windowDisplayStatisticMenu = new JMenu("Display Statistics Panel");
+		windowDisplayStatisticMenu.setMnemonic(KeyEvent.VK_T);
 		windowMenu.add(windowDisplayStatisticMenu);
 
 		windowDisplayStatisticShowRadioItem = new JRadioButtonMenuItem("Show");
+		windowDisplayStatisticShowRadioItem.setMnemonic(KeyEvent.VK_S);
 		windowDisplayStatisticShowRadioItem.setSelected(true);
 		windowDisplayStatisticMenu.add(windowDisplayStatisticShowRadioItem);
 
 		windowDisplayStatisticHideRadioItem = new JRadioButtonMenuItem("Hide");
+		windowDisplayStatisticHideRadioItem.setMnemonic(KeyEvent.VK_H);
 		windowDisplayStatisticMenu.add(windowDisplayStatisticHideRadioItem);
 
 		helpMenu = new JMenu("Help");
@@ -1140,37 +1154,37 @@ public class GameFrame extends JFrame {
 		gbl_gameControlPane.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		gameControlPane.setLayout(gbl_gameControlPane);
 
-		gameStartMatchButton = new JButton("Start Match");
-		gameStartMatchButton.setPreferredSize(new Dimension(100, 30));
-		gameStartMatchButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		GridBagConstraints gbc_gameStartMatchButton = new GridBagConstraints();
-		gbc_gameStartMatchButton.fill = GridBagConstraints.BOTH;
-		gbc_gameStartMatchButton.insets = new Insets(0, 0, 0, 5);
-		gbc_gameStartMatchButton.gridx = 1;
-		gbc_gameStartMatchButton.gridy = 0;
-		gameControlPane.add(gameStartMatchButton, gbc_gameStartMatchButton);
+		gameControlStartMatchButton = new JButton("Start Match");
+		gameControlStartMatchButton.setPreferredSize(new Dimension(100, 30));
+		gameControlStartMatchButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameControlStartMatchButton = new GridBagConstraints();
+		gbc_gameControlStartMatchButton.fill = GridBagConstraints.BOTH;
+		gbc_gameControlStartMatchButton.insets = new Insets(0, 0, 0, 5);
+		gbc_gameControlStartMatchButton.gridx = 1;
+		gbc_gameControlStartMatchButton.gridy = 0;
+		gameControlPane.add(gameControlStartMatchButton, gbc_gameControlStartMatchButton);
 
-		gameEndMatchButton = new JButton("End Match");
-		gameEndMatchButton.setEnabled(false);
-		gameEndMatchButton.setPreferredSize(new Dimension(100, 30));
-		gameEndMatchButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		GridBagConstraints gbc_gameEndMatchButton = new GridBagConstraints();
-		gbc_gameEndMatchButton.fill = GridBagConstraints.BOTH;
-		gbc_gameEndMatchButton.insets = new Insets(0, 0, 0, 5);
-		gbc_gameEndMatchButton.gridx = 2;
-		gbc_gameEndMatchButton.gridy = 0;
-		gameControlPane.add(gameEndMatchButton, gbc_gameEndMatchButton);
+		gameControlEndMatchButton = new JButton("End Match");
+		gameControlEndMatchButton.setEnabled(false);
+		gameControlEndMatchButton.setPreferredSize(new Dimension(100, 30));
+		gameControlEndMatchButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameControlEndMatchButton = new GridBagConstraints();
+		gbc_gameControlEndMatchButton.fill = GridBagConstraints.BOTH;
+		gbc_gameControlEndMatchButton.insets = new Insets(0, 0, 0, 5);
+		gbc_gameControlEndMatchButton.gridx = 2;
+		gbc_gameControlEndMatchButton.gridy = 0;
+		gameControlPane.add(gameControlEndMatchButton, gbc_gameControlEndMatchButton);
 
-		gameNewRoundButton = new JButton("New Round");
-		gameNewRoundButton.setEnabled(false);
-		gameNewRoundButton.setPreferredSize(new Dimension(100, 30));
-		gameNewRoundButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		GridBagConstraints gbc_gameNewRoundButton = new GridBagConstraints();
-		gbc_gameNewRoundButton.fill = GridBagConstraints.BOTH;
-		gbc_gameNewRoundButton.insets = new Insets(0, 0, 0, 5);
-		gbc_gameNewRoundButton.gridx = 3;
-		gbc_gameNewRoundButton.gridy = 0;
-		gameControlPane.add(gameNewRoundButton, gbc_gameNewRoundButton);
+		gameControlNewRoundButton = new JButton("New Round");
+		gameControlNewRoundButton.setEnabled(false);
+		gameControlNewRoundButton.setPreferredSize(new Dimension(100, 30));
+		gameControlNewRoundButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		GridBagConstraints gbc_gameControlNewRoundButton = new GridBagConstraints();
+		gbc_gameControlNewRoundButton.fill = GridBagConstraints.BOTH;
+		gbc_gameControlNewRoundButton.insets = new Insets(0, 0, 0, 5);
+		gbc_gameControlNewRoundButton.gridx = 3;
+		gbc_gameControlNewRoundButton.gridy = 0;
+		gameControlPane.add(gameControlNewRoundButton, gbc_gameControlNewRoundButton);
 
 		gameSettingPane = new JPanel();
 		gameSettingPane.setFont(new Font("Segoe UI", Font.PLAIN, 12));
