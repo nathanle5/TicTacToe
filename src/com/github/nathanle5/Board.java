@@ -19,6 +19,13 @@ public final class Board {
 	private JMenuItem[][] spotMenuItems;
 	private JButton[][] spotButtons;
 
+	private JMenuItem gameControlStartMatchMenuItem;
+	private JButton gameControlStartMatchButton;
+	private JMenuItem gameControlEndMatchMenuItem;
+	private JButton gameControlEndMatchButton;
+	private JMenuItem gameControlNewRoundMenuItem;
+	private JButton gameControlNewRoundButton;
+
 	private JLabel settingModeLabel;
 	private JLabel settingDifficultyLabel;
 	private JLabel settingStartingLabel;
@@ -102,6 +109,20 @@ public final class Board {
 		spotButtons[2][2] = buttonSpot22;
 	}
 
+	public void populateControlMenuItems(JMenuItem menuItemGameStartMatch, JMenuItem menuItemGameEndMatch,
+			JMenuItem menuItemGameNewRound) {
+		gameControlStartMatchMenuItem = menuItemGameStartMatch;
+		gameControlEndMatchMenuItem = menuItemGameEndMatch;
+		gameControlNewRoundMenuItem = menuItemGameNewRound;
+	}
+
+	public void populateControlButtons(JButton buttonGameStartMatch, JButton buttonGameEndMatch,
+			JButton buttonGameNewRound) {
+		gameControlStartMatchButton = buttonGameStartMatch;
+		gameControlEndMatchButton = buttonGameEndMatch;
+		gameControlNewRoundButton = buttonGameNewRound;
+	}
+
 	public void populateSettingLabels(JLabel labelSettingMode, JLabel labelSettingDifficulty,
 			JLabel labelSettingStarting, JLabel labelSettingSymbol, TitledBorder borderStatisticData1,
 			TitledBorder borderStatisticsData2) {
@@ -168,6 +189,50 @@ public final class Board {
 		statisticData2TieLabel.setText(statistics.getPlayer2TieCount());
 		statisticData2TiePercentLabel.setText(statistics.getPlayer2TiePercent());
 		statisticData2RoundLabel.setText(statistics.getPlayer2RoundCount());
+	}
+
+	public void gameStartMatch() {
+		gameControlEndMatchButton.setEnabled(true);
+		gameControlEndMatchMenuItem.setEnabled(true);
+		gameControlNewRoundButton.setEnabled(true);
+		gameControlNewRoundMenuItem.setEnabled(true);
+		gameControlStartMatchButton.setEnabled(false);
+		gameControlStartMatchMenuItem.setEnabled(false);
+		for (int row = 0; row < MAX_ROW; row++) {
+			for (int col = 0; col < MAX_COL; col++) {
+				spotMenuItems[row][col].setEnabled(true);
+				spotButtons[row][col].setEnabled(true);
+			}
+		}
+	}
+
+	public void gameEndMatch() {
+		for (int row = 0; row < MAX_ROW; row++) {
+			for (int col = 0; col < MAX_COL; col++) {
+				spotMenuItems[row][col].setEnabled(false);
+				spotButtons[row][col].setEnabled(false);
+			}
+		}
+		gameControlStartMatchButton.setEnabled(true);
+		gameControlStartMatchMenuItem.setEnabled(true);
+		gameControlEndMatchButton.setEnabled(false);
+		gameControlEndMatchMenuItem.setEnabled(false);
+		gameControlNewRoundButton.setEnabled(false);
+		gameControlNewRoundMenuItem.setEnabled(false);
+	}
+
+	public void gameNewRound() {
+		for (int row = 0; row < MAX_ROW; row++) {
+			for (int col = 0; col < MAX_COL; col++) {
+				spotMenuItems[row][col].setEnabled(true);
+				spotButtons[row][col].setEnabled(true);
+			}
+		}
+	}
+
+	public void gameSpotClaim(int row, int col) {
+		spotMenuItems[row][col].setEnabled(false);
+		spotButtons[row][col].setEnabled(false);
 	}
 
 }
