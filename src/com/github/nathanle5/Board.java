@@ -16,6 +16,7 @@ public final class Board {
 	private Statistics pvpStatistics;
 
 	private Integer[][] spotNumbering;
+	private Player[][] spotPlayers;
 	private JMenuItem[][] spotMenuItems;
 	private JButton[][] spotButtons;
 
@@ -77,6 +78,7 @@ public final class Board {
 		spotNumbering[2][0] = 1;
 		spotNumbering[2][1] = 2;
 		spotNumbering[2][2] = 3;
+		spotPlayers = new Player[MAX_ROW][MAX_COL];
 		spotMenuItems = new JMenuItem[MAX_ROW][MAX_COL];
 		spotButtons = new JButton[MAX_ROW][MAX_COL];
 	}
@@ -158,8 +160,13 @@ public final class Board {
 	public void updateSpotText() {
 		for (int row = 0; row < MAX_ROW; row++) {
 			for (int col = 0; col < MAX_COL; col++) {
-				spotMenuItems[row][col].setText("");
-				spotButtons[row][col].setText("");
+				if (spotPlayers[row][col] == null) {
+					spotMenuItems[row][col].setText(spotNumbering[row][col] + ":");
+					spotButtons[row][col].setText("");
+				} else {
+					spotMenuItems[row][col].setText(spotNumbering[row][col] + ":" + spotPlayers[row][col].getSymbol());
+					spotButtons[row][col].setText(spotPlayers[row][col].getSymbol());
+				}
 			}
 		}
 	}
@@ -209,10 +216,12 @@ public final class Board {
 	public void gameEndMatch() {
 		for (int row = 0; row < MAX_ROW; row++) {
 			for (int col = 0; col < MAX_COL; col++) {
+				spotPlayers[row][col] = null;
 				spotMenuItems[row][col].setEnabled(false);
 				spotButtons[row][col].setEnabled(false);
 			}
 		}
+		updateSpotText();
 		controlStartMatchButton.setEnabled(true);
 		controlStartMatchMenuItem.setEnabled(true);
 		controlEndMatchButton.setEnabled(false);
@@ -224,15 +233,21 @@ public final class Board {
 	public void gameNewRound() {
 		for (int row = 0; row < MAX_ROW; row++) {
 			for (int col = 0; col < MAX_COL; col++) {
+				spotPlayers[row][col] = null;
 				spotMenuItems[row][col].setEnabled(true);
 				spotButtons[row][col].setEnabled(true);
 			}
 		}
+		updateSpotText();
+		getSettings().resetCurrentPlayer();
 	}
 
 	public void gameSpotClaim(int row, int col) {
+		spotPlayers[row][col] = getSettings().getCurrentPlayer();
 		spotMenuItems[row][col].setEnabled(false);
 		spotButtons[row][col].setEnabled(false);
+		updateSpotText(); // TODO change this so it only updates that button instead of all of them.
+		getSettings().changeCurrentPlayer();
 	}
 
 }

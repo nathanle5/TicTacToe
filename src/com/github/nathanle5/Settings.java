@@ -7,6 +7,7 @@ public final class Settings {
 	private Player player1;
 	private Player player2;
 	private Player[] starting;
+	private int currentPlayer;
 
 	public Mode getMode() {
 		return mode;
@@ -22,6 +23,7 @@ public final class Settings {
 		player1 = new Player(Symbol.X, Competitor.PLAYER1);
 		player2 = new Player(Symbol.O, Competitor.PLAYER2);
 		starting = new Player[] { player1, player2 };
+		currentPlayer = 0;
 	}
 
 	public String getModeText() {
@@ -48,6 +50,10 @@ public final class Settings {
 		return String.format("%1$s, %2$s", starting[0].getSymbol(), starting[1].getSymbol());
 	}
 
+	public Player getCurrentPlayer() {
+		return starting[currentPlayer];
+	}
+
 	public boolean changeDifficulty(String text) {
 		boolean found = false;
 		for (Difficulty difficulty : Difficulty.values()) {
@@ -57,6 +63,10 @@ public final class Settings {
 			}
 		}
 		return found;
+	}
+
+	public void changeCurrentPlayer() {
+		currentPlayer = (currentPlayer + 1) % 2;
 	}
 
 	public void swapMode() {
@@ -71,6 +81,10 @@ public final class Settings {
 		Player temp = starting[0];
 		starting[0] = starting[1];
 		starting[1] = temp;
+	}
+
+	public void resetCurrentPlayer() {
+		currentPlayer = 0;
 	}
 
 }
