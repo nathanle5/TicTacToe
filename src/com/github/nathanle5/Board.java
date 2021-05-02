@@ -19,12 +19,12 @@ public final class Board {
 	private JMenuItem[][] spotMenuItems;
 	private JButton[][] spotButtons;
 
-	private JMenuItem gameControlStartMatchMenuItem;
-	private JButton gameControlStartMatchButton;
-	private JMenuItem gameControlEndMatchMenuItem;
-	private JButton gameControlEndMatchButton;
-	private JMenuItem gameControlNewRoundMenuItem;
-	private JButton gameControlNewRoundButton;
+	private JMenuItem controlStartMatchMenuItem;
+	private JButton controlStartMatchButton;
+	private JMenuItem controlEndMatchMenuItem;
+	private JButton controlEndMatchButton;
+	private JMenuItem controlNewRoundMenuItem;
+	private JButton controlNewRoundButton;
 
 	private JLabel settingModeLabel;
 	private JLabel settingDifficultyLabel;
@@ -111,16 +111,16 @@ public final class Board {
 
 	public void populateControlMenuItems(JMenuItem menuItemGameStartMatch, JMenuItem menuItemGameEndMatch,
 			JMenuItem menuItemGameNewRound) {
-		gameControlStartMatchMenuItem = menuItemGameStartMatch;
-		gameControlEndMatchMenuItem = menuItemGameEndMatch;
-		gameControlNewRoundMenuItem = menuItemGameNewRound;
+		controlStartMatchMenuItem = menuItemGameStartMatch;
+		controlEndMatchMenuItem = menuItemGameEndMatch;
+		controlNewRoundMenuItem = menuItemGameNewRound;
 	}
 
 	public void populateControlButtons(JButton buttonGameStartMatch, JButton buttonGameEndMatch,
 			JButton buttonGameNewRound) {
-		gameControlStartMatchButton = buttonGameStartMatch;
-		gameControlEndMatchButton = buttonGameEndMatch;
-		gameControlNewRoundButton = buttonGameNewRound;
+		controlStartMatchButton = buttonGameStartMatch;
+		controlEndMatchButton = buttonGameEndMatch;
+		controlNewRoundButton = buttonGameNewRound;
 	}
 
 	public void populateSettingLabels(JLabel labelSettingMode, JLabel labelSettingDifficulty,
@@ -192,12 +192,12 @@ public final class Board {
 	}
 
 	public void gameStartMatch() {
-		gameControlEndMatchButton.setEnabled(true);
-		gameControlEndMatchMenuItem.setEnabled(true);
-		gameControlNewRoundButton.setEnabled(true);
-		gameControlNewRoundMenuItem.setEnabled(true);
-		gameControlStartMatchButton.setEnabled(false);
-		gameControlStartMatchMenuItem.setEnabled(false);
+		controlEndMatchButton.setEnabled(true);
+		controlEndMatchMenuItem.setEnabled(true);
+		controlNewRoundButton.setEnabled(true);
+		controlNewRoundMenuItem.setEnabled(true);
+		controlStartMatchButton.setEnabled(false);
+		controlStartMatchMenuItem.setEnabled(false);
 		for (int row = 0; row < MAX_ROW; row++) {
 			for (int col = 0; col < MAX_COL; col++) {
 				spotMenuItems[row][col].setEnabled(true);
@@ -213,12 +213,12 @@ public final class Board {
 				spotButtons[row][col].setEnabled(false);
 			}
 		}
-		gameControlStartMatchButton.setEnabled(true);
-		gameControlStartMatchMenuItem.setEnabled(true);
-		gameControlEndMatchButton.setEnabled(false);
-		gameControlEndMatchMenuItem.setEnabled(false);
-		gameControlNewRoundButton.setEnabled(false);
-		gameControlNewRoundMenuItem.setEnabled(false);
+		controlStartMatchButton.setEnabled(true);
+		controlStartMatchMenuItem.setEnabled(true);
+		controlEndMatchButton.setEnabled(false);
+		controlEndMatchMenuItem.setEnabled(false);
+		controlNewRoundButton.setEnabled(false);
+		controlNewRoundMenuItem.setEnabled(false);
 	}
 
 	public void gameNewRound() {
