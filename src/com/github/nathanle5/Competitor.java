@@ -2,7 +2,7 @@ package com.github.nathanle5;
 
 public enum Competitor {
 
-	PLAYER1("Player", "Player 1"), PLAYER2("Computer", "Player 2");
+	NONE("", ""), PLAYER1("Player", "Player 1"), PLAYER2("Computer", "Player 2");
 
 	private final String text1;
 	private final String text2;

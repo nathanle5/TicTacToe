@@ -2,7 +2,7 @@ package com.github.nathanle5;
 
 public enum Symbol {
 
-	X("X"), O("O");
+	NONE(""), X("X"), O("O");
 
 	private final String text;
 
