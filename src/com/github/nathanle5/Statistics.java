@@ -136,7 +136,7 @@ public final class Statistics {
 	 * @see #getCount(int)
 	 */
 	public String getPlayer2WinCount() {
-		return getCount(wins);
+		return getCount(losses);
 	}
 
 	/**
@@ -146,7 +146,7 @@ public final class Statistics {
 	 * @see #getPercent(int)
 	 */
 	public String getPlayer2WinPercent() {
-		return getPercent(wins);
+		return getPercent(losses);
 	}
 
 	/**
@@ -156,7 +156,7 @@ public final class Statistics {
 	 * @see #getCount(int)
 	 */
 	public String getPlayer2LossCount() {
-		return getCount(losses);
+		return getCount(wins);
 	}
 
 	/**
@@ -166,7 +166,7 @@ public final class Statistics {
 	 * @see #getPercent(int)
 	 */
 	public String getPlayer2LossPercent() {
-		return getPercent(losses);
+		return getPercent(wins);
 	}
 
 	/**
