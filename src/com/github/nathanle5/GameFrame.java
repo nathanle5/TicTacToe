@@ -32,50 +32,14 @@ public class GameFrame extends JFrame {
 
 	private static final int defaultWindowStyleIndex = 1;
 
-	private enum GameSpot {
-		POINT00("Spot 00", 0, 0), POINT01("Spot 01", 0, 1), POINT02("Spot 02", 0, 2), POINT10("Spot 10", 1, 0),
-		POINT11("Spot 11", 1, 1), POINT12("Spot 12", 1, 2), POINT20("Spot 20", 2, 0), POINT21("Spot 21", 2, 1),
-		POINT22("Spot 22", 2, 2);
-
-		private final String actionCommand;
-		private final int row;
-		private final int col;
-
-		public String getActionCommand() {
-			return actionCommand;
-		}
-
-		public int getRow() {
-			return row;
-		}
-
-		public int getCol() {
-			return col;
-		}
-
-		private GameSpot(String actionCommand, int row, int col) {
-			this.actionCommand = actionCommand;
-			this.row = row;
-			this.col = col;
-		}
-	}
-
-	private enum GameControl {
-		START_MATCH("Start Match"), END_MATCH("End Match"), NEW_ROUND("New Round");
-
-		private final String actionCommand;
-
-		public String getActionCommand() {
-			return actionCommand;
-		}
-
-		private GameControl(String actionCommand) {
-			this.actionCommand = actionCommand;
-		}
-	}
-
 	private Board board;
+	private Settings settings;
+	private Statistics pvcStatistics;
+	private Statistics pvpStatistics;
 	private String[] windowStyleNames;
+
+	private JMenuItem[][] spotMenuItems;
+	private JButton[][] spotButtons;
 
 	private ButtonGroup gameModePvcButtonGroup;
 	private ButtonGroup gameSettingPvcDifficultyButtonGroup;
@@ -327,7 +291,7 @@ public class GameFrame extends JFrame {
 		gameControlStartMatchMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameControlActionPerformed(e);
+				gameControlActionPerformed(Control.START_MATCH);
 			}
 		});
 		gameControlStartMatchMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0));
@@ -338,7 +302,7 @@ public class GameFrame extends JFrame {
 		gameControlEndMatchMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameControlActionPerformed(e);
+				gameControlActionPerformed(Control.END_MATCH);
 			}
 		});
 		gameControlEndMatchMenuItem.setEnabled(false);
@@ -373,7 +337,7 @@ public class GameFrame extends JFrame {
 		gameSpot00MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING00);
 			}
 		});
 		gameSpot00MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD7, 0));
@@ -385,7 +349,7 @@ public class GameFrame extends JFrame {
 		gameSpot01MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING01);
 			}
 		});
 		gameSpot01MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD8, 0));
@@ -397,7 +361,7 @@ public class GameFrame extends JFrame {
 		gameSpot02MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING02);
 			}
 		});
 		gameSpot02MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD9, 0));
@@ -412,7 +376,7 @@ public class GameFrame extends JFrame {
 		gameSpot10MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING10);
 			}
 		});
 		gameSpot10MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD4, 0));
@@ -424,7 +388,7 @@ public class GameFrame extends JFrame {
 		gameSpot11MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING11);
 			}
 		});
 		gameSpot11MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD5, 0));
@@ -436,7 +400,7 @@ public class GameFrame extends JFrame {
 		gameSpot12MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING12);
 			}
 		});
 		gameSpot12MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD6, 0));
@@ -451,7 +415,7 @@ public class GameFrame extends JFrame {
 		gameSpot20MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING20);
 			}
 		});
 		gameSpot20MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD1, 0));
@@ -463,7 +427,7 @@ public class GameFrame extends JFrame {
 		gameSpot21MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING21);
 			}
 		});
 		gameSpot21MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD2, 0));
@@ -475,7 +439,7 @@ public class GameFrame extends JFrame {
 		gameSpot22MenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING22);
 			}
 		});
 		gameSpot22MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD3, 0));
@@ -486,7 +450,7 @@ public class GameFrame extends JFrame {
 		gameControlNewRoundMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameControlActionPerformed(e);
+				gameControlActionPerformed(Control.NEW_ROUND);
 			}
 		});
 		gameControlNewRoundMenuItem.setEnabled(false);
@@ -733,7 +697,7 @@ public class GameFrame extends JFrame {
 		gameSpot00Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING00);
 			}
 		});
 		gameSpot00Button.setEnabled(false);
@@ -749,7 +713,7 @@ public class GameFrame extends JFrame {
 		gameSpot01Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING01);
 			}
 		});
 		gameSpot01Button.setEnabled(false);
@@ -765,7 +729,7 @@ public class GameFrame extends JFrame {
 		gameSpot02Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING02);
 			}
 		});
 		gameSpot02Button.setEnabled(false);
@@ -781,7 +745,7 @@ public class GameFrame extends JFrame {
 		gameSpot10Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING10);
 			}
 		});
 		gameSpot10Button.setEnabled(false);
@@ -797,7 +761,7 @@ public class GameFrame extends JFrame {
 		gameSpot11Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING11);
 			}
 		});
 		gameSpot11Button.setEnabled(false);
@@ -813,7 +777,7 @@ public class GameFrame extends JFrame {
 		gameSpot12Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING12);
 			}
 		});
 		gameSpot12Button.setEnabled(false);
@@ -829,7 +793,7 @@ public class GameFrame extends JFrame {
 		gameSpot20Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING20);
 			}
 		});
 		gameSpot20Button.setEnabled(false);
@@ -845,7 +809,7 @@ public class GameFrame extends JFrame {
 		gameSpot21Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING21);
 			}
 		});
 		gameSpot21Button.setEnabled(false);
@@ -861,7 +825,7 @@ public class GameFrame extends JFrame {
 		gameSpot22Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSpotActionPerformed(e);
+				gameSpotActionPerformed(Spot.SETTING22);
 			}
 		});
 		gameSpot22Button.setEnabled(false);
@@ -1328,7 +1292,7 @@ public class GameFrame extends JFrame {
 		gameControlStartMatchButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameControlActionPerformed(e);
+				gameControlActionPerformed(Control.START_MATCH);
 			}
 		});
 		gameControlStartMatchButton.setPreferredSize(new Dimension(100, 30));
@@ -1344,7 +1308,7 @@ public class GameFrame extends JFrame {
 		gameControlEndMatchButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameControlActionPerformed(e);
+				gameControlActionPerformed(Control.END_MATCH);
 			}
 		});
 		gameControlEndMatchButton.setEnabled(false);
@@ -1361,7 +1325,7 @@ public class GameFrame extends JFrame {
 		gameControlNewRoundButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameControlActionPerformed(e);
+				gameControlActionPerformed(Control.NEW_ROUND);
 			}
 		});
 		gameControlNewRoundButton.setEnabled(false);
@@ -1502,32 +1466,6 @@ public class GameFrame extends JFrame {
 	 * creating objects and groups.
 	 */
 	private void postinitialize() {
-		gameSpot00Button.setActionCommand(GameSpot.POINT00.getActionCommand());
-		gameSpot00MenuItem.setActionCommand(GameSpot.POINT00.getActionCommand());
-		gameSpot01Button.setActionCommand(GameSpot.POINT01.getActionCommand());
-		gameSpot01MenuItem.setActionCommand(GameSpot.POINT01.getActionCommand());
-		gameSpot02Button.setActionCommand(GameSpot.POINT02.getActionCommand());
-		gameSpot02MenuItem.setActionCommand(GameSpot.POINT02.getActionCommand());
-		gameSpot10Button.setActionCommand(GameSpot.POINT10.getActionCommand());
-		gameSpot10MenuItem.setActionCommand(GameSpot.POINT10.getActionCommand());
-		gameSpot11Button.setActionCommand(GameSpot.POINT11.getActionCommand());
-		gameSpot11MenuItem.setActionCommand(GameSpot.POINT11.getActionCommand());
-		gameSpot12Button.setActionCommand(GameSpot.POINT12.getActionCommand());
-		gameSpot12MenuItem.setActionCommand(GameSpot.POINT12.getActionCommand());
-		gameSpot20Button.setActionCommand(GameSpot.POINT20.getActionCommand());
-		gameSpot20MenuItem.setActionCommand(GameSpot.POINT20.getActionCommand());
-		gameSpot21Button.setActionCommand(GameSpot.POINT21.getActionCommand());
-		gameSpot21MenuItem.setActionCommand(GameSpot.POINT21.getActionCommand());
-		gameSpot22Button.setActionCommand(GameSpot.POINT22.getActionCommand());
-		gameSpot22MenuItem.setActionCommand(GameSpot.POINT22.getActionCommand());
-
-		gameControlStartMatchButton.setActionCommand(GameControl.START_MATCH.getActionCommand());
-		gameControlStartMatchMenuItem.setActionCommand(GameControl.START_MATCH.getActionCommand());
-		gameControlEndMatchButton.setActionCommand(GameControl.END_MATCH.getActionCommand());
-		gameControlEndMatchMenuItem.setActionCommand(GameControl.END_MATCH.getActionCommand());
-		gameControlNewRoundButton.setActionCommand(GameControl.NEW_ROUND.getActionCommand());
-		gameControlNewRoundMenuItem.setActionCommand(GameControl.NEW_ROUND.getActionCommand());
-
 		gameModePvcButtonGroup = new ButtonGroup();
 		gameModePvcButtonGroup.add(gameModePvcRadioItem);
 		gameModePvcButtonGroup.add(gameModePvpRadioItem);
@@ -1573,74 +1511,151 @@ public class GameFrame extends JFrame {
 		windowDisplayStatisticButtonGroup.add(windowDisplayStatisticShowRadioItem);
 		windowDisplayStatisticButtonGroup.add(windowDisplayStatisticHideRadioItem);
 
-		board = new Board();
-		board.populateSpotMenuItems(gameSpot00MenuItem, gameSpot01MenuItem, gameSpot02MenuItem, gameSpot10MenuItem,
-				gameSpot11MenuItem, gameSpot12MenuItem, gameSpot20MenuItem, gameSpot21MenuItem, gameSpot22MenuItem);
-		board.populateSpotButtons(gameSpot00Button, gameSpot01Button, gameSpot02Button, gameSpot10Button,
-				gameSpot11Button, gameSpot12Button, gameSpot20Button, gameSpot21Button, gameSpot22Button);
-		board.populateControlMenuItems(gameControlStartMatchMenuItem, gameControlEndMatchMenuItem,
-				gameControlNewRoundMenuItem);
-		board.populateControlButtons(gameControlStartMatchButton, gameControlEndMatchButton, gameControlNewRoundButton);
-		board.populateSettingLabels(gameModeValueLabel, gameDifficultyValueLabel, gameStartValueLabel,
-				gameSymbolValueLabel, (TitledBorder) gameStatisticData1Pane.getBorder(),
-				(TitledBorder) gameStatisticData2Pane.getBorder());
-		board.populateStatisticLabels(gameStatisticData1WinValueLabel, gameStatisticData1WinPercentValueLabel,
-				gameStatisticData1LossValueLabel, gameStatisticData1LossPercentValueLabel,
-				gameStatisticData1TieValueLabel, gameStatisticData1TiePercentValueLabel,
-				gameStatisticData1RoundValueLabel, gameStatisticData2WinValueLabel,
-				gameStatisticData2WinPercentValueLabel, gameStatisticData2LossValueLabel,
-				gameStatisticData2LossPercentValueLabel, gameStatisticData2TieValueLabel,
-				gameStatisticData2TiePercentValueLabel, gameStatisticData2RoundValueLabel);
-		board.updateSpotText();
-		board.updateSettingText();
-		board.updateStatisticText();
+		pvpStatistics = new Statistics();
+		pvcStatistics = new Statistics();
+		settings = new Settings();
+		board = new Board(settings, pvcStatistics, pvpStatistics);
+
+		spotMenuItems = new JMenuItem[Board.MAX_ROW][Board.MAX_COL];
+		spotMenuItems[0][0] = gameSpot00MenuItem;
+		spotMenuItems[0][1] = gameSpot01MenuItem;
+		spotMenuItems[0][2] = gameSpot02MenuItem;
+		spotMenuItems[1][0] = gameSpot10MenuItem;
+		spotMenuItems[1][1] = gameSpot11MenuItem;
+		spotMenuItems[1][2] = gameSpot12MenuItem;
+		spotMenuItems[2][0] = gameSpot20MenuItem;
+		spotMenuItems[2][1] = gameSpot21MenuItem;
+		spotMenuItems[2][2] = gameSpot22MenuItem;
+		spotButtons = new JButton[Board.MAX_ROW][Board.MAX_COL];
+		spotButtons[0][0] = gameSpot00Button;
+		spotButtons[0][1] = gameSpot01Button;
+		spotButtons[0][2] = gameSpot02Button;
+		spotButtons[1][0] = gameSpot10Button;
+		spotButtons[1][1] = gameSpot11Button;
+		spotButtons[1][2] = gameSpot12Button;
+		spotButtons[2][0] = gameSpot20Button;
+		spotButtons[2][1] = gameSpot21Button;
+		spotButtons[2][2] = gameSpot22Button;
+
+		updateSpotText(false);
+		updateSettingText();
+		updateStatisticText();
 	}
 
-	private void gameSpotActionPerformed(ActionEvent actionEvent) {
-		int row;
-		int col;
-		String actionCommand = actionEvent.getActionCommand();
-		if (actionCommand == GameSpot.POINT00.getActionCommand()) {
-			row = GameSpot.POINT00.getRow();
-			col = GameSpot.POINT00.getCol();
-		} else if (actionCommand == GameSpot.POINT01.getActionCommand()) {
-			row = GameSpot.POINT01.getRow();
-			col = GameSpot.POINT01.getCol();
-		} else if (actionCommand == GameSpot.POINT02.getActionCommand()) {
-			row = GameSpot.POINT02.getRow();
-			col = GameSpot.POINT02.getCol();
-		} else if (actionCommand == GameSpot.POINT10.getActionCommand()) {
-			row = GameSpot.POINT10.getRow();
-			col = GameSpot.POINT10.getCol();
-		} else if (actionCommand == GameSpot.POINT11.getActionCommand()) {
-			row = GameSpot.POINT11.getRow();
-			col = GameSpot.POINT11.getCol();
-		} else if (actionCommand == GameSpot.POINT12.getActionCommand()) {
-			row = GameSpot.POINT12.getRow();
-			col = GameSpot.POINT12.getCol();
-		} else if (actionCommand == GameSpot.POINT20.getActionCommand()) {
-			row = GameSpot.POINT20.getRow();
-			col = GameSpot.POINT20.getCol();
-		} else if (actionCommand == GameSpot.POINT21.getActionCommand()) {
-			row = GameSpot.POINT21.getRow();
-			col = GameSpot.POINT21.getCol();
-		} else if (actionCommand == GameSpot.POINT22.getActionCommand()) {
-			row = GameSpot.POINT22.getRow();
-			col = GameSpot.POINT22.getCol();
-		} else {
+	private void updateSpotText(boolean enable) {
+		for (Spot spot : Spot.values()) {
+			updateSpotText(spot, "", enable);
+		}
+	}
+
+	private void updateSpotText(Spot spot, String symbol, boolean enable) {
+		JButton button = spotButtons[spot.getRow()][spot.getCol()];
+		button.setEnabled(enable);
+		button.setText(symbol);
+		JMenuItem menuItem = spotMenuItems[spot.getRow()][spot.getCol()];
+		menuItem.setEnabled(enable);
+		menuItem.setText(spot.getNumber() + ": " + symbol);
+	}
+
+	private void updateSettingText() {
+		gameModeValueLabel.setText(settings.getModeText());
+		gameDifficultyValueLabel.setText(settings.getDifficultyText());
+		gameStartValueLabel.setText(settings.getStartingText());
+		gameSymbolValueLabel.setText(settings.getSymbolText());
+		((TitledBorder) gameStatisticData1Pane.getBorder()).setTitle(settings.getPlayer1Text() + ":");
+		((TitledBorder) gameStatisticData2Pane.getBorder()).setTitle(settings.getPlayer2Text() + ":");
+	}
+
+	private void updateStatisticText() {
+		Statistics statistics = settings.getMode() == Mode.PLAYER_VS_COMPUTER ? pvcStatistics : pvpStatistics;
+		gameStatisticData1WinValueLabel.setText(statistics.getPlayer1WinCount());
+		gameStatisticData1WinPercentValueLabel.setText(statistics.getPlayer1WinPercent());
+		gameStatisticData1LossValueLabel.setText(statistics.getPlayer1LossCount());
+		gameStatisticData1LossPercentValueLabel.setText(statistics.getPlayer1LossPercent());
+		gameStatisticData1TieValueLabel.setText(statistics.getPlayer1TieCount());
+		gameStatisticData1TiePercentValueLabel.setText(statistics.getPlayer1TiePercent());
+		gameStatisticData1RoundValueLabel.setText(statistics.getPlayer1RoundCount());
+		gameStatisticData2WinValueLabel.setText(statistics.getPlayer2WinCount());
+		gameStatisticData2WinPercentValueLabel.setText(statistics.getPlayer2WinPercent());
+		gameStatisticData2LossValueLabel.setText(statistics.getPlayer2LossCount());
+		gameStatisticData2LossPercentValueLabel.setText(statistics.getPlayer2LossPercent());
+		gameStatisticData2TieValueLabel.setText(statistics.getPlayer2TieCount());
+		gameStatisticData2TiePercentValueLabel.setText(statistics.getPlayer2TiePercent());
+		gameStatisticData2RoundValueLabel.setText(statistics.getPlayer2RoundCount());
+	}
+
+	private void gameControlActionPerformed(Control control) {
+		switch (control) {
+		case START_MATCH:
+			gameControlNewRoundButton.setEnabled(true);
+			gameControlNewRoundMenuItem.setEnabled(true);
+			gameControlEndMatchButton.setEnabled(true);
+			gameControlEndMatchMenuItem.setEnabled(true);
+			gameControlStartMatchButton.setEnabled(false);
+			gameControlStartMatchMenuItem.setEnabled(false);
+			updateSpotText(true);
+			break;
+		case END_MATCH:
+			board.clearSpots();
+			updateSpotText(false);
+			gameControlStartMatchButton.setEnabled(true);
+			gameControlStartMatchMenuItem.setEnabled(true);
+			gameControlEndMatchButton.setEnabled(false);
+			gameControlEndMatchMenuItem.setEnabled(false);
+			gameControlNewRoundButton.setEnabled(false);
+			gameControlNewRoundMenuItem.setEnabled(false);
+			break;
+		case NEW_ROUND:
+			board.clearSpots();
+			updateSpotText(true);
+			break;
+		default:
 			return;
 		}
-		board.gameSpotClaim(row, col);
 	}
 
-	private void gameControlActionPerformed(ActionEvent actionEvent) {
-		String actionCommand = actionEvent.getActionCommand();
-		if (actionCommand == GameControl.START_MATCH.getActionCommand()) {
-			board.gameStartMatch();
-		} else if (actionCommand == GameControl.END_MATCH.getActionCommand()) {
-			board.gameEndMatch();
-		} else if (actionCommand == GameControl.NEW_ROUND.getActionCommand()) {
-			board.gameNewRound();
+	private void gameSpotActionPerformed(Spot spot) {
+		if (board.isSpotOpen(spot)) {
+			String symbol = board.claimSpot(spot);
+			updateSpotText(spot, symbol, false);
+			Outcome outcome = board.checkSpotResults();
+			switch (outcome) {
+			case WIN:
+				if (settings.getMode() == Mode.PLAYER_VS_COMPUTER) {
+					pvcStatistics.addWin();
+				} else {
+					pvpStatistics.addWin();
+				}
+				break;
+			case LOSS:
+				if (settings.getMode() == Mode.PLAYER_VS_COMPUTER) {
+					pvcStatistics.addLoss();
+				} else {
+					pvpStatistics.addLoss();
+				}
+				break;
+			case TIE:
+				if (settings.getMode() == Mode.PLAYER_VS_COMPUTER) {
+					pvcStatistics.addTie();
+				} else {
+					pvpStatistics.addTie();
+				}
+			default:
+				break;
+			}
+			if (outcome != Outcome.NONE) {
+				updateStatisticText();
+				for (Spot s : Spot.values()) {
+					JButton button = spotButtons[s.getRow()][s.getCol()];
+					if (button.isEnabled()) {
+						button.setEnabled(false);
+					}
+					JMenuItem menuItem = spotMenuItems[s.getRow()][s.getCol()];
+					if (menuItem.isEnabled()) {
+						menuItem.setEnabled(false);
+					}
+				}
+			}
 		}
 	}
 

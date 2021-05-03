@@ -17,11 +17,19 @@ public final class Settings {
 		return difficulty;
 	}
 
+	public Player getPlayer1() {
+		return player1;
+	}
+
+	public Player getPlayer2() {
+		return player2;
+	}
+
 	public Settings() {
 		mode = Mode.PLAYER_VS_COMPUTER;
 		difficulty = Difficulty.AIMLESS;
-		player1 = new Player(Symbol.X, Competitor.PLAYER1);
-		player2 = new Player(Symbol.O, Competitor.PLAYER2);
+		player1 = Player.getOne();
+		player2 = Player.getTwo();
 		starting = new Player[] { player1, player2 };
 		currentPlayer = 0;
 	}
@@ -35,15 +43,15 @@ public final class Settings {
 	}
 
 	public String getPlayer1Text() {
-		return player1.getText(mode);
+		return player1.getCompetitorText(mode);
 	}
 
 	public String getPlayer2Text() {
-		return player2.getText(mode);
+		return player2.getCompetitorText(mode);
 	}
 
 	public String getStartingText() {
-		return String.format("%1$s, %2$s", starting[0].getText(mode), starting[1].getText(mode));
+		return String.format("%1$s, %2$s", starting[0].getCompetitorText(mode), starting[1].getCompetitorText(mode));
 	}
 
 	public String getSymbolText() {
@@ -73,8 +81,8 @@ public final class Settings {
 		mode = mode == Mode.PLAYER_VS_COMPUTER ? Mode.PLAYER_VS_PLAYER : Mode.PLAYER_VS_COMPUTER;
 	}
 
-	public void swapSymbol() {
-		player1.swapSymbol(player2);
+	public void swapSymbols() {
+		player1.swapSymbols(player2);
 	}
 
 	public void swapStarting() {
