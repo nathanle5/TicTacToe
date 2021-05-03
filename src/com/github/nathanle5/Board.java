@@ -76,7 +76,6 @@ public final class Board {
 	}
 
 	public Outcome checkSpotResults() {
-		// TODO check if someone won. check to see if tie
 		if (turns <= 0) {
 			return Outcome.TIE;
 		}
@@ -96,6 +95,12 @@ public final class Board {
 			}
 		}
 		return Outcome.NONE;
+	}
+
+	public void runAI() {
+		// TODO run ai logic. ensure mode is pvc. change difficulty.
+		// TODO if applicable, which is dependent on difficulty, pick random number.
+		// TODO if random number, call isSpotOpen(...); if yes, call claimSpot(...).
 	}
 
 }
